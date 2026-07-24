@@ -1,0 +1,48 @@
+{
+    "name": "Алексей Бабочкин Федорович",
+    "nickname": "Железный Фриц",
+    "year": 65,
+    "position": "president",
+    "alive": true,
+    "at_large": true,
+    "political_compass": {
+      "left-right": 5,
+      "freedom": -7
+    },
+    "money": 25000,
+    "party": "Единство",
+    "characteristics": [
+        "paranoia",
+        "charisma",
+        "erudition",
+        "vindictiveness"
+    ],
+    "popularity": {
+        "youth": 30,
+        "middle-aged": 60,
+        "elderly": 90,
+        "in_power": 100,
+        "poor": 60,
+        "reach": 82
+    },
+    "support": {
+        "media": 60,
+        "oligarchs": 80,
+        "military": 90 ,
+        "foreign": 10,
+        "religious": 80
+    },
+    "track": 4,
+    "mind": 120,
+    "old_age": 79,
+    "citizenship": [
+        "Великая Земля"
+    ],
+    "place_of_residence": [
+        "Техноградская область, Техноград",
+        "Техноградская область, Инноград",
+        "Междуречная область, Междуречье"
+    ],
+    "location": "Техноград",
+    "bio": "Родился в 1988 году в столице в семье Бабочкиных. В 2028 году впервые стал президентом"
+}
