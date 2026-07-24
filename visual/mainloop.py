@@ -18,29 +18,45 @@ class Display:
             self.id_objects += 1
             self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline=outline, tags=str(self.id_objects))
             return self.id_objects
-        self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline=outline, tags=tag)
-        return tag
+        self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline=outline, tags=str(tag))
+        return str(tag)
 
     def create_circle(self, x1, y1, x2, y2, color, outline, tag=None) -> int | str:
         if tag is None:
             self.id_objects += 1
             self.canvas.create_oval(x1, y1, x2, y2, fill=color, outline=outline, tags=str(self.id_objects))
             return self.id_objects
-        self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline=outline, tags=tag)
-        return tag
+        self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline=outline, tags=str(tag))
+        return str(tag)
 
     def create_line(self, x1, y1, x2, y2, color, tag=None) -> int | str:
         if tag is None:
             self.id_objects += 1
             self.canvas.create_line(x1, y1, x2, y2, fill=color, tags=str(self.id_objects))
             return self.id_objects
-        self.canvas.create_line(x1, y1, x2, y2, fill=color, tags=tag)
-        return tag
+        self.canvas.create_line(x1, y1, x2, y2, fill=color, tags=str(tag))
+        return str(tag)
 
     def create_text(self, x1, y1, text, color, tag=None) -> int | str:
         if tag is None:
             self.id_objects += 1
             self.canvas.create_text(x1, y1, text=text, fill=color, tags=str(self.id_objects))
             return self.id_objects
-        self.canvas.create_text(x1, y1, text=text, fill=color, tags=tag)
-        return tag
+        self.canvas.create_text(x1, y1, text=text, fill=color, tags=str(tag))
+        return str(tag)
+
+    def add_id(self) -> str:
+        self.id_objects += 1
+        return str(self.id_objects)
+
+    def delete(self, tag):
+        self.canvas.delete(str(tag))
+
+    def recolor(self, color, tag):
+        self.canvas.itemconfig(str(tag), fill=color)
+
+    def recolor_outline(self, color, tag):
+        self.canvas.itemconfig(str(tag), outline=color)
+
+    def rewrite_text(self, text, tag):
+        self.canvas.itemconfig(str(tag), text=text)
