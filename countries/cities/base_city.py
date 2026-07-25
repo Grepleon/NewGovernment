@@ -9,4 +9,4 @@ class City:
         self.location:loc.Location = location
         self.infrastructure: list[buildings.Building] = infrastructure
         self.peoples:int = peoples # указывается в тысячах
-        self.budget:int = budget
+        self.budget:int = budget # бюджет

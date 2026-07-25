@@ -36,7 +36,7 @@ def variable_characters() -> dict[str:pol.Politician]:
                 data_pol["popularity"]["elderly"],
                 data_pol["popularity"]["in_power"],
                 data_pol["popularity"]["poor"],
-                data_pol["popularity"]["reach"]
+                data_pol["popularity"]["rich"]
             ),
             support.Support(
                 data_pol["support"]["media"],

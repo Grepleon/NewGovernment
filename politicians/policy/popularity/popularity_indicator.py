@@ -1,17 +1,17 @@
 class Popularity:
-    def __init__(self, youth, middle_aged, elderly, in_power, poor, reach):
+    def __init__(self, youth, middle_aged, elderly, in_power, poor, rich):
         self.youth:int = youth
         self.middle_aged:int = middle_aged
         self.elderly:int = elderly
         self.in_power: int = in_power
         self.poor = poor
-        self.reach = reach
+        self.rich = rich
 
     def total(self):
-        return int((self.youth + self.middle_aged + self.elderly + self.in_power + self.poor + self.reach) / 6)
+        return int((self.youth + self.middle_aged + self.elderly + self.in_power + self.poor + self.rich) / 6)
 
     def peoples_total(self):
-        return int((self.youth + self.middle_aged + self.elderly + self.poor + self.reach) / 5)
+        return int((self.youth + self.middle_aged + self.elderly + self.poor + self.rich) / 5)
 
     def check(self):
         self.youth = min(100, max(self.youth, 0))
@@ -19,15 +19,15 @@ class Popularity:
         self.elderly = min(100, max(self.elderly, 0))
         self.in_power = min(100, max(self.in_power, 0))
         self.poor = min(100, max(self.poor, 0))
-        self.reach = min(100, max(self.reach, 0))
+        self.rich = min(100, max(self.rich, 0))
 
     def for_poor(self, count):
         self.poor += count
-        self.reach -= int(count / 2) + count % 2
+        self.rich -= int(count / 2) + count % 2
         self.check()
 
     def for_reach(self, count):
-        self.reach += count
+        self.rich += count
         self.poor -= int(count / 2) + count % 2
         self.check()
 
@@ -68,7 +68,7 @@ class Popularity:
                 f"\n- пожилые: {self.elderly}%"
                 f"\n- элиты: {self.in_power}%"
                 f"\n- бедные: {self.poor}%"
-                f"\n- богатые: {self.reach}%"
+                f"\n- богатые: {self.rich}%"
                 f"\n- суммарный рейтинг: {self.peoples_total()}%"
                 f"\n- рейтинг с элитами: {self.total()}%"
                 f"\nстатусы: {", ".join(self.get_str_status())}")
@@ -107,9 +107,9 @@ class Popularity:
         if self.poor <= 20:
             l.append("враг трудящихся")
 
-        if self.reach >= 80:
+        if self.rich >= 80:
             l.append("бизнес-герой")
-        if self.reach <= 20:
+        if self.rich <= 20:
             l.append("изгой олигархата")
 
         if self.in_power >= 80:
