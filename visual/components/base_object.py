@@ -11,7 +11,7 @@ class BaseObject:
     def delete(self):
         self.display.delete(self.object_id)
 
-    def mouse_into_object(self):
+    def mouse_into_object(self, mx, my):
         pass
 
     def mouse_clicked_object(self):

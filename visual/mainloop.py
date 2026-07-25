@@ -11,6 +11,7 @@ class Display:
         self.id_objects = 1
 
         self.pref_tag = "Object:"
+        self.images = []
 
         self.left_button_pressed = False
         self.right_button_pressed = False
@@ -83,7 +84,7 @@ class Display:
             self.canvas.create_oval(x1, y1, x2, y2, fill=color, outline=outline,
                                     tags=self.pref_tag + str(self.id_objects))
             return self.pref_tag + str(self.id_objects)
-        self.canvas.create_rectangle(x1, y1, x2, y2, fill=color, outline=outline, tags=str(tag))
+        self.canvas.create_oval(x1, y1, x2, y2, fill=color, outline=outline, tags=str(tag))
         return str(tag)
 
     def create_line(self, x1, y1, x2, y2, color, tag=None) -> int | str:
@@ -104,9 +105,24 @@ class Display:
         self.canvas.create_text(x1, y1, text=text, fill=color, tags=str(tag))
         return str(tag)
 
+    def create_image(self, x1, y1, path, tag=None) -> int | str:
+        image = PhotoImage(file=path)
+        self.images.append(image)
+
+        if tag is None:
+            self.id_objects += 1
+            self.canvas.create_image(x1, y1, anchor=NW, image=image,
+                                     tags=self.pref_tag + str(self.id_objects))
+            return self.pref_tag + str(self.id_objects)
+        self.canvas.create_image(x1, y1, anchor=NW, image=image,
+                                 tags=self.pref_tag + str(tag))
+        return str(tag)
+
     def add_id(self) -> str:
         self.id_objects += 1
         return self.pref_tag + str(self.id_objects)
+
+
 
     def delete(self, tag):
         self.canvas.delete(str(tag))
@@ -119,3 +135,6 @@ class Display:
 
     def rewrite_text(self, text, tag):
         self.canvas.itemconfig(str(tag), text=text)
+
+    def update_fun(self, fun, sec):
+        self.canvas.after(sec, fun)
