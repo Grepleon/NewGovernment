@@ -20,8 +20,4 @@ test_button = button.Button(100, 200, 500, 400, "#00ff00", "#003300",
                 "#33ff33", "#228822", "Тест-кнопка", display.add_id(), display)
 test_button.display_object()
 
-test_button.delete()
-print(type(test_button.object_id), test_button.object_id)
-print(display.id_objects)
-
 display.end()
