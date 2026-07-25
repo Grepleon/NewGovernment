@@ -16,8 +16,12 @@ def create_politicians() -> dict[str:path_politician.Politician]:
 
 display = visual.mainloop.Display(config.width, config.height)
 
-test_button = button.Button(100, 200, 500, 400, "#00ff00", "#003300",
-                "#33ff33", "#228822", "Тест-кнопка", display.add_id(), display)
-test_button.display_object()
+main_button_coordinates = config.main_button_coordinates
+main_button = button.Button(config.main_button_coordinates[0], config.main_button_coordinates[1],
+                    config.main_button_coordinates[2], config.main_button_coordinates[3],
+                    config.base_off_button_color, config.base_off_bg_button_color,
+                    config.base_on_button_color, config.base_on_bg_button_color,
+                    config.main_button_text, display.add_id(), display)
+main_button.display_object()
 
 display.end()
