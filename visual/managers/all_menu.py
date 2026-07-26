@@ -12,7 +12,7 @@ class AllMenu:
         self.display = display
 
         self.main_manager, self.main_button = main_menu.get_menu(display)
-        self.character_manager, self.cancel_character_button, self.main_button = character_menu.get_menu(display)
+        self.character_manager, self.cancel_character_button, self.character_button = character_menu.get_menu(display)
 
         self.manager_used: manager.Manager = self.main_manager
 
@@ -20,13 +20,13 @@ class AllMenu:
     def checker(self):
         self.manager_used.check()
         if self.manager_used is self.main_manager and self.main_button.on:
-            print(1)
+            self.main_button.on = False
             self.manager_used.hide()
             self.character_manager.show()
             self.manager_used = self.character_manager
 
         elif self.manager_used is self.character_manager and self.cancel_character_button.on:
-            print(2)
+            self.cancel_character_button.on = False
             self.manager_used.hide()
             self.main_manager.show()
             self.manager_used = self.main_manager

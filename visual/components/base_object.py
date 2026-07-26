@@ -16,3 +16,9 @@ class BaseObject:
 
     def mouse_clicked_object(self):
         pass
+
+    def hide(self):
+        pass
+
+    def show(self):
+        pass
