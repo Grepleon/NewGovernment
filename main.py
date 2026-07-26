@@ -30,11 +30,15 @@ buttons.append(main_button)
 
 main_button.display_object()
 
+id_objects_in_main_menu = []
+
 main_image_coordinates = config.coordinates_picture_into_main
 main_image = display.create_image(main_image_coordinates[0], main_image_coordinates[1],
                 config.path_to_picture_into_main)
 
-main_manager = manager.Manager(display, buttons)
+id_objects_in_main_menu.append(main_image)
+
+main_manager = manager.Manager(display, buttons, id_objects_in_main_menu)
 manager_w:manager.Manager = main_manager
 
 def checker():
@@ -42,7 +46,7 @@ def checker():
     manager_w.check()
     if main_button.on:
         manager_w.delete()
-        manager_w = manager.Manager(display, [])
+        manager_w = manager.Manager(display, [], [])
     display.update_fun(checker, 100)
 
 

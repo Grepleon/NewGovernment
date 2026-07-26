@@ -51,3 +51,12 @@ class Button(b_object.BaseObject):
     def delete(self):
         self.display.delete(self.object_id)
         self.display.delete(self.object_id + self.pref_text)
+
+    def hide(self):
+        self.display.hide(self.object_id)
+        self.display.hide(self.object_id + self.pref_text)
+
+    def show(self):
+        self.display.show(self.object_id)
+        self.display.show(self.object_id + self.pref_text)
+

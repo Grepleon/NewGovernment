@@ -122,8 +122,6 @@ class Display:
         self.id_objects += 1
         return self.pref_tag + str(self.id_objects)
 
-
-
     def delete(self, tag):
         self.canvas.delete(str(tag))
 
@@ -138,3 +136,9 @@ class Display:
 
     def update_fun(self, fun, sec):
         self.canvas.after(sec, fun)
+
+    def show(self, tag):
+        self.canvas.itemconfig(tag, state='normal')
+
+    def hide(self, tag):
+        self.canvas.itemconfig(tag, state='hidden')
