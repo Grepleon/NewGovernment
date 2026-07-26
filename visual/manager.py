@@ -11,3 +11,6 @@ class Manager:
                 if self.display.left_button_pressed:
                     _button.mouse_clicked_object()
             _button.display_object()
+
+    def delete(self):
+        pass

@@ -35,10 +35,16 @@ main_image = display.create_image(main_image_coordinates[0], main_image_coordina
                 config.path_to_picture_into_main)
 
 main_manager = manager.Manager(display, buttons)
+manager_w:manager.Manager = main_manager
 
 def checker():
-    main_manager.check()
+    global manager_w
+    manager_w.check()
+    if main_button.on:
+        manager_w.delete()
+        manager_w = manager.Manager(display, [])
     display.update_fun(checker, 100)
+
 
 checker()
 
