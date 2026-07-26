@@ -14,6 +14,7 @@ class Display:
         self.images = []
 
         self.left_button_pressed = False
+        self.fast_left_button_pressed = False
         self.right_button_pressed = False
         self.mouse_x = 0
         self.mouse_y = 0
@@ -55,6 +56,7 @@ class Display:
     def on_release(self, event):
         if event.num == 1:
             self.left_button_pressed = False
+            self.fast_left_button_pressed = True
             self.mouse_x = event.x
             self.mouse_y = event.y
             self.mouse_x_root = event.x_root

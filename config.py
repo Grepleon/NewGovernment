@@ -20,3 +20,5 @@ main_button_text = os.getenv("MAINBUTTONTEXT")
 
 path_to_picture_into_main = os.getenv("PATHTOPICTUREINTOMAINMENU")
 coordinates_picture_into_main = [int(coordinate) for coordinate in os.getenv("COORDINATESPICTUREINTOMAINMENU").split()]
+
+number_main_button = 0
