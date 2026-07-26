@@ -32,9 +32,21 @@ class Button(b_object.BaseObject):
             else:
                 self.display.recolor(self.bg_color, self.object_id)
                 self.display.recolor(self.color, self.object_id + self.pref_text)
+        else:
+            if self.into_mouse:
+                self.display.recolor(self.active_color, self.object_id)
+                self.display.recolor(self.bg_active_color, self.object_id + self.pref_text)
+            else:
+                self.display.recolor(self.bg_active_color, self.object_id)
+                self.display.recolor(self.active_color, self.object_id + self.pref_text)
 
     def mouse_into_object(self, mx, my):
         self.into_mouse = self.x1 <= mx <= self.x2 and self.y1 <= my <= self.y2
+        return self.into_mouse
+
+    def mouse_clicked_object(self):
+        self.on = self.into_mouse and not self.on
+        return self.on
 
     def delete(self):
         self.display.delete(self.object_id)

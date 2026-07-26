@@ -7,5 +7,7 @@ class Manager:
 
     def check(self):
         for _button in self.buttons:
-            _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y)
+            if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
+                if self.display.left_button_pressed:
+                    _button.mouse_clicked_object()
             _button.display_object()
