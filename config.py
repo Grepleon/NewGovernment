@@ -15,6 +15,11 @@ base_off_bg_button_color = os.getenv("BASEOFFBGBUTTONCOLOR")
 base_on_button_color = os.getenv("BASEONBUTTONCOLOR")
 base_on_bg_button_color = os.getenv("BASEONBGBUTTONCOLOR")
 
+cancel_off_button_color = os.getenv("CANCELOFFBUTTONCOLOR")
+cancel_off_bg_button_color = os.getenv("CANCELOFFBGBUTTONCOLOR")
+cancel_on_button_color = os.getenv("CANCELONBUTTONCOLOR")
+cancel_on_bg_button_color = os.getenv("CANCELONBGBUTTONCOLOR")
+
 main_button_coordinates = [int(coordinate) for coordinate in os.getenv("MAINBUTTONCOORDINATES").split()]
 main_button_text = os.getenv("MAINBUTTONTEXT")
 
@@ -22,3 +27,13 @@ path_to_picture_into_main = os.getenv("PATHTOPICTUREINTOMAINMENU")
 coordinates_picture_into_main = [int(coordinate) for coordinate in os.getenv("COORDINATESPICTUREINTOMAINMENU").split()]
 
 number_main_button = 0
+
+character_button_text = os.getenv("CHARACTERBUTTONTEXT")
+character_button_coordinates = [int(coordinate) for coordinate in os.getenv("CHARACTERBUTTONCOORDINATES").split()]
+cancel_character_button_coordinates = [int(coordinate) for coordinate in
+                                       os.getenv("CANCELCHARACTERBUTTONCOORDINATES").split()]
+cancel_charactor_button_text = os.getenv("CANCELCHARACTERBUTTONTEXT")
+
+colors_noice = os.getenv("COLORSNOICE").split()
+size_noice = int(os.getenv("SIZENOICE", 1))
+quantity_noice = int(os.getenv("QUANTITYNOICE", 256))

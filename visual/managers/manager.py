@@ -1,9 +1,9 @@
-import visual.components.button as button
+import visual.components.base_object as base_object
 
 class Manager:
     def __init__(self, display, buttons, id_objects):
         self.display = display
-        self.buttons:list[button.Button] = buttons
+        self.buttons:list[base_object.BaseObject] = buttons
         self.id_objects:list[str|int] = id_objects
 
     def check(self):

@@ -4,6 +4,7 @@ import visual.mainloop
 from politicians.characters.variables import variable_characters
 import visual.components.button as button
 import visual.managers.manager as manager
+import visual.components.noice as path_noice
 
 def get_menu(display):
     buttons = []
@@ -24,5 +25,10 @@ def get_menu(display):
                                       config.path_to_picture_into_main)
 
     id_objects_in_main_menu.append(main_image)
+
+    noice = path_noice.Noice(display.add_id(), display)
+    noice.display_object()
+
+    buttons.append(noice)
 
     return manager.Manager(display, buttons, id_objects_in_main_menu), main_button
