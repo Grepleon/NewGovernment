@@ -26,9 +26,10 @@ class Noice(bo.BaseObject):
 
     def display_object(self):
         for index in range(self.quantity):
-            color = choice(self.colors)
             x = randint(0, config.width)
             y = randint(0, config.height)
+
+            color = choice(self.colors)
 
             self.display.move_to_coord(self.object_id + self.pref + str(index), x, y, x + self.size * 5, y + self.size)
             self.display.recolor(color, self.object_id + self.pref + str(index))
