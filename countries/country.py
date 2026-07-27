@@ -5,7 +5,7 @@ import countries.cities.location as loc
 class Country:
     def __init__(self, name, name_capital, president, areas, ministry_of_finance, ministry_of_internal_affairs,
                  ministry_of_foreign_affairs, ministry_of_defence, ministry_of_social_policy, ministry_of_justice,
-                 budget, costs, ministers_cost):
+                 prime_minister, budget, costs, ministers_cost):
         self.name:str = name
         self.name_capital = name_capital
         self.areas:dict[str:bc.Area] = areas
@@ -17,6 +17,7 @@ class Country:
         self.ministry_of_defence: str = ministry_of_defence
         self.ministry_of_social_policy: str = ministry_of_social_policy
         self.ministry_of_justice: str = ministry_of_justice
+        self.prime_minister:str = prime_minister
 
         self.budget:int = budget
         self.area_costs:dict[str:int] = costs
@@ -27,6 +28,7 @@ class Country:
                 f"\nСтолица: {self.name_capital}"
                 f"\nПравитель: {self.president}"
                 f"\nМинистерства:"
+                f"\n- премьер-министр: {self.prime_minister}"
                 f"\n- министр финансов: {self.ministry_of_finance}"
                 f"\n- министр внутренних дел: {self.ministry_of_internal_affairs}"
                 f"\n- министр иностранных дел: {self.ministry_of_foreign_affairs}"
@@ -46,4 +48,4 @@ if __name__ == "__main__":
     {"Гос-Стол": bcy.City("Гос-Стол", "Мэр", loc.Location(20, 58),
      {}, 5003, 20000)}, "Губернатор", {}, 500000)},
         "M1", "M2", "M3", "M4",
-          "M5", "M6", 10000000, {}, {}).to_str())
+          "M5", "M6", "MM", 10000000, {}, {}).to_str())
