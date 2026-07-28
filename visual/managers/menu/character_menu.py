@@ -30,6 +30,12 @@ def get_menu(display):
     main_button.display_object()
 
     id_objects = []
+    for index_frame in range(config.quantity_frames):
+        frame_picture = display.create_image(config.coordinates_frame_picture[index_frame * 2 + 0],
+                                                     config.coordinates_frame_picture[index_frame * 2 + 1],
+                                                     config.path_to_frame_picture)
+
+        id_objects.append(frame_picture)
 
     noice = path_noice.Noice(display.add_id(), display)
     noice.display_object()

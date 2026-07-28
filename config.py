@@ -37,3 +37,7 @@ cancel_charactor_button_text = os.getenv("CANCELCHARACTERBUTTONTEXT")
 colors_noice = os.getenv("COLORSNOICE").split()
 size_noice = int(os.getenv("SIZENOICE", 1))
 quantity_noice = int(os.getenv("QUANTITYNOICE", 256))
+
+path_to_frame_picture = os.getenv("PATHTOCHOOSECHARACTERPICTURE")
+quantity_frames = int(os.getenv("QUANTITYFRAMESCHARACTER", 9))
+coordinates_frame_picture = [int(coordinate) for coordinate in os.getenv("COORDINATESCHOOSECHARACTERPICTURE").split()]
