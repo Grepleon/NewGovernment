@@ -19,6 +19,10 @@ class Button(b_object.BaseObject):
 
         self._create()
 
+    def disable(self):
+        self.on=False
+
+
     def _create(self):
         self.display.create_rectangle(self.x1, self.y1, self.x2, self.y2,
                                       color=self.bg_color, outline=self.color, tag=self.object_id)

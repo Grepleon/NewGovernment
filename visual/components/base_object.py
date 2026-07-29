@@ -6,6 +6,9 @@ class BaseObject:
         self.display = display
         self.name="NULL"
 
+    def disable(self):
+        pass
+
     def display_object(self):
         pass
 
