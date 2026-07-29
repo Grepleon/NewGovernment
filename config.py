@@ -45,3 +45,13 @@ quantity_frames = int(os.getenv("QUANTITYFRAMESCHARACTER", 9))
 coordinates_frame_picture = [int(coordinate) for coordinate in os.getenv("COORDINATESCHOOSECHARACTERPICTURE").split()]
 frame_size_add = int(os.getenv("FRAMESIZEADD"))
 frame_size_into = [int(coord) for coord in os.getenv("FRAMESIZEINTO").split()]
+height_button_in_frame = int(os.getenv("HEIGHTBUTTONINFRAME"))
+
+names_politicians = [politician for politician in os.getenv("NAMESCHARACTERS").split(", ")]
+politicians_folder = os.getenv("FOLDERWITHPICTUREPOLITICIANS")
+
+small_flag = os.getenv("SMALLFLAG")
+normal_flag = os.getenv("NORMALFLAG")
+hover_flag = os.getenv("HOVERFLAG")
+
+format_pictures = os.getenv("FORMAT", '.png')

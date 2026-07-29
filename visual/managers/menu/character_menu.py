@@ -6,6 +6,9 @@ import visual.components.button as button
 import visual.managers.manager as manager
 import visual.components.noice as path_noice
 
+def rename(val:str):
+    return " ".join(val.split()[:2])
+
 def get_menu(display):
     buttons = []
 
@@ -37,14 +40,18 @@ def get_menu(display):
 
         id_objects.append(frame_picture)
         buttons.append(button.Button(
-            config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_add,
-            config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_add,
-            config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_into[0] - config.frame_size_add,
-            config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_into[1] - config.frame_size_add,
-                                  config.base_off_button_color, config.dark_off_bg_button_color,
-                                  config.base_on_button_color, config.base_on_bg_button_color,
-                                  "Политик", display.add_id(), display))
+    config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_add,
+    config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_add + config.height_button_in_frame,
+    config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_into[0] - config.frame_size_add,
+    config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_into[1] - config.frame_size_add,
+                              config.base_off_button_color, config.dark_off_bg_button_color,
+                              config.base_on_button_color, config.base_on_bg_button_color,
+                              rename(config.names_politicians[index_frame]), display.add_id(), display))
 
+        if index_frame == 1: id_objects.append(display.create_image(
+            config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_add,
+    config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_add,
+    config.politicians_folder + config.names_politicians[index_frame] + config.small_flag + config.format_pictures))
 
     noice = path_noice.Noice(display.add_id(), display)
     noice.display_object()
