@@ -36,6 +36,15 @@ def get_menu(display):
                                                      config.path_to_frame_picture)
 
         id_objects.append(frame_picture)
+        buttons.append(button.Button(
+            config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_add,
+            config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_add,
+            config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_into[0] - config.frame_size_add,
+            config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_into[1] - config.frame_size_add,
+                                  config.base_off_button_color, config.dark_off_bg_button_color,
+                                  config.base_on_button_color, config.base_on_bg_button_color,
+                                  "Политик", display.add_id(), display))
+
 
     noice = path_noice.Noice(display.add_id(), display)
     noice.display_object()

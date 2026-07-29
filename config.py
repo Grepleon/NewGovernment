@@ -15,6 +15,8 @@ base_off_bg_button_color = os.getenv("BASEOFFBGBUTTONCOLOR")
 base_on_button_color = os.getenv("BASEONBUTTONCOLOR")
 base_on_bg_button_color = os.getenv("BASEONBGBUTTONCOLOR")
 
+dark_off_bg_button_color = os.getenv("DARKOFFBUTTONCOLOR")
+
 cancel_off_button_color = os.getenv("CANCELOFFBUTTONCOLOR")
 cancel_off_bg_button_color = os.getenv("CANCELOFFBGBUTTONCOLOR")
 cancel_on_button_color = os.getenv("CANCELONBUTTONCOLOR")
@@ -41,3 +43,5 @@ quantity_noice = int(os.getenv("QUANTITYNOICE", 256))
 path_to_frame_picture = os.getenv("PATHTOCHOOSECHARACTERPICTURE")
 quantity_frames = int(os.getenv("QUANTITYFRAMESCHARACTER", 9))
 coordinates_frame_picture = [int(coordinate) for coordinate in os.getenv("COORDINATESCHOOSECHARACTERPICTURE").split()]
+frame_size_add = int(os.getenv("FRAMESIZEADD"))
+frame_size_into = [int(coord) for coord in os.getenv("FRAMESIZEINTO").split()]
