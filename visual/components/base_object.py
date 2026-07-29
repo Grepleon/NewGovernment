@@ -4,6 +4,7 @@ class BaseObject:
     def __init__(self, tag, display: visual.Display):
         self.object_id:int|str = tag
         self.display = display
+        self.name="NULL"
 
     def display_object(self):
         pass

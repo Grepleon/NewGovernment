@@ -34,4 +34,5 @@ class Manager:
         for id_object in self.id_objects:
             self.display.show(id_object)
 
-
+    def active(self):
+        pass

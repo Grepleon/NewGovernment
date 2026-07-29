@@ -19,17 +19,21 @@ class AllMenu:
 
     def checker(self):
         self.manager_used.check()
-        if self.manager_used is self.main_manager and self.main_button.on:
-            self.main_button.on = False
-            self.manager_used.hide()
-            self.character_manager.show()
-            self.manager_used = self.character_manager
+        self.manager_used.active()
 
-        elif self.manager_used is self.character_manager and self.cancel_character_button.on:
-            self.cancel_character_button.on = False
-            self.manager_used.hide()
-            self.main_manager.show()
-            self.manager_used = self.main_manager
+        if self.manager_used is self.main_manager:
+            if self.main_button.on:
+                self.main_button.on = False
+                self.manager_used.hide()
+                self.character_manager.show()
+                self.manager_used = self.character_manager
+
+        elif self.manager_used is self.character_manager:
+            if self.cancel_character_button.on:
+                self.cancel_character_button.on = False
+                self.manager_used.hide()
+                self.main_manager.show()
+                self.manager_used = self.main_manager
 
         self.display.fast_left_button_pressed = False
         self.display.update_fun(self.checker, 100)
