@@ -8,11 +8,13 @@ import visual.managers.menu.main_menu as main_menu
 import visual.managers.menu.character_menu as character_menu
 
 class AllMenu:
-    def __init__(self, display):
+    def __init__(self, display, politicians):
         self.display = display
+        self.politicians = politicians
 
         self.main_manager, self.main_button = main_menu.get_menu(display)
-        self.character_manager, self.cancel_character_button, self.character_button = character_menu.get_menu(display)
+        self.character_manager, self.cancel_character_button, self.character_button = character_menu.get_menu(display,
+                                                                                        politicians)
 
         self.manager_used: manager.Manager = self.main_manager
 

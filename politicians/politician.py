@@ -45,6 +45,18 @@ class Politician:
         self.citizenship:list[str] = citizenship
         self.place_of_residence:list[str] = place_of_residence
 
+    def to_briefly_str(self):
+        return (f"{self.name}" + ("" if self.nickname is None else f" ({self.nickname})") +
+                f" - {self.political_compass.to_str()}" +
+                f"\nВозраст: {self.year} {str_years(self.year)}\n"
+                f"Статус: {'жив' if self.alive else 'мертв'},"
+                f" {"на свободе" if self.at_large else "сидит в тюрьме"}\n"
+                f"Должность: {self.position.name}\n"
+                f"{"Не с" if self.name_party is None else "С"}остоит "
+                f"в партии{ "" if self.name_party is None else " " + str(self.name_party)}\n"
+                f"Денег: {self.money}\n"
+                f"{"" if self.bio is None else '\nБиография: ' + self.bio}")
+
     def to_str(self) -> str:
         """Возвращает информацию о политике в текстовом виде
 

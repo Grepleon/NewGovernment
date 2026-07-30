@@ -148,5 +148,8 @@ class Display:
     def move_to_coord(self, tag, new_x1, new_y1, new_x2, new_y2):
         self.canvas.coords(tag, new_x1, new_y1, new_x2, new_y2)
 
+    def move_to_coord2(self, tag, new_x1, new_y1):
+        self.canvas.coords(tag, new_x1, new_y1)
+
     def move(self, tag, dx, dy):
         self.canvas.move(tag, dx, dy)
