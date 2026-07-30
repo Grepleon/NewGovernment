@@ -49,7 +49,7 @@ def get_menu(display):
                               rename(config.names_politicians[index_frame]), display.add_id(), display,
         config.names_politicians[index_frame]))
 
-        if index_frame <= 8:
+        try:
             id_objects.append(
                 display.create_image(config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_add,
                                      config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_add,
@@ -60,7 +60,7 @@ def get_menu(display):
                              config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_add,
                              config.politicians_folder + config.names_politicians[
                                  index_frame] + config.hover_flag + config.format_pictures))
-        else:
+        except Exception as e:
             id_objects.append(
                 display.create_image(config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_add,
                                      config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_add,
