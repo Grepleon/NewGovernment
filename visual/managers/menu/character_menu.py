@@ -49,7 +49,7 @@ def get_menu(display):
                               rename(config.names_politicians[index_frame]), display.add_id(), display,
         config.names_politicians[index_frame]))
 
-        if index_frame <= 1:
+        if index_frame <= 8:
             id_objects.append(
                 display.create_image(config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_add,
                                      config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_add,
@@ -61,8 +61,14 @@ def get_menu(display):
                              config.politicians_folder + config.names_politicians[
                                  index_frame] + config.hover_flag + config.format_pictures))
         else:
-            id_objects.append("NULL")
-            id_objects.append("NULL")
+            id_objects.append(
+                display.create_image(config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_add,
+                                     config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_add,
+                                     config.politicians_folder + config.default_name + config.small_flag + config.format_pictures))
+            id_objects.append(
+                display.create_image(config.coordinates_frame_picture[index_frame * 2 + 0] + config.frame_size_add,
+                                     config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_add,
+                                     config.politicians_folder + config.default_name + config.hover_flag + config.format_pictures))
 
     noice = path_noice.Noice(display.add_id(), display)
     noice.display_object()

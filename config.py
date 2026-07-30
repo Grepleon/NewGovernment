@@ -54,4 +54,6 @@ small_flag = os.getenv("SMALLFLAG")
 normal_flag = os.getenv("NORMALFLAG")
 hover_flag = os.getenv("HOVERFLAG")
 
+default_name = os.getenv("DEFAULTPOLITICIAN")
+
 format_pictures = os.getenv("FORMAT", '.png')
