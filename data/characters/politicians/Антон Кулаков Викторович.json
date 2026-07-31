@@ -1,0 +1,47 @@
+{
+    "name": "Антон Кулаков Викторович",
+    "nickname": "Ядерка",
+    "year": 47,
+    "position": "minister",
+    "alive": true,
+    "at_large": true,
+    "political_compass": {
+      "left-right": 4,
+      "freedom": -5
+    },
+    "money": 274000,
+    "party": "Единство",
+    "characteristics": [
+        "lawyer",
+        "charisma",
+        "good_health",
+        "erudition"
+    ],
+    "popularity": {
+        "youth": 96,
+        "middle-aged": 74,
+        "elderly": 12,
+        "in_power": 87,
+        "poor": 63,
+        "rich": 81
+    },
+    "support": {
+        "media": 95,
+        "oligarchs": 68,
+        "military": 61,
+        "foreign": 15,
+        "religious": 13
+    },
+    "track": 7,
+    "mind": 112,
+    "old_age": 79,
+    "citizenship": [
+        "Великая Земля"
+    ],
+    "place_of_residence": [
+        "Техноградская область, Техноград",
+        "Восточная область, Востокоград"
+    ],
+    "location": "Техноград",
+    "bio": "Родился в 2006 году в Востокограде. В 2024 году закончил университет,\nполучив юридическое образование. В 2030 году смог переехать в столицу.\nВ 2036 году стал премьер-министром."
+}

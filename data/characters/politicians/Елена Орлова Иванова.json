@@ -1,0 +1,46 @@
+{
+    "name": "Елена Орлова Иванова",
+    "nickname": null,
+    "year": 34,
+    "position": "head_cb",
+    "alive": true,
+    "at_large": true,
+    "political_compass": {
+      "left-right": 3,
+      "freedom": -2
+    },
+    "money": 156000,
+    "party": "Единство",
+    "characteristics": [
+        "clever",
+        "lisp_speech",
+        "erudition",
+        "caution"
+    ],
+    "popularity": {
+        "youth": 85,
+        "middle-aged": 40,
+        "elderly": 25,
+        "in_power": 90,
+        "poor": 20,
+        "rich": 30
+    },
+    "support": {
+        "media": 45,
+        "oligarchs": 95,
+        "military": 15 ,
+        "foreign": 10,
+        "religious": 23
+    },
+    "track": 12,
+    "mind": 125,
+    "old_age": 82,
+    "citizenship": [
+        "Великая Земля"
+    ],
+    "place_of_residence": [
+        "Техноградская область, Техноград"
+    ],
+    "location": "Техноград",
+    "bio": "Родилась в 2019 году в столице. В 2040 году впервые вступила\nв роль главы ЦБ, сменив Федора Мирского."
+}

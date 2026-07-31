@@ -9,7 +9,7 @@
       "left-right": 5,
       "freedom": -7
     },
-    "money": 25000,
+    "money": 427000,
     "party": "Единство",
     "characteristics": [
         "paranoia",
@@ -28,8 +28,8 @@
     "support": {
         "media": 60,
         "oligarchs": 80,
-        "military": 90 ,
-        "foreign": 10,
+        "military": 96,
+        "foreign": 15,
         "religious": 80
     },
     "track": 4,

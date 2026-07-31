@@ -8,6 +8,7 @@ import politicians.policy.job_title.deputy as deputy
 import politicians.policy.job_title.president as president
 import politicians.policy.popularity.popularity_indicator as pi
 import politicians.policy.popularity.support as p_support
+from hints.int_to_str import int_to_str
 
 def str_years(year):
     year = year % 100
@@ -54,7 +55,7 @@ class Politician:
                 f"Должность: {self.position.name}\n"
                 f"{"Не с" if self.name_party is None else "С"}остоит "
                 f"в партии{ "" if self.name_party is None else " " + str(self.name_party)}\n"
-                f"Денег: {self.money}\n"
+                f"Денег: {int_to_str(self.money)}\n"
                 f"{"" if self.bio is None else '\nБиография: ' + self.bio}")
 
     def to_str(self) -> str:
@@ -99,7 +100,7 @@ class Politician:
                 f"Должность: {self.position.name}\n"
                 f"{"Не с" if self.name_party is None else "С"}остоит "
                 f"в партии{ "" if self.name_party is None else " " + str(self.name_party)}\n"
-                f"Денег: {self.money}\n" +
+                f"Денег: {int_to_str(self.money)}\n" +
                 "Характеристики:\n" +
                 f"\n".join(['- ' + char.to_str().lower() for char in self.characteristics]) +
                 f"\n{self.popularity.to_str()}"
