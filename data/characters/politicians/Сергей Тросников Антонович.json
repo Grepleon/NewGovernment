@@ -2,14 +2,14 @@
     "name": "Сергей Тросников Антонович",
     "nickname": "Алдоанец",
     "year": 73,
-    "position": "president",
+    "position": "governor",
     "alive": true,
     "at_large": true,
     "political_compass": {
       "left-right": -4,
       "freedom": 3
     },
-    "money": 427000,
+    "money": 423000,
     "party": "Величие",
     "characteristics": [
         "paranoia",
