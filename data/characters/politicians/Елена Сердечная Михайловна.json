@@ -1,0 +1,46 @@
+{
+    "name": "Елена Сердечная Михайловна",
+    "nickname": null,
+    "year": 32,
+    "position": "minister",
+    "alive": true,
+    "at_large": true,
+    "political_compass": {
+        "left-right": 4,
+        "freedom": -2
+    },
+    "money": 137000,
+    "party": "Единство",
+    "characteristics": [
+        "clever",
+        "erudition",
+        "good_health",
+        "vindictiveness"
+    ],
+    "popularity": {
+        "youth": 76,
+        "middle-aged": 56,
+        "elderly": 36,
+        "in_power": 76,
+        "poor": 60,
+        "rich": 30
+    },
+    "support": {
+        "media": 45,
+        "oligarchs": 78,
+        "military": 7,
+        "foreign": 10,
+        "religious": 13
+    },
+    "track": 2,
+    "mind": 103,
+    "old_age": 76,
+    "citizenship": [
+        "Великая Земля"
+    ],
+    "place_of_residence": [
+        "Техноградская область, Техноград"
+    ],
+    "location": "Техноград",
+    "bio": "Родилась в 2021 году в столице. В 2047 году она вступила в партию Наше око - Велико.\nОднако уже в 2050 году она перешла в партию Единство. В 2052 году она стала министром внутренних дел."
+}

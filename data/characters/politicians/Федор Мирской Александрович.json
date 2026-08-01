@@ -1,0 +1,46 @@
+{
+    "name": "Федор Мирской Александрович",
+    "nickname": null,
+    "year": 61,
+    "position": "minister",
+    "alive": true,
+    "at_large": true,
+    "political_compass": {
+      "left-right": -1,
+      "freedom": -1
+    },
+    "money": 211000,
+    "party": "Величие",
+    "characteristics": [
+        "poor_health",
+        "charisma",
+        "generosity"
+    ],
+    "popularity": {
+        "youth": 70,
+        "middle-aged": 87,
+        "elderly": 91,
+        "in_power": 98,
+        "poor": 97,
+        "rich": 81
+    },
+    "support": {
+        "media": 92,
+        "oligarchs": 95,
+        "military": 3,
+        "foreign": 11,
+        "religious": 9
+    },
+    "track": 3,
+    "mind": 107,
+    "old_age": 82,
+    "citizenship": [
+        "Великая Земля"
+    ],
+    "place_of_residence": [
+        "Техноградская область, Техноград",
+        "Восточная область, Востокоград"
+    ],
+    "location": "Техноград",
+    "bio": "Родился в 1992 году в Востокограде. В 2014 году стал главой ЦБ.\nСтал популярным, когда смог спасти экономику Великой Земли\nво время войны в 2034 году, когда на страну наложили санкции.\nОднако в 2040 году его сменила Елена Орлова, потому он стал министром финансов.   "
+}

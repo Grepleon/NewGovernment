@@ -1,0 +1,46 @@
+{
+    "name": "Анна Кошкина Владимировна",
+    "nickname": null,
+    "year": 42,
+    "position": "minister",
+    "alive": true,
+    "at_large": true,
+    "political_compass": {
+      "left-right": 0,
+      "freedom": 3
+    },
+    "money": 132000,
+    "party": "Наше око - велико",
+    "characteristics": [
+        "clever",
+        "lisp_speech",
+        "erudition",
+        "caution"
+    ],
+    "popularity": {
+        "youth": 45,
+        "middle-aged": 93,
+        "elderly": 53,
+        "in_power": 57,
+        "poor": 61,
+        "rich": 47
+    },
+    "support": {
+        "media": 66,
+        "oligarchs": 76,
+        "military": 19,
+        "foreign": 56,
+        "religious": 17
+    },
+    "track": 7,
+    "mind": 105,
+    "old_age": 82,
+    "citizenship": [
+        "Великая Земля"
+    ],
+    "place_of_residence": [
+        "Техноградская область, Техноград"
+    ],
+    "location": "Техноград",
+    "bio": "Родилась в 2005 году в столице. В 2030 году основала партию\n\"Наше око - Велико\". А уже в 2036 году стала министром иностранных дел."
+}

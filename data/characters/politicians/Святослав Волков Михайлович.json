@@ -1,0 +1,47 @@
+{
+    "name": "Святослав Волков Михайлович",
+    "nickname": null,
+    "year": 71,
+    "position": "minister",
+    "alive": true,
+    "at_large": true,
+    "political_compass": {
+      "left-right": -4,
+      "freedom": 3
+    },
+    "money": 213000,
+    "party": "Величие",
+    "characteristics": [
+        "clever",
+        "good_health",
+        "paranoia",
+        "caution"
+    ],
+    "popularity": {
+        "youth": 81,
+        "middle-aged": 89,
+        "elderly": 73,
+        "in_power": 93,
+        "poor": 84,
+        "rich": 76
+    },
+    "support": {
+        "media": 96,
+        "oligarchs": 95,
+        "military": 99,
+        "foreign": 0,
+        "religious": 71
+    },
+    "track": 1,
+    "mind": 120,
+    "old_age": 82,
+    "citizenship": [
+        "Великая Земля"
+    ],
+    "place_of_residence": [
+        "Техноградская область, Техноград",
+        "Техноградская область, Инноград"
+    ],
+    "location": "Техноград",
+    "bio": "Родился в 1982 году в Иннограде. В 2015 стал министром финансов,\nа позже в 2032 году ему было суждено стать министром обороны.\nИ уже через два года, в 2034 году Великая Земля всего за три недели полностью\nзахватывает Алдоанцию. Заслугу в этом в том числе приписали и Волкову,\nчем он и запомнился народу."
+}

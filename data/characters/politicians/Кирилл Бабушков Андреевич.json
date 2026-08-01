@@ -1,0 +1,45 @@
+{
+    "name": "Кирилл Бабушков Андреевич",
+    "nickname": null,
+    "year": 43,
+    "position": "minister",
+    "alive": true,
+    "at_large": true,
+    "political_compass": {
+      "left-right": 5,
+      "freedom": -6
+    },
+    "money": 117000,
+    "party": "Единство",
+    "characteristics": [
+        "poor_health",
+        "lisp_speech",
+        "stupid"
+    ],
+    "popularity": {
+        "youth": 10,
+        "middle-aged": 35,
+        "elderly": 95,
+        "in_power": 48,
+        "poor": 82,
+        "rich": 12
+    },
+    "support": {
+        "media": 34,
+        "oligarchs": 62,
+        "military": 11,
+        "foreign": 0,
+        "religious": 7
+    },
+    "track": 18,
+    "mind": 107,
+    "old_age": 73,
+    "citizenship": [
+        "Великая Земля"
+    ],
+    "place_of_residence": [
+        "Техноградская область, Техноград"
+    ],
+    "location": "Техноград",
+    "bio": "Родился в 2010 году в столице. В 2030 году стал министром социальной\nполитики. Однако в 35 лет у него началась депрессия, которую он начал заедать.\nПотому состояние его здоровья сильно ухудшилось."
+}

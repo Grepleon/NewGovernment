@@ -1,0 +1,46 @@
+{
+    "name": "Андрей Соловьев Артемович",
+    "nickname": null,
+    "year": 51,
+    "position": "minister",
+    "alive": true,
+    "at_large": true,
+    "political_compass": {
+      "left-right": -4,
+      "freedom": 2
+    },
+    "money": 135000,
+    "party": "Величие",
+    "characteristics": [
+        "generosity",
+        "charisma",
+        "lawyer",
+        "erudition"
+    ],
+    "popularity": {
+        "youth": 65,
+        "middle-aged": 50,
+        "elderly": 45,
+        "in_power": 56,
+        "poor": 89,
+        "rich": 68
+    },
+    "support": {
+        "media": 50,
+        "oligarchs": 61,
+        "military": 12,
+        "foreign": 34,
+        "religious": 25
+    },
+    "track": 6,
+    "mind": 103,
+    "old_age": 80,
+    "citizenship": [
+        "Великая Земля"
+    ],
+    "place_of_residence": [
+        "Техноградская область, Техноград"
+    ],
+    "location": "Техноград",
+    "bio": "Родился в 2002 году в столице. В 2026 году окончил университет,\nполучив юридическое образование. В 2041 году стал министром юстиций."
+}
