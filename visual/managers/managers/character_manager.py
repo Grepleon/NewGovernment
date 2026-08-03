@@ -1,4 +1,4 @@
-import visual.managers.manager as manager
+import visual.managers.managers.manager as manager
 import config
 
 class CharacterManager(manager.Manager):

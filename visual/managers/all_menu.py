@@ -1,11 +1,7 @@
-import config
-import politicians.politician as path_politician
-import visual.mainloop
-from politicians.characters.variables import variable_characters
-import visual.components.button as button
-import visual.managers.manager as manager
+import visual.managers.managers.manager as manager
 import visual.managers.menu.main_menu as main_menu
 import visual.managers.menu.character_menu as character_menu
+import visual.managers.menu.play_menu as play_menu
 
 class AllMenu:
     def __init__(self, display, politicians):
@@ -15,6 +11,7 @@ class AllMenu:
         self.main_manager, self.main_button = main_menu.get_menu(display)
         self.character_manager, self.cancel_character_button, self.character_button = character_menu.get_menu(display,
                                                                                         politicians)
+        self.play_manager = play_menu.get_menu(display)
 
         self.manager_used: manager.Manager = self.main_manager
 
@@ -37,6 +34,15 @@ class AllMenu:
                 self.main_manager.show()
                 self.manager_used = self.main_manager
 
+            if self.character_button.on:
+                self.character_button.on = False
+                self.manager_used.hide()
+                self.play_manager.show()
+                self.manager_used = self.play_manager
+
         self.display.fast_left_button_pressed = False
         self.display.update_fun(self.checker, 100)
+
+
+
 

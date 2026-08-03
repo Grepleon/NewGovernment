@@ -1,9 +1,6 @@
 import config
-import politicians.politician as path_politician
-import visual.mainloop
-from politicians.characters.variables import variable_characters
 import visual.components.button as button
-import visual.managers.manager as manager
+import visual.managers.managers.manager as manager
 import visual.components.noice as path_noice
 
 def get_menu(display):
