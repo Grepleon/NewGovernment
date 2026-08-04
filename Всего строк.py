@@ -19,6 +19,7 @@ def is_code_file(filename):
         '.php', '.rb', '.go', '.rs', '.swift', '.kt', '.ts',
         '.html', '.css', '.scss', '.less', '.xml', '.yaml',
         '.yml', '.sql', '.sh', '.bash', '.bat', '.ps1', '.md',
+        '.json'
     }
     return any(filename.endswith(ext) for ext in code_extensions)
 
@@ -28,8 +29,7 @@ def should_ignore_directory(dirname):
     ignore_dirs = {
         '.git', '__pycache__', 'node_modules', 'venv', 'env',
         '.venv', 'dist', 'build', 'target', 'bin', 'obj',
-        'vendor', 'coverage', '.idea', '.vscode', '.vs',
-        'Files'
+        'vendor', 'coverage', '.idea', '.vscode', '.vs'
     }
     return dirname in ignore_dirs
 
