@@ -1,4 +1,4 @@
-import visual.mainloop as visual
+import visual.display as visual
 
 class BaseObject:
     def __init__(self, tag, display: visual.Display):

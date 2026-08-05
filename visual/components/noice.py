@@ -23,8 +23,7 @@ class Noice(bo.BaseObject):
                                           color, color, self.object_id + self.pref + str(index))
             self.display.recolor(color, self.object_id + self.pref + str(index))
 
-
-    def display_object(self):
+    def display_this(self):
         for index in range(self.quantity):
             x = randint(0, config.width)
             y = randint(0, config.height)
@@ -33,6 +32,10 @@ class Noice(bo.BaseObject):
 
             self.display.move_to_coord(self.object_id + self.pref + str(index), x, y, x + self.size * 5, y + self.size)
             self.display.recolor(color, self.object_id + self.pref + str(index))
+
+    def display_object(self):
+        if self.display.tact % 3 == 0:
+            self.display_this()
 
     def hide(self):
         for index in range(self.quantity):

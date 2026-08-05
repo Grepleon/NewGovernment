@@ -1,10 +1,10 @@
 import config
 import visual.components.base_object as b_object
-import visual.mainloop
+import visual.display
 
 class Hint(b_object.BaseObject):
     def __init__(self, x, y,
-                 color, bg_color,  text, tag, display: visual.mainloop.Display, name="NULL"):
+                 color, bg_color,  text, tag, display: visual.display.Display, name="NULL"):
         super().__init__(tag, display)
         self.name = name
         self.color = color
@@ -52,7 +52,7 @@ class Hint(b_object.BaseObject):
     def rewrite_text(self, new_text):
         self.text = new_text
 
-    def display_object(self):
+    def display_this(self):
         dx, dy = self.size_to_text()
         out_x = self.out_x
         out_y = self.out_y
@@ -68,3 +68,6 @@ class Hint(b_object.BaseObject):
                                    self.x + dx + out_x, self.y + dy + out_y)
         self.display.move_to_coord2(self.object_id + self.pref_text,
                (self.x * 2 + out_x * 2 + dx) / 2, (self.y * 2 + out_y * 2 + dy) / 2)
+
+    def display_object(self):
+        self.display_this()

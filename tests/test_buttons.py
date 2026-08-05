@@ -1,7 +1,7 @@
 import os
 import config
 import politicians.politician as path_politician
-import visual.mainloop
+import visual.display
 from politicians.characters.variables import variable_characters
 import visual.components.button as button
 

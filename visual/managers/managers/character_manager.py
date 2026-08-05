@@ -1,10 +1,12 @@
 import visual.managers.managers.manager as manager
 import config
+import mainloop.game_states as game_states
 
 class CharacterManager(manager.Manager):
-    def __init__(self, display, buttons, id_objects, politicians):
+    def __init__(self, display, buttons, id_objects, politicians, game_state: game_states.GameState):
         super().__init__(display, buttons, id_objects)
         self.politicians = politicians
+        self.game_state = game_state
 
     def test(self):
         for n, i in enumerate(self.buttons):
@@ -28,6 +30,7 @@ class CharacterManager(manager.Manager):
             if self.buttons[i].on:
                 id_object = self.id_objects[3 * (i - 2) + 2]
                 self.display.show(id_object)
+                self.game_state.selected_politician = self.politicians[self.buttons[i].name]
             else:
                 id_object = self.id_objects[3 * (i - 2) + 2]
                 self.display.hide(id_object)

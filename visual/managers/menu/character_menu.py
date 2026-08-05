@@ -7,7 +7,7 @@ import visual.components.hint as hint
 def rename(val:str):
     return " ".join(val.split()[:2])
 
-def get_menu(display, politicians):
+def get_menu(display, politicians, game_states):
     buttons = []
 
     main_button = button.Button(config.character_button_coordinates[0], config.character_button_coordinates[1],
@@ -77,7 +77,7 @@ def get_menu(display, politicians):
 
     buttons.append(noice)
 
-    character_menu = manager.CharacterManager(display, buttons, id_objects, politicians)
+    character_menu = manager.CharacterManager(display, buttons, id_objects, politicians, game_states)
     character_menu.hide()
 
     return character_menu, cancel_button, main_button
