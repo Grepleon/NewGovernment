@@ -1,3 +1,4 @@
 data/important/
 data/important/token
 .venv
+.idea
