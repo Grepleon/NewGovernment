@@ -6,3 +6,4 @@ class Businessman(bjt.BaseJobTitle):
     name:str|None = "бизнесмен"
     salary:int|None = 5_000
     power:bp.BasePower|None = None
+    fines: list[int] = []

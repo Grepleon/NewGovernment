@@ -6,3 +6,4 @@ class ConstitutionalCourtJudge(bjt.BaseJobTitle):
     name:str|None = "конституционный судья"
     salary:int|None = 6_500
     power:bp.BasePower|None = p.JudicialBranch()
+    fines: list[int] = []

@@ -8,7 +8,8 @@ def int_to_str(number:int) -> str:
         str_num += num[i]
         if i % 3 == 2: str_num += " "
         i += 1
-
+    if str_num[-1] == " ":
+        return str_num[:-1][::-1]
     return str_num[::-1]
 
 if __name__ == "__main__":
