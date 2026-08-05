@@ -11,7 +11,7 @@ class AllMenu:
         self.main_manager, self.main_button = main_menu.get_menu(display)
         self.character_manager, self.cancel_character_button, self.character_button = character_menu.get_menu(display,
                                                                                 game_state.politicians, self.game_state)
-        self.play_manager = play_menu.get_menu(display)
+        self.play_manager = play_menu.get_menu(display, self.game_state)
 
         self.manager_used: manager.Manager = self.main_manager
 

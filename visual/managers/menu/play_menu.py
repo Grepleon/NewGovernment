@@ -1,7 +1,8 @@
-import visual.managers.managers.manager as manager
+import visual.managers.managers.play_manager as manager
 import visual.components.noice as path_noice
+import mainloop.game_states as game_states
 
-def get_menu(display):
+def get_menu(display, game_state:game_states.GameState):
     buttons = []
 
 
@@ -13,7 +14,7 @@ def get_menu(display):
 
     buttons.append(noice)
 
-    play_manager = manager.Manager(display, buttons, id_objects_in_main_menu)
+    play_manager = manager.PlayManager(display, buttons, id_objects_in_main_menu, game_state)
     play_manager.hide()
 
     return play_manager

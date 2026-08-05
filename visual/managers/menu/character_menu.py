@@ -3,9 +3,8 @@ import visual.components.button as button
 import visual.managers.managers.character_manager as manager
 import visual.components.noice as path_noice
 import visual.components.hint as hint
+from hints.rename_politicians import rename
 
-def rename(val:str):
-    return " ".join(val.split()[:2])
 
 def get_menu(display, politicians, game_states):
     buttons = []
