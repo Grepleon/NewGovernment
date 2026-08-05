@@ -6,4 +6,3 @@ class Deputy(bjt.BaseJobTitle):
     name:str|None = "депутат"
     salary:int|None = 5_000
     power:bp.BasePower|None = p.LegislativeBranch()
-    fines: list[int] = []

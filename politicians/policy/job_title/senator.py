@@ -7,5 +7,4 @@ class Senator(bjt.BaseJobTitle):
     name:str|None = "сенатор"
     salary:int|None = 6_000
     power:bp.BasePower|None = p.LegislativeBranch()
-    fines: list[int] = []
 

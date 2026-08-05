@@ -6,5 +6,4 @@ class Unemployed(bjt.BaseJobTitle):
     name:str|None = "безработный"
     salary:int|None = 0
     power:bp.BasePower|None = None
-    fines: list[int] = []
 

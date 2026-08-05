@@ -14,7 +14,7 @@ def create_politicians() -> dict[str:path_politician.Politician]:
 
     return politicians
 
-display = visual.mainloop.Display(config.width, config.height)
+display = visual.display.Display(config.width, config.height)
 
 test_button = button.Button(100, 200, 500, 400, "#00ff00", "#003300",
                 "#33ff33", "#228822", "Тест-кнопка", display.add_id(), display)

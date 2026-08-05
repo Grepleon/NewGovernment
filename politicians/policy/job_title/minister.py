@@ -6,6 +6,5 @@ class Minister(bjt.BaseJobTitle):
     name:str|None = "министр"
     salary:int|None = 7_000
     power:bp.BasePower|None = p.ExecutiveBranch()
-    fines: list[int] = []
 
 
