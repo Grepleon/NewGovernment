@@ -1,4 +1,5 @@
 import visual.components.base_object as base_object
+from visual.components.hint import Hint
 import visual.managers.managers.manager as base_manager
 import mainloop.game_states as game_states
 import config
@@ -9,10 +10,15 @@ class PlayManager(base_manager.Manager):
     def __init__(self, display, buttons, id_objects, game_state:game_states.GameState):
         super().__init__(display, buttons, id_objects)
         self.game_state = game_state
+        self.hint = None
+        self.flag_del = False
 
     def check(self):
+        flag = False
         for _button in self.buttons:
             if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
+                if _button.name in self.game_state.politicians:
+                    flag = True
                 if self.display.fast_left_button_pressed:
                     _button.mouse_clicked_object()
             _button.display_object()
@@ -31,7 +37,14 @@ class PlayManager(base_manager.Manager):
         for id_object in self.id_objects:
             self.display.hide(id_object)
 
+        if self.flag_del:
+            self.buttons.pop(-1)
+            for i in range(3):
+                self.id_objects.pop(-1)
+        self.flag_del = False
+
     def show_selected_politician(self):
+        self.flag_del = True
         frame_picture = self.display.create_image(config.coordinates_selected_politician[0],
                                              config.coordinates_selected_politician[1],
                                              config.path_to_frame_picture)
@@ -44,7 +57,7 @@ class PlayManager(base_manager.Manager):
             config.coordinates_selected_politician[1] + config.frame_size_into[1] - config.frame_size_add,
             config.base_off_button_color, config.dark_off_bg_button_color,
             rename(self.game_state.selected_politician.name), self.display.add_id(), self.display,
-            rename(self.game_state.selected_politician.name)))
+            self.game_state.selected_politician.name))
 
 
         try:
