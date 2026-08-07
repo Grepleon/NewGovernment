@@ -1,0 +1,16 @@
+{
+  "name": "Техноград",
+  "mayor": "Антон Лисов Игнатьевич",
+  "population": 1200,
+  "budget": 6200000,
+  "monthly_expenses": 120000,
+  "is_capital": true,
+  "is_regional_capital": true,
+  "location":{
+    "x": 120,
+    "y": 50
+  },
+  "infrastructure": {
+
+  }
+}

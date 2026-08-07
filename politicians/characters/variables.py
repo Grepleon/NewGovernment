@@ -5,6 +5,11 @@ import politicians.policy.str_to_characteristic as str_to_ch
 import politicians.policy.str_to_job_title as str_to_pos
 import politicians.policy.popularity.popularity_indicator as pi
 import politicians.policy.popularity.support as support
+import countries.country as country
+import countries.areas.base_area as ba
+import countries.cities.base_city as bc
+from countries.cities.location import Location
+import countries.cities.infrastructure.buildings as buildings
 
 characters = []
 
@@ -57,6 +62,63 @@ def variable_characters() -> dict[str:pol.Politician]:
         )
 
     return politicians
+
+def get_country_json_file(val:str):
+    return val + '/' + val + '.json'
+
+def get_cities(_file:str, area:str) -> dict[str:bc.City]:
+    cities:dict[str:bc.City] = {}
+    folder = _file + "cities/"
+    files = os.listdir(folder)
+    print(files)
+
+    for file in files:
+        data = saves.Saves(folder + get_country_json_file(file)).loaded_data
+        cities[data["name"]] = bc.City(
+            data["name"],
+            data["mayor"],
+            Location(
+                data["location"]["x"],
+                data["location"]["y"]
+            ),
+            [buildings.Building(
+                data["infrastructure"][data_build]["name"],
+                data["infrastructure"][data_build]["type"],
+                data["infrastructure"][data_build]["cost"],
+                data["infrastructure"][data_build]["every_month_cost"]
+            ) for data_build in data["infrastructure"]],
+            data["peoples"],
+            data["budget"]
+        )
+
+    return cities
+
+def get_areas(_file:str) -> dict[str:ba.Area]:
+    areas: dict[str:ba.Area] = {}
+
+    folder = _file + "areas/"
+    files = os.listdir(folder)
+    print(files)
+
+    for file in files:
+        data:dict = saves.Saves(folder + get_country_json_file(file)).loaded_data
+        cities = get_cities(folder + file + "/", data["name"] + "/")
+
+
+    return areas
+
+def variables_country() -> dict[str:country.Country]:
+    returned_countries: dict[str:country.Country] = {}
+
+    folder = "data/countries/"
+    files = os.listdir(folder)
+    print(files)
+    for file in files:
+        data = saves.Saves(folder + get_country_json_file(file)).loaded_data
+        name = data["name"]
+        areas = get_areas(folder + name + "/")
+
+    return returned_countries
 
 if __name__ == "__main__":
     pols = variable_characters()
