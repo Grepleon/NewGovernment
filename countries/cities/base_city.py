@@ -1,6 +1,7 @@
 import countries.cities.location as loc
 import countries.cities.infrastructure.roads as roads
 import countries.cities.infrastructure.buildings as buildings
+import hints.int_to_str as its
 
 class City:
     def __init__(self, name, mayor, location, infrastructure, peoples, budget):
@@ -10,3 +11,9 @@ class City:
         self.infrastructure: list[buildings.Building] = infrastructure
         self.peoples:int = peoples # указывается в тысячах
         self.budget:int = budget # бюджет
+
+    def to_str(self):
+        return (f"город {self.name}:"
+                f"\nмэр: {self.mayor}"
+                f"\nнаселение: {its.int_to_str(self.peoples * 1000)}"
+                f"\nбюджет: {its.int_to_str(self.budget)}")

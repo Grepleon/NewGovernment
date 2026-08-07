@@ -87,9 +87,11 @@ def get_cities(_file:str, area:str) -> dict[str:bc.City]:
                 data["infrastructure"][data_build]["cost"],
                 data["infrastructure"][data_build]["every_month_cost"]
             ) for data_build in data["infrastructure"]],
-            data["peoples"],
+            data["population"],
             data["budget"]
         )
+
+        print(cities[data["name"]].to_str())
 
     return cities
 
