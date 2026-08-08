@@ -105,6 +105,14 @@ def get_areas(_file:str) -> dict[str:ba.Area]:
     for file in files:
         data:dict = saves.Saves(folder + get_country_json_file(file)).loaded_data
         cities = get_cities(folder + file + "/", data["name"] + "/")
+        areas[data["name"]] = ba.Area(
+            data["name"],
+            cities,
+            data["governor"],
+            data["costs"],
+            data["budget"]
+        )
+        print(areas[data["name"]].to_str())
 
 
     return areas
