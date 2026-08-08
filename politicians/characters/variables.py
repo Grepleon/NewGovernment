@@ -110,7 +110,8 @@ def get_areas(_file:str) -> dict[str:ba.Area]:
             cities,
             data["governor"],
             data["costs"],
-            data["budget"]
+            data["budget"],
+            data["color"]
         )
         print(areas[data["name"]].to_str())
 
