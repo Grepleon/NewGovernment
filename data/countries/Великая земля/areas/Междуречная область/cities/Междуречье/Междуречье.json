@@ -1,0 +1,16 @@
+{
+  "name": "Междуречье",
+  "mayor": "Александр Любов Владиславович",
+  "population": 1000,
+  "budget": 3400000,
+  "monthly_expenses": 640000,
+  "is_capital": false,
+  "is_regional_capital": true,
+  "location":{
+    "x": 700,
+    "y": 400
+  },
+  "infrastructure": {
+
+  }
+}
