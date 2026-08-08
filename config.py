@@ -59,3 +59,5 @@ default_name = os.getenv("DEFAULTPOLITICIAN")
 format_pictures = os.getenv("FORMAT", '.png')
 
 coordinates_selected_politician = [int(coord) for coord in os.getenv("COORDINATESSELECTEDPOLITICIAN").split()]
+
+size_cty = int(os.getenv("SIZECITY"))

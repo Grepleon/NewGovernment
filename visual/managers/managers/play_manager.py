@@ -12,6 +12,7 @@ class PlayManager(base_manager.Manager):
         self.game_state = game_state
         self.hint = None
         self.flag_del = False
+        self.id_cities = []
 
     def check(self):
         flag = False

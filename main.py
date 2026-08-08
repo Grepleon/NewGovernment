@@ -18,7 +18,7 @@ def create_politicians() -> dict[str:path_politician.Politician]:
 politicians = create_politicians()
 all_countries = variables_country()
 
-game_state = game_states.GameState(config.first_year, None, politicians)
+game_state = game_states.GameState(config.first_year, None, politicians, all_countries)
 
 display = path_display.Display(config.width, config.height)
 all_menu = path_all_menu.AllMenu(display, game_state)
