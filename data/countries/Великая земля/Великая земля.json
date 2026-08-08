@@ -2,18 +2,24 @@
   "name": "Великая земля",
   "name_capital": "Техноград",
   "areas": [
-    "Техноградская область"
+    "Техноградская область",
+    "Восточная область",
+    "Алдоанская область",
+    "Междуречная область"
   ],
   "officials":{
     "president": "Алексей Бабочкин Федорович",
-    "ministry_of_finance":  "Федор Мирской Александрович",
+    "ministry_of_finance": "Федор Мирской Александрович",
     "ministry_of_internal_affairs": "Елена Сердечная Михайловна",
-    "ministry_of_foreign_affairs":  "Анна Кошкина Владимировна",
+    "ministry_of_foreign_affairs": "Анна Кошкина Владимировна",
     "ministry_of_defence": "Святослав Волков Михайлович",
-    "ministry_of_social_policy":  "Кирилл Бабушков Андреевич",
+    "ministry_of_social_policy": "Кирилл Бабушков Андреевич",
     "ministry_of_justice": "Андрей Соловьев Артемович",
     "prime_minister": "Антон Кулаков Викторович",
     "head_of_cb": "Елена Орлова Иванова"
   },
-  "budget": 3600000000
+  "budget": 3600000000,
+  "costs": {
+
+  }
 }

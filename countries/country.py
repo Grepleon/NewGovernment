@@ -6,7 +6,7 @@ from hints.int_to_str import int_to_str
 class Country:
     def __init__(self, name, name_capital, president, areas, ministry_of_finance, ministry_of_internal_affairs,
                  ministry_of_foreign_affairs, ministry_of_defence, ministry_of_social_policy, ministry_of_justice,
-                 head_of_cb, prime_minister, budget, costs, ministers_cost):
+                 prime_minister, head_of_cb, budget, costs):
         self.name:str = name
         self.name_capital = name_capital
         self.areas:dict[str:bc.Area] = areas
@@ -24,7 +24,6 @@ class Country:
 
         self.budget:int = budget
         self.area_costs:dict[str:int] = costs
-        self.ministers_cost:dict[str:int] = ministers_cost
 
     def to_str(self):
         return (f"Государство \"{self.name}\":"
@@ -39,7 +38,7 @@ class Country:
                 f"\n- министр социальной политики: {self.ministry_of_social_policy}"
                 f"\n- министр юстиций: {self.ministry_of_justice}"
                 f"\n- глава ЦБ: {self.head_of_cb}"
-                f"\nБюджет: {self.budget}"
+                f"\nБюджет: {int_to_str(self.budget)}"
                 f"\nРегионы:\n" +
                 "\n".join(["- " + self.areas[area].name + ':\n' + "\n".join(['-- ' +
                 self.areas[area].cities[city].name for city in self.areas[area].cities]) for area in self.areas])
@@ -53,4 +52,4 @@ if __name__ == "__main__":
      {}, 5003, 20000)}, "Губернатор", {}, 500000)},
         "M1", "M2", "M3", "M4",
           "M5", "M6", "MM", "HC", 10000000,
-                  {}, {}).to_str())
+                  {}).to_str())

@@ -127,6 +127,24 @@ def variables_country() -> dict[str:country.Country]:
         data = saves.Saves(folder + get_country_json_file(file)).loaded_data
         name = data["name"]
         areas = get_areas(folder + name + "/")
+        returned_countries[name] = country.Country(
+            name,
+            data["name_capital"],
+            data["officials"]["president"],
+            areas,
+            data["officials"]["ministry_of_finance"],
+            data["officials"]["ministry_of_internal_affairs"],
+            data["officials"]["ministry_of_foreign_affairs"],
+            data["officials"]["ministry_of_defence"],
+            data["officials"]["ministry_of_social_policy"],
+            data["officials"]["ministry_of_justice"],
+            data["officials"]["prime_minister"],
+            data["officials"]["head_of_cb"],
+            data["budget"],
+            data["costs"]
+        )
+
+        print(returned_countries[name].to_str())
 
     return returned_countries
 
