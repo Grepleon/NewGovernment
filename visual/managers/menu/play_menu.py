@@ -18,8 +18,8 @@ def get_menu(display, game_state:game_states.GameState):
             for name_city in area.cities:
                 city = area.cities[name_city]
                 cities.append(display.create_circle(city.location.x, city.location.y,
-                                      city.location.x + config.size_cty,
-                                      city.location.y + config.size_cty,
+                                      city.location.x + city.peoples / config.size_cty,
+                                      city.location.y + city.peoples / config.size_cty,
                                       area.color, "black"))
 
     id_objects_in_main_menu += cities
