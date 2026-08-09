@@ -1,6 +1,6 @@
 import config
 import visual.components.button as button
-import visual.managers.managers.manager as manager
+import visual.menu_builder.managers.manager as manager
 import visual.components.noice as path_noice
 
 def get_menu(display):

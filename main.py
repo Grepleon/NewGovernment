@@ -4,7 +4,7 @@ import mainloop.game_states as game_states
 import visual.display as path_display
 from politicians.characters.variables import variable_characters
 from politicians.characters.variables import variables_country
-import visual.managers.all_menu as path_all_menu
+import visual.menu_builder.all_menu as path_all_menu
 
 def create_politicians() -> dict[str:path_politician.Politician]:
     _politicians = variable_characters()

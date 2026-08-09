@@ -1,7 +1,7 @@
-import visual.managers.managers.manager as manager
-import visual.managers.menu.main_menu as main_menu
-import visual.managers.menu.character_menu as character_menu
-import visual.managers.menu.play_menu as play_menu
+import visual.menu_builder.managers.manager as manager
+import visual.menu_builder.menu.main_menu as main_menu
+import visual.menu_builder.menu.character_menu as character_menu
+import visual.menu_builder.menu.play_menu as play_menu
 
 class AllMenu:
     def __init__(self, display, game_state):

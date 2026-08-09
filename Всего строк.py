@@ -19,7 +19,7 @@ def is_code_file(filename):
         '.php', '.rb', '.go', '.rs', '.swift', '.kt', '.ts',
         '.html', '.css', '.scss', '.less', '.xml', '.yaml',
         '.yml', '.sql', '.sh', '.bash', '.bat', '.ps1', '.md',
-        '.json'
+         # '.json'
     }
     return any(filename.endswith(ext) for ext in code_extensions)
 

@@ -1,6 +1,6 @@
 import visual.components.base_object as base_object
 from visual.components.hint import Hint
-import visual.managers.managers.manager as base_manager
+import visual.menu_builder.managers.manager as base_manager
 import mainloop.game_states as game_states
 import config
 import visual.components.text as text

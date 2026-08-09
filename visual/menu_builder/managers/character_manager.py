@@ -1,4 +1,4 @@
-import visual.managers.managers.manager as manager
+import visual.menu_builder.managers.manager as manager
 import config
 import mainloop.game_states as game_states
 

@@ -1,4 +1,4 @@
-import visual.managers.managers.play_manager as manager
+import visual.menu_builder.managers.play_manager as manager
 import visual.components.noice as path_noice
 import mainloop.game_states as game_states
 import visual.components.hint as hint
