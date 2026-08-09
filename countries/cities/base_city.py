@@ -13,7 +13,7 @@ class City:
         self.budget:int = budget # бюджет
 
     def to_str(self):
-        return (f"город {self.name}:"
-                f"\nмэр: {self.mayor}"
-                f"\nнаселение: {its.int_to_str(self.peoples * 1000)}"
-                f"\nбюджет: {its.int_to_str(self.budget)}")
+        return (f"Город {self.name}:"
+                f"\nМэр: {self.mayor}"
+                f"\nНаселение: {its.int_to_str(self.peoples * 1000)}"
+                f"\nБюджет: {its.int_to_str(self.budget)}")

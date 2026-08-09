@@ -16,9 +16,9 @@ class Hint(b_object.BaseObject):
         self.out_x = 5
         self.out_y = 0
 
-    def size_to_text(self) -> tuple[int, int]:
+    def size_to_text(self, x=6, y=17) -> tuple[int, int]:
         val = self.text
-        return 6 * len(max(val.split("\n"), key=lambda x: len(x))), len(val.split("\n")) * 17
+        return x * len(max(val.split("\n"), key=lambda x: len(x))), len(val.split("\n")) * y
 
     def hide(self):
         self.display.hide(self.object_id)
@@ -52,8 +52,8 @@ class Hint(b_object.BaseObject):
     def rewrite_text(self, new_text):
         self.text = new_text
 
-    def display_this(self):
-        dx, dy = self.size_to_text()
+    def display_this(self, x=6, y=17):
+        dx, dy = self.size_to_text(x, y)
         out_x = self.out_x
         out_y = self.out_y
         if self.x + dx + self.out_x > config.width:
@@ -69,5 +69,5 @@ class Hint(b_object.BaseObject):
         self.display.move_to_coord2(self.object_id + self.pref_text,
                (self.x * 2 + out_x * 2 + dx) / 2, (self.y * 2 + out_y * 2 + dy) / 2)
 
-    def display_object(self):
-        self.display_this()
+    def display_object(self, x1=6, y1=17):
+        self.display_this(x=x1, y=y1)

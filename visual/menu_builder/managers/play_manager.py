@@ -18,11 +18,20 @@ class PlayManager(base_manager.Manager):
         flag = False
         for _button in self.buttons:
             if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
-                if _button.name in self.game_state.politicians:
+                if _button in self.id_cities:
                     flag = True
+                    self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
+                    self.hint.rewrite_text(_button.area.to_str() + "\n" + "\n" + _button.city.to_str())
                 if self.display.fast_left_button_pressed:
                     _button.mouse_clicked_object()
+
             _button.display_object()
+
+        if not flag:
+            self.hint.hide()
+        else:
+            self.hint.show()
+            self.hint.display_object(7)
 
     def delete(self):
         for _button in self.buttons:

@@ -3,6 +3,7 @@ import visual.components.noice as path_noice
 import mainloop.game_states as game_states
 import visual.components.hint as hint
 import config
+import visual.components.city as comp_city
 
 def get_menu(display, game_state:game_states.GameState):
     buttons = []
@@ -17,12 +18,12 @@ def get_menu(display, game_state:game_states.GameState):
             area = country.areas[name_area]
             for name_city in area.cities:
                 city = area.cities[name_city]
-                cities.append(display.create_circle(city.location.x, city.location.y,
-                                      city.location.x + city.peoples / config.size_cty,
-                                      city.location.y + city.peoples / config.size_cty,
-                                      area.color, "black"))
+                cities.append(comp_city.VisualObjectCity(city.location.x, city.location.y,
+                                      city.location.x + city.peoples ** 0.5, # / config.size_cty,
+                                      city.location.y + city.peoples ** 0.5, # / config.size_cty,
+                                      city, area, display.add_id(), display))
 
-    id_objects_in_main_menu += cities
+    buttons += cities
 
     new_hint = hint.Hint(-1, -1, config.base_off_button_color, config.base_off_bg_button_color,
                          "", display.add_id(), display)
