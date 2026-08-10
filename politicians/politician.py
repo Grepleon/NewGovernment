@@ -112,6 +112,7 @@ class Politician:
             char.new_month()
         if self.at_large:
             self.money += self.position.get_money()
+        self.check_kill()
 
     def is_old(self) -> bool:
         return self.old_age <= self.year
@@ -143,7 +144,7 @@ class Politician:
         if not self.alive:
             return True
         for char in self.characteristics:
-            if not char.kill():
+            if char.kill():
                 self.alive = False
                 return True
 
