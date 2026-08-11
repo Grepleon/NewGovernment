@@ -124,7 +124,8 @@ class Politician:
         self.year += 1
 
         if self.is_old():
-            self.alive = not self.heart_attack()
+            if self.heart_attack():
+                self.alive = False
             self.mind -= 1
 
     def start(self):
