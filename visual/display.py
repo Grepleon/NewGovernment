@@ -6,7 +6,6 @@ class Display:
         self.root = Tk()
         self.root.title(config.name_project)
         self.canvas = Canvas(self.root, width=x, height=y, bg=config.bg_color)
-        self.canvas.grid()
         self.canvas.pack(anchor=CENTER, expand=1)
         self.id_objects = 1
 
