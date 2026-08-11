@@ -15,5 +15,5 @@ class City:
     def to_str(self):
         return (f"Город {self.name}:"
                 f"\nМэр: {self.mayor}"
-                f"\nНаселение: {its.int_to_str(self.peoples * 1000)}"
-                f"\nБюджет: {its.int_to_str(self.budget)}")
+                f"\nБюджет: {its.int_to_str(self.budget)}"
+                f"\nНаселение: {its.int_to_str(self.peoples * 1000)}")

@@ -49,6 +49,14 @@ class Hint(b_object.BaseObject):
         self.x = new_x
         self.y = new_y
 
+    def recolor(self, color, bg_color):
+        self.color = color
+        self.bg_color = bg_color
+
+        self.display.recolor(bg_color, self.object_id)
+        self.display.recolor_outline(color, self.object_id)
+        self.display.recolor(color, self.object_id + self.pref_text)
+
     def rewrite_text(self, new_text):
         self.text = new_text
 
