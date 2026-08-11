@@ -32,12 +32,12 @@ class VisualObjectCity(b_object.BaseObject):
     def display_object(self):
         if not self.on:
             if self.into_mouse:
-                self.display.recolor(lite(self.area.color, 33), self.object_id)
+                self.display.recolor(lite(self.area.color, 66), self.object_id)
             else:
                 self.display.recolor(self.area.color, self.object_id)
         else:
             if self.into_mouse:
-                self.display.recolor(lite(self.area.color, 33), self.object_id)
+                self.display.recolor(lite(self.area.color, 66), self.object_id)
             else:
                 self.display.recolor(self.area.color, self.object_id)
 
