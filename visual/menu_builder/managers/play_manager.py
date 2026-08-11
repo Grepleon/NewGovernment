@@ -23,7 +23,7 @@ class PlayManager(base_manager.Manager):
                     flag = True
                     self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
                     self.hint.rewrite_text(_button.area.to_str() + "\n" + "\n" + _button.city.to_str())
-                    self.hint.recolor(lite(_button.area.color, 0), lite(_button.area.color, -120))
+                    self.hint.recolor(lite(_button.area.color, 40), lite(_button.area.color, -120))
                 if self.display.fast_left_button_pressed:
                     _button.mouse_clicked_object()
 
