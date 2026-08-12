@@ -5,7 +5,7 @@
   "budget": 2400000,
   "monthly_expenses": 740000,
   "is_capital": false,
-  "is_regional_capital": true,
+  "is_regional_capital": false,
   "location":{
     "x": 800,
     "y": 300

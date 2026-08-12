@@ -1,0 +1,16 @@
+{
+  "name": "Святолюб",
+  "mayor": "Иван Змеев Григорьевич",
+  "population": 65,
+  "budget": 300000,
+  "monthly_expenses": 140000,
+  "is_capital": false,
+  "is_regional_capital": false,
+  "location":{
+    "x": 580,
+    "y": 320
+  },
+  "infrastructure": {
+
+  }
+}

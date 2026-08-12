@@ -1,6 +1,5 @@
 from collections.abc import Iterable
-from math import cos, pi, sin, sqrt
-from numbers import Real
+from math import cos, pi, sin
 from hints.lite import lite
 
 
@@ -9,23 +8,6 @@ Polygon = list[Point]
 Bounds = tuple[float, float, float, float]
 
 _EPSILON = 1e-9
-_REFERENCE_POPULATION = 1000
-
-
-def radius_from_population(
-        population: int | float,
-        reference_radius: float,
-        reference_population: int | float = _REFERENCE_POPULATION
-) -> float:
-    """Make territory area proportional to population."""
-    if population <= 0:
-        raise ValueError("population must be greater than zero")
-    if reference_radius <= 0:
-        raise ValueError("reference_radius must be greater than zero")
-    if reference_population <= 0:
-        raise ValueError("reference_population must be greater than zero")
-
-    return reference_radius * sqrt(population / reference_population)
 
 
 def _circle(center: Point, radius: float, number_of_sides: int = 48) -> Polygon:
@@ -97,44 +79,25 @@ def _clip_polygon(polygon: Polygon, a: float, b: float, c: float) -> Polygon:
     return result
 
 
-def _normalize_max_distances(
-        max_distances: Real | Iterable[float] | None,
-        number_of_points: int
-) -> list[float | None]:
-    if max_distances is None:
-        return [None] * number_of_points
-    if isinstance(max_distances, Real):
-        max_distances = [float(max_distances)] * number_of_points
-    else:
-        max_distances = list(max_distances)
-
-    if len(max_distances) != number_of_points:
-        raise ValueError("one max distance is required for every point")
-    if any(distance <= 0 for distance in max_distances):
-        raise ValueError("max distances must be greater than zero")
-
-    return max_distances
-
-
 def build_voronoi_cells(
         points: Iterable[Point],
         bounds: Bounds,
-        max_distance: Real | Iterable[float] | None = None
+        max_distance: float | None = None
 ) -> list[Polygon]:
     """Build non-overlapping Voronoi cells, optionally limited around cities."""
     points = list(points)
     x1, y1, x2, y2 = bounds
     canvas = [(x1, y1), (x2, y1), (x2, y2), (x1, y2)]
     cells = []
-    max_distances = _normalize_max_distances(max_distance, len(points))
+
+    if max_distance is not None and max_distance <= 0:
+        raise ValueError("max_distance must be greater than zero")
 
     for point_index, point in enumerate(points):
-        point_max_distance = max_distances[point_index]
-
-        if point_max_distance is None:
+        if max_distance is None:
             cell = canvas.copy()
         else:
-            cell = _clip_to_bounds(_circle(point, point_max_distance), bounds)
+            cell = _clip_to_bounds(_circle(point, max_distance), bounds)
 
         for other_index, other in enumerate(points):
             if point_index == other_index:
@@ -276,10 +239,7 @@ def create_area_backgrounds(
                 seeds.append((city.location.x, city.location.y, city, area))
 
     points = [(x, y) for x, y, _city, _area in seeds]
-    radii = [
-        radius_from_population(city.peoples, max_distance)
-        for _x, _y, city, _area in seeds
-    ]
+    radii = [max_distance] * len(seeds)
     area_keys = [area.name for _x, _y, _city, area in seeds]
     fill_colors = [
         lite(area.color, -120)
@@ -289,7 +249,7 @@ def create_area_backgrounds(
     cells = build_voronoi_cells(
         points,
         bounds,
-        max_distance=radii
+        max_distance=max_distance
     )
     object_ids = []
 
