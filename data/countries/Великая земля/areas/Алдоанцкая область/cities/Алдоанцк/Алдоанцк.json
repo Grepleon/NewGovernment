@@ -7,7 +7,7 @@
   "is_capital": false,
   "is_regional_capital": true,
   "location":{
-    "x": 300,
+    "x": 500,
     "y": 280
   },
   "infrastructure": {

@@ -4,12 +4,18 @@ import mainloop.game_states as game_states
 import visual.components.hint as hint
 import config
 import visual.components.city as comp_city
+from visual.components.area import *
 
 def get_menu(display, game_state:game_states.GameState):
     buttons = []
 
-
     id_objects_in_main_menu = []
+
+    areas = create_area_backgrounds(display, game_state.countries,
+                        (0, 0, config.width, config.height),
+                                    max_distance=config.area_radius,
+                                    background_color=config.bg_color)
+    id_objects_in_main_menu += areas
 
     cities = []
     for name_country in game_state.countries:
