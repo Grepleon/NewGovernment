@@ -1,5 +1,7 @@
 from collections.abc import Iterable
-from math import cos, pi, sin
+from math import cos, pi, sin, sqrt
+from numbers import Real
+from hints.lite import lite
 
 
 Point = tuple[float, float]
@@ -7,6 +9,23 @@ Polygon = list[Point]
 Bounds = tuple[float, float, float, float]
 
 _EPSILON = 1e-9
+_REFERENCE_POPULATION = 1000
+
+
+def radius_from_population(
+        population: int | float,
+        reference_radius: float,
+        reference_population: int | float = _REFERENCE_POPULATION
+) -> float:
+    """Make territory area proportional to population."""
+    if population <= 0:
+        raise ValueError("population must be greater than zero")
+    if reference_radius <= 0:
+        raise ValueError("reference_radius must be greater than zero")
+    if reference_population <= 0:
+        raise ValueError("reference_population must be greater than zero")
+
+    return reference_radius * sqrt(population / reference_population)
 
 
 def _circle(center: Point, radius: float, number_of_sides: int = 48) -> Polygon:
@@ -31,17 +50,6 @@ def _clip_to_bounds(polygon: Polygon, bounds: Bounds) -> Polygon:
         polygon = _clip_polygon(polygon, a, b, c)
 
     return polygon
-
-
-def _blend_colors(foreground: str, background: str, opacity: float) -> str:
-    """Pre-blend a colour because tkinter Canvas has no alpha channel."""
-    foreground_rgb = [int(foreground[index:index + 2], 16) for index in (1, 3, 5)]
-    background_rgb = [int(background[index:index + 2], 16) for index in (1, 3, 5)]
-    blended = [
-        round(front * opacity + back * (1 - opacity))
-        for front, back in zip(foreground_rgb, background_rgb)
-    ]
-    return "#" + "".join(f"{component:02x}" for component in blended)
 
 
 def _inside_half_plane(point: Point, a: float, b: float, c: float) -> bool:
@@ -89,25 +97,44 @@ def _clip_polygon(polygon: Polygon, a: float, b: float, c: float) -> Polygon:
     return result
 
 
+def _normalize_max_distances(
+        max_distances: Real | Iterable[float] | None,
+        number_of_points: int
+) -> list[float | None]:
+    if max_distances is None:
+        return [None] * number_of_points
+    if isinstance(max_distances, Real):
+        max_distances = [float(max_distances)] * number_of_points
+    else:
+        max_distances = list(max_distances)
+
+    if len(max_distances) != number_of_points:
+        raise ValueError("one max distance is required for every point")
+    if any(distance <= 0 for distance in max_distances):
+        raise ValueError("max distances must be greater than zero")
+
+    return max_distances
+
+
 def build_voronoi_cells(
         points: Iterable[Point],
         bounds: Bounds,
-        max_distance: float | None = None
+        max_distance: Real | Iterable[float] | None = None
 ) -> list[Polygon]:
     """Build non-overlapping Voronoi cells, optionally limited around cities."""
     points = list(points)
     x1, y1, x2, y2 = bounds
     canvas = [(x1, y1), (x2, y1), (x2, y2), (x1, y2)]
     cells = []
-
-    if max_distance is not None and max_distance <= 0:
-        raise ValueError("max_distance must be greater than zero")
+    max_distances = _normalize_max_distances(max_distance, len(points))
 
     for point_index, point in enumerate(points):
-        if max_distance is None:
+        point_max_distance = max_distances[point_index]
+
+        if point_max_distance is None:
             cell = canvas.copy()
         else:
-            cell = _clip_to_bounds(_circle(point, max_distance), bounds)
+            cell = _clip_to_bounds(_circle(point, point_max_distance), bounds)
 
         for other_index, other in enumerate(points):
             if point_index == other_index:
@@ -142,6 +169,97 @@ def build_voronoi_cells(
     return cells
 
 
+def _squared_distance(first: Point, second: Point) -> float:
+    return (first[0] - second[0]) ** 2 + (first[1] - second[1]) ** 2
+
+
+def _is_internal_area_edge(
+        start: Point,
+        end: Point,
+        city_index: int,
+        points: list[Point],
+        radii: list[float],
+        area_keys: list[object]
+) -> bool:
+    midpoint = ((start[0] + end[0]) / 2, (start[1] + end[1]) / 2)
+    city_distance = _squared_distance(midpoint, points[city_index])
+
+    for other_index, other_point in enumerate(points):
+        if other_index == city_index or area_keys[other_index] != area_keys[city_index]:
+            continue
+        if _squared_distance(points[city_index], other_point) <= _EPSILON:
+            continue
+
+        other_distance = _squared_distance(midpoint, other_point)
+        tolerance = max(1.0, city_distance, other_distance) * 1e-7
+
+        if abs(city_distance - other_distance) > tolerance:
+            continue
+
+        other_radius_squared = radii[other_index] ** 2 + tolerance
+        if (
+                _squared_distance(start, other_point) <= other_radius_squared
+                and _squared_distance(end, other_point) <= other_radius_squared
+        ):
+            return True
+
+    return False
+
+
+def build_visible_edges(
+        cells: list[Polygon],
+        points: list[Point],
+        radii: list[float],
+        area_keys: list[object]
+) -> list[tuple[Point, Point, int]]:
+    """Return boundary edges, excluding borders inside the same area."""
+    visible_edges = []
+
+    for city_index, cell in enumerate(cells):
+        if len(cell) < 2:
+            continue
+
+        for start, end in zip(cell, cell[1:] + cell[:1]):
+            if not _is_internal_area_edge(
+                    start,
+                    end,
+                    city_index,
+                    points,
+                    radii,
+                    area_keys
+            ):
+                visible_edges.append((start, end, city_index))
+
+    return visible_edges
+
+
+def build_internal_edges(
+        cells: list[Polygon],
+        points: list[Point],
+        radii: list[float],
+        area_keys: list[object]
+) -> list[tuple[Point, Point, int]]:
+    """Return shared edges that must blend into the fill of one area."""
+    internal_edges = []
+
+    for city_index, cell in enumerate(cells):
+        if len(cell) < 2:
+            continue
+
+        for start, end in zip(cell, cell[1:] + cell[:1]):
+            if _is_internal_area_edge(
+                    start,
+                    end,
+                    city_index,
+                    points,
+                    radii,
+                    area_keys
+            ):
+                internal_edges.append((start, end, city_index))
+
+    return internal_edges
+
+
 def create_area_backgrounds(
         display,
         countries,
@@ -155,23 +273,73 @@ def create_area_backgrounds(
     for country in countries.values():
         for area in country.areas.values():
             for city in area.cities.values():
-                seeds.append((city.location.x, city.location.y, area))
+                seeds.append((city.location.x, city.location.y, city, area))
+
+    points = [(x, y) for x, y, _city, _area in seeds]
+    radii = [
+        radius_from_population(city.peoples, max_distance)
+        for _x, _y, city, _area in seeds
+    ]
+    area_keys = [area.name for _x, _y, _city, area in seeds]
+    fill_colors = [
+        lite(area.color, -120)
+        for _x, _y, _city, area in seeds
+    ]
 
     cells = build_voronoi_cells(
-        ((x, y) for x, y, _area in seeds),
+        points,
         bounds,
-        max_distance=max_distance
+        max_distance=radii
     )
     object_ids = []
 
-    for (_x, _y, area), cell in zip(seeds, cells):
+    # Draw every fill first. Outlines are separate objects so shared borders
+    # between cities in the same area can be omitted.
+    for city_index, ((_x, _y, _city, _area), cell) in enumerate(zip(seeds, cells)):
         if len(cell) < 3:
             continue
 
         object_id = display.add_id()
         display.create_polygon(
             cell,
-            color=_blend_colors(area.color, background_color, opacity=0.24),
+            color=fill_colors[city_index],
+            outline="",
+            tag=object_id
+        )
+        object_ids.append(object_id)
+
+    for start, end, city_index in build_visible_edges(
+            cells,
+            points,
+            radii,
+            area_keys
+    ):
+        object_id = display.add_id()
+        display.create_line(
+            start[0],
+            start[1],
+            end[0],
+            end[1],
+            color=seeds[city_index][3].color,
+            tag=object_id
+        )
+        object_ids.append(object_id)
+
+    # A larger cell can have a longer bisector than its smaller neighbour.
+    # Paint the genuinely shared part last so no internal outline remains.
+    for start, end, city_index in build_internal_edges(
+            cells,
+            points,
+            radii,
+            area_keys
+    ):
+        object_id = display.add_id()
+        display.create_line(
+            start[0],
+            start[1],
+            end[0],
+            end[1],
+            color=fill_colors[city_index],
             tag=object_id
         )
         object_ids.append(object_id)
