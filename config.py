@@ -62,3 +62,7 @@ coordinates_selected_politician = [int(coord) for coord in os.getenv("COORDINATE
 
 size_cty = int(os.getenv("SIZECITY"))
 area_radius = int(os.getenv("AREARADIUS", 150))
+
+coord_year_text = [int(coord) for coord in os.getenv("YEARTEXTCOORD").split()]
+
+size_button_map = [int(coord) for coord in os.getenv("SIZEBUTTONMAP").split()]

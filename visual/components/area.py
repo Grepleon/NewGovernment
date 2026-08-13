@@ -259,10 +259,10 @@ def create_area_backgrounds(
         if len(cell) < 3:
             continue
 
-        object_id = display.add_id()
+        object_id = _city.name
         display.create_polygon(
             cell,
-            color=fill_colors[city_index],
+            color= fill_colors[city_index],
             outline="",
             tag=object_id
         )

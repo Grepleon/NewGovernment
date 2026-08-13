@@ -1,0 +1,16 @@
+{
+  "name": "Шахтинск",
+  "mayor": "Василий Золотов Алексеевич",
+  "population": 336,
+  "budget": 1200000,
+  "monthly_expenses": 540000,
+  "is_capital": false,
+  "is_regional_capital": false,
+  "location":{
+    "x": 610,
+    "y": 290
+  },
+  "infrastructure": {
+
+  }
+}

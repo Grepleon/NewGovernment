@@ -3,10 +3,11 @@ import visual.display
 from countries.cities.base_city import City
 from countries.areas.base_area import Area
 from hints.lite import lite
+from countries.country import Country
 
 class VisualObjectCity(b_object.BaseObject):
     def __init__(self, x1, y1, x2, y2,
-                 city:City, area:Area,
+                 city:City, area:Area, country:Country,
                  tag, display: visual.display.Display, name="NULL"):
         super().__init__(tag, display)
         self.x1, self.y1, self.x2, self.y2 = x1, y1, x2, y2
@@ -15,6 +16,7 @@ class VisualObjectCity(b_object.BaseObject):
 
         self.city: City = city
         self.area: Area = area
+        self.country:Country = country
 
         self.into_mouse=False
         self.on=False

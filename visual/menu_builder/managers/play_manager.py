@@ -1,5 +1,6 @@
 import visual.components.base_object as base_object
 from visual.components.hint import Hint
+from visual.components.city import VisualObjectCity
 import visual.menu_builder.managers.manager as base_manager
 import mainloop.game_states as game_states
 import config
@@ -13,27 +14,50 @@ class PlayManager(base_manager.Manager):
         self.game_state = game_state
         self.hint = None
         self.flag_del = False
-        self.id_cities = []
+        self.id_cities:list[VisualObjectCity] = []
 
-    def check(self):
+    def check_cities(self):
         flag = False
-        for _button in self.buttons:
-            if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
-                if _button in self.id_cities:
-                    flag = True
-                    self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
-                    self.hint.rewrite_text(_button.area.to_str() + "\n" + "\n" + _button.city.to_str())
-                    self.hint.recolor(lite(_button.area.color, 40), lite(_button.area.color, -120))
-                if self.display.fast_left_button_pressed:
-                    _button.mouse_clicked_object()
+        area = None
+        country = None
+        selected_city = None
 
-            _button.display_object()
+        for city in self.id_cities:
+            if city.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
+                flag = True
+                self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
+                self.hint.rewrite_text(city.area.to_str() + "\n" + "\n" + city.city.to_str())
+                self.hint.recolor(lite(city.area.color, 40), lite(city.area.color, -120))
+                area = city.area
+                country = city.country
+                selected_city = city.city.name
+            else:
+                self.display.recolor(lite(city.area.color, -120), city.city.name)
+
+            if not area is None:
+                for name_area in country.areas:
+                    area2 = country.areas[name_area]
+                    for name_city in area2.cities:
+                        self.display.recolor(lite(area2.color, -100), name_city)
+                for name_city in area.cities:
+                    self.display.recolor(lite(area.color, -60), name_city)
+                self.display.recolor(lite(area.color, -20), selected_city)
 
         if not flag:
             self.hint.hide()
         else:
             self.hint.show()
             self.hint.display_object(7)
+
+    def check(self):
+        for _button in self.buttons:
+            if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
+                if self.display.fast_left_button_pressed:
+                    _button.mouse_clicked_object()
+
+            _button.display_object()
+
+        self.check_cities()
 
     def delete(self):
         for _button in self.buttons:

@@ -5,6 +5,7 @@ import visual.components.hint as hint
 import config
 import visual.components.city as comp_city
 from visual.components.area import *
+from visual.components.button import Button
 
 def get_menu(display, game_state:game_states.GameState):
     buttons = []
@@ -27,9 +28,17 @@ def get_menu(display, game_state:game_states.GameState):
                 cities.append(comp_city.VisualObjectCity(city.location.x, city.location.y,
                                       city.location.x + city.peoples ** 0.5, # / config.size_cty,
                                       city.location.y + city.peoples ** 0.5, # / config.size_cty,
-                                      city, area, display.add_id(), display))
+                                      city, area, country, display.add_id(), display))
 
     buttons += cities
+
+    buttons.append(Button(config.coord_year_text[0],
+                          config.coord_year_text[1],
+                          config.coord_year_text[2],
+                          config.coord_year_text[3],
+                          config.base_off_button_color, config.base_off_bg_button_color,
+                          config.base_on_button_color, config.base_on_bg_button_color,
+                          str(game_state.year) + " год, 23 мая", display.add_id(), display))
 
     new_hint = hint.Hint(-1, -1, config.base_off_button_color, config.base_off_bg_button_color,
                          "", display.add_id(), display)

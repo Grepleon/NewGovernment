@@ -121,16 +121,13 @@ class Display:
                                  tags=self.pref_tag + str(tag))
         return str(tag)
 
-    def create_polygon(self, points, color, outline="black", stipple="", tag=None):
+    def create_polygon(self, points, color, outline="black", tag=None):
         coordinates = [coordinate for point in points for coordinate in point]
         id_object = str(tag)
         if tag is None:
             self.id_objects += 1
             id_object = self.pref_tag + str(self.id_objects)
-        if stipple == "":
-            self.canvas.create_polygon(*coordinates, fill=color, outline=outline, tags=id_object)
-        else:
-            self.canvas.create_polygon(*coordinates, fill=color, outline=outline, tags=id_object, stipple=stipple)
+        self.canvas.create_polygon(*coordinates, fill=color, outline=outline, tags=id_object)
 
         return id_object
 
