@@ -19,16 +19,19 @@ def get_menu(display, game_state:game_states.GameState):
     id_objects_in_main_menu += areas
 
     cities = []
+    dict_cities = {}
     for name_country in game_state.countries:
         country = game_state.countries[name_country]
         for name_area in country.areas:
             area = country.areas[name_area]
             for name_city in area.cities:
                 city = area.cities[name_city]
-                cities.append(comp_city.VisualObjectCity(city.location.x, city.location.y,
+                c_city = comp_city.VisualObjectCity(city.location.x, city.location.y,
                                       city.location.x + city.peoples ** 0.5, # / config.size_cty,
                                       city.location.y + city.peoples ** 0.5, # / config.size_cty,
-                                      city, area, country, display.add_id(), display))
+                                      city, area, country, display.add_id(), display)
+                cities.append(c_city)
+                dict_cities[name_city] = c_city
 
     buttons += cities
 
@@ -43,10 +46,10 @@ def get_menu(display, game_state:game_states.GameState):
     for index in range(config.quantity_buttons_map):
         buttons.append(
             Button(
+                config.coordinates_button_map[0] + config.distance_button_map[0] * index + config.size_button_map[0],
+                config.coordinates_button_map[1] + config.distance_button_map[1] * index + config.size_button_map[1],
                 config.coordinates_button_map[0] + config.distance_button_map[0] * index,
                 config.coordinates_button_map[1] + config.distance_button_map[1] * index,
-                config.coordinates_button_map[3] + config.distance_button_map[0] * index,
-                config.coordinates_button_map[4] + config.distance_button_map[1] * index,
                 config.base_off_button_color,
                 config.base_off_bg_button_color,
                 config.base_on_button_color,
@@ -69,6 +72,6 @@ def get_menu(display, game_state:game_states.GameState):
     play_manager = manager.PlayManager(display, buttons, id_objects_in_main_menu, game_state)
     play_manager.hide()
     play_manager.hint = new_hint
-    play_manager.id_cities = cities
+    play_manager.id_cities = dict_cities
 
     return play_manager

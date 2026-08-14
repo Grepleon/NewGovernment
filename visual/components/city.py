@@ -17,6 +17,7 @@ class VisualObjectCity(b_object.BaseObject):
         self.city: City = city
         self.area: Area = area
         self.country:Country = country
+        self.color = area.color
 
         self.into_mouse=False
         self.on=False
@@ -29,19 +30,19 @@ class VisualObjectCity(b_object.BaseObject):
 
     def _create(self):
         self.display.create_circle(self.x1, self.y1, self.x2, self.y2,
-                                      color=self.area.color, outline="black", tag=self.object_id)
+                                      color=self.color, outline="black", tag=self.object_id)
 
     def display_object(self):
         if not self.on:
             if self.into_mouse:
                 self.display.recolor(lite(self.area.color, 66), self.object_id)
             else:
-                self.display.recolor(self.area.color, self.object_id)
+                self.display.recolor(self.color, self.object_id)
         else:
             if self.into_mouse:
-                self.display.recolor(lite(self.area.color, 66), self.object_id)
+                self.display.recolor(lite(self.color, 66), self.object_id)
             else:
-                self.display.recolor(self.area.color, self.object_id)
+                self.display.recolor(self.color, self.object_id)
 
     def mouse_into_object(self, mx, my):
         self.into_mouse = self.x1 <= mx <= self.x2 and self.y1 <= my <= self.y2

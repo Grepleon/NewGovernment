@@ -14,34 +14,39 @@ class PlayManager(base_manager.Manager):
         self.game_state = game_state
         self.hint = None
         self.flag_del = False
-        self.id_cities:list[VisualObjectCity] = []
+        self.id_cities:dict[str:VisualObjectCity] = []
 
     def check_cities(self):
         flag = False
-        area = None
-        country = None
-        selected_city = None
+        for name_city in self.id_cities:
+            self.display.recolor(lite(self.id_cities[name_city].color, -120), name_city)
 
-        for city in self.id_cities:
+        for name_city in self.id_cities:
+            city = self.id_cities[name_city]
+
             if city.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 flag = True
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
                 self.hint.rewrite_text(city.area.to_str() + "\n" + "\n" + city.city.to_str())
                 self.hint.recolor(lite(city.area.color, 40), lite(city.area.color, -120))
                 area = city.area
+                object_city = city
                 country = city.country
                 selected_city = city.city.name
-            else:
-                self.display.recolor(lite(city.area.color, -120), city.city.name)
 
-            if not area is None:
-                for name_area in country.areas:
-                    area2 = country.areas[name_area]
-                    for name_city in area2.cities:
-                        self.display.recolor(lite(area2.color, -100 ), name_city)
-                for name_city in area.cities:
-                    self.display.recolor(lite(area.color, -60), name_city)
-                self.display.recolor(lite(area.color, -20), selected_city)
+                for name_area_in_county in country.areas:
+                    print(name_area_in_county)
+                    area_in_country = country.areas[name_area_in_county]
+                    for name_city_in_country in area_in_country.cities:
+                        print('-', name_city_in_country)
+                        city_in_country = area_in_country.cities[name_city_in_country]
+                        self.display.recolor(lite(self.id_cities[city_in_country.name].color, -100), city_in_country.name)
+
+                for name_city_in_area in area.cities:
+                    city_in_area = area.cities[name_city_in_area]
+                    self.display.recolor(lite(self.id_cities[city_in_area.name].color, -60), city_in_area.name)
+
+                self.display.recolor(lite(self.id_cities[name_city].color, -20), name_city)
 
         if not flag:
             self.hint.hide()
