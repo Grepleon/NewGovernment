@@ -43,8 +43,10 @@ def get_menu(display, game_state:game_states.GameState):
                           config.base_on_button_color, config.base_on_bg_button_color,
                           str(game_state.year) + " год, 23 мая", display.add_id(), display))
 
+    map_buttons = []
+
     for index in range(config.quantity_buttons_map):
-        buttons.append(
+        map_buttons.append(
             Button(
                 config.coordinates_button_map[0] + config.distance_button_map[0] * index + config.size_button_map[0],
                 config.coordinates_button_map[1] + config.distance_button_map[1] * index + config.size_button_map[1],
@@ -56,10 +58,11 @@ def get_menu(display, game_state:game_states.GameState):
                 config.base_on_bg_button_color,
                 config.texts_buttons_map[index],
                 display.add_id(),
-                display
+                display,
+                name=config.texts_buttons_map[index]
             )
         )
-
+    buttons += map_buttons
     new_hint = hint.Hint(-1, -1, config.base_off_button_color, config.base_off_bg_button_color,
                          "", display.add_id(), display)
     buttons.append(new_hint)
@@ -73,5 +76,6 @@ def get_menu(display, game_state:game_states.GameState):
     play_manager.hide()
     play_manager.hint = new_hint
     play_manager.id_cities = dict_cities
+    play_manager.map_buttons = map_buttons
 
     return play_manager

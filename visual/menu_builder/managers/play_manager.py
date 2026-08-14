@@ -7,6 +7,8 @@ import config
 import visual.components.text as text
 from hints.rename_politicians import rename
 from hints.lite import lite
+import visual.components.button as button
+import visual.tools.upload_tools as upload_tools
 
 class PlayManager(base_manager.Manager):
     def __init__(self, display, buttons, id_objects, game_state:game_states.GameState):
@@ -15,6 +17,8 @@ class PlayManager(base_manager.Manager):
         self.hint = None
         self.flag_del = False
         self.id_cities:dict[str:VisualObjectCity] = []
+        self.map_buttons:list[str:button.Button] = []
+        self.selected_map = config.selected_map
 
     def check_cities(self):
         flag = False
@@ -54,6 +58,16 @@ class PlayManager(base_manager.Manager):
             self.hint.show()
             self.hint.display_object(7)
 
+    def check_map(self):
+        for map_button in self.map_buttons:
+            if map_button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
+                if self.display.fast_left_button_pressed:
+                    self.selected_map = map_button.name
+
+        for map_button in self.map_buttons:
+            if map_button.on and map_button.name != self.selected_map:
+                map_button.on = False
+
     def check(self):
         for _button in self.buttons:
             if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
@@ -63,6 +77,7 @@ class PlayManager(base_manager.Manager):
             _button.display_object()
 
         self.check_cities()
+        self.check_map()
 
     def delete(self):
         for _button in self.buttons:
