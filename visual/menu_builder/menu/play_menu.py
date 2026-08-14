@@ -40,6 +40,23 @@ def get_menu(display, game_state:game_states.GameState):
                           config.base_on_button_color, config.base_on_bg_button_color,
                           str(game_state.year) + " год, 23 мая", display.add_id(), display))
 
+    for index in range(config.quantity_buttons_map):
+        buttons.append(
+            Button(
+                config.coordinates_button_map[0] + config.distance_button_map[0] * index,
+                config.coordinates_button_map[1] + config.distance_button_map[1] * index,
+                config.coordinates_button_map[3] + config.distance_button_map[0] * index,
+                config.coordinates_button_map[4] + config.distance_button_map[1] * index,
+                config.base_off_button_color,
+                config.base_off_bg_button_color,
+                config.base_on_button_color,
+                config.base_on_bg_button_color,
+                config.texts_buttons_map[index],
+                display.add_id(),
+                display
+            )
+        )
+
     new_hint = hint.Hint(-1, -1, config.base_off_button_color, config.base_off_bg_button_color,
                          "", display.add_id(), display)
     buttons.append(new_hint)

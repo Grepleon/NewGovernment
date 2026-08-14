@@ -38,7 +38,7 @@ class PlayManager(base_manager.Manager):
                 for name_area in country.areas:
                     area2 = country.areas[name_area]
                     for name_city in area2.cities:
-                        self.display.recolor(lite(area2.color, -100), name_city)
+                        self.display.recolor(lite(area2.color, -100 ), name_city)
                 for name_city in area.cities:
                     self.display.recolor(lite(area.color, -60), name_city)
                 self.display.recolor(lite(area.color, -20), selected_city)

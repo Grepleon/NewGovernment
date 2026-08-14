@@ -66,3 +66,7 @@ area_radius = int(os.getenv("AREARADIUS", 150))
 coord_year_text = [int(coord) for coord in os.getenv("YEARTEXTCOORD").split()]
 
 size_button_map = [int(coord) for coord in os.getenv("SIZEBUTTONMAP").split()]
+coordinates_button_map = [int(coord) for coord in os.getenv("X0BUTTONMAP").split()]
+distance_button_map = [int(coord) for coord in os.getenv("DISTANCEBUTTONSMAP").split()]
+quantity_buttons_map = int(os.getenv("QUANTITYBUTTONSMAP", 5))
+texts_buttons_map = os.getenv("TEXTSBUTTONSMAP").split(", ")
