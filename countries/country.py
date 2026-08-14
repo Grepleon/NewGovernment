@@ -6,7 +6,7 @@ from hints.int_to_str import int_to_str
 class Country:
     def __init__(self, name, name_capital, president, areas, ministry_of_finance, ministry_of_internal_affairs,
                  ministry_of_foreign_affairs, ministry_of_defence, ministry_of_social_policy, ministry_of_justice,
-                 prime_minister, head_of_cb, budget, costs):
+                 prime_minister, head_of_cb, budget, costs, color):
         self.name:str = name
         self.name_capital = name_capital
         self.areas:dict[str:bc.Area] = areas
@@ -24,6 +24,8 @@ class Country:
 
         self.budget:int = budget
         self.area_costs:dict[str:int] = costs
+
+        self.color = color
 
     def to_str(self):
         return (f"Государство \"{self.name}\":"

@@ -142,7 +142,8 @@ def variables_country() -> dict[str:country.Country]:
             data["officials"]["prime_minister"],
             data["officials"]["head_of_cb"],
             data["budget"],
-            data["costs"]
+            data["costs"],
+            data["color"]
         )
 
         print(returned_countries[name].to_str())

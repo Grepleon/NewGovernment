@@ -1,5 +1,3 @@
-import visual.components.base_object as base_object
-from visual.components.hint import Hint
 from visual.components.city import VisualObjectCity
 import visual.menu_builder.managers.manager as base_manager
 import mainloop.game_states as game_states
@@ -8,7 +6,7 @@ import visual.components.text as text
 from hints.rename_politicians import rename
 from hints.lite import lite
 import visual.components.button as button
-import visual.tools.upload_tools as upload_tools
+from visual.tools.maps.upload_map import upload_map
 
 class PlayManager(base_manager.Manager):
     def __init__(self, display, buttons, id_objects, game_state:game_states.GameState):
@@ -39,10 +37,8 @@ class PlayManager(base_manager.Manager):
                 selected_city = city.city.name
 
                 for name_area_in_county in country.areas:
-                    print(name_area_in_county)
                     area_in_country = country.areas[name_area_in_county]
                     for name_city_in_country in area_in_country.cities:
-                        print('-', name_city_in_country)
                         city_in_country = area_in_country.cities[name_city_in_country]
                         self.display.recolor(lite(self.id_cities[city_in_country.name].color, -100), city_in_country.name)
 
@@ -63,6 +59,7 @@ class PlayManager(base_manager.Manager):
             if map_button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 if self.display.fast_left_button_pressed:
                     self.selected_map = map_button.name
+                    upload_map(self.selected_map, self.display, self.game_state, self.id_cities)
 
         for map_button in self.map_buttons:
             if map_button.on and map_button.name != self.selected_map:
