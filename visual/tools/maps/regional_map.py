@@ -10,5 +10,5 @@ def upload_regional_map(display:Display, game_state:GameState, cities):
             for name_city in area.cities:
                 city = area.cities[name_city]
 
-                cities[name_city].color = lite(area.color, -120)
-                display.recolor(lite(area.color, -120), name_city)
+                cities[name_city].color = lite(area.color, -0)
+                display.recolor(lite(area.color, -0), name_city)
