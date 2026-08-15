@@ -7,10 +7,14 @@
   "is_capital": false,
   "is_regional_capital": false,
   "location":{
-    "x": 750,
-    "y": 430
+    "x": 760,
+    "y": 460
   },
   "infrastructure": {
 
+  },
+  "nations": {
+    "Великоземцы": 0.87,
+    "Чернешцы": 0.13
   }
 }

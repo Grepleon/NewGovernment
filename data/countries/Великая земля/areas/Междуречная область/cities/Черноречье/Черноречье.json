@@ -1,0 +1,21 @@
+{
+  "name": "Черноречье",
+  "mayor": "Давид Бородов Арамович",
+  "population": 170,
+  "budget": 210000,
+  "monthly_expenses": 70000,
+  "is_capital": false,
+  "is_regional_capital": false,
+  "location":{
+    "x": 750,
+    "y": 430
+  },
+  "infrastructure": {
+
+  },
+  "nations": {
+    "Великоземцы": 0.39,
+    "Чернешцы": 0.59,
+    "Алдоанцы": 0.02
+  }
+}

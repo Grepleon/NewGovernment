@@ -12,6 +12,7 @@ from countries.cities.location import Location
 import countries.cities.infrastructure.buildings as buildings
 import politicians.nation.base_nationality as bn
 from politicians.nation.base_nation import Nation
+from politicians.nation.ethnic_group import EthnicGroup
 
 characters = []
 
@@ -93,7 +94,14 @@ def get_cities(_file:str, area:str) -> dict[str:bc.City]:
                 data["infrastructure"][data_build]["every_month_cost"]
             ) for data_build in data["infrastructure"]],
             data["population"],
-            data["budget"]
+            data["budget"],
+            [
+                EthnicGroup(
+                    ethnic_group,
+                    data["nations"][ethnic_group]
+                )
+                for ethnic_group in data["nations"]
+            ]
         )
 
 
@@ -161,7 +169,8 @@ def variables_nations() -> dict[str:Nation]:
         data = saves.Saves(folder + file).loaded_data
         nations[data["name"]] = Nation(
             data["name"],
-            data["carrier"]
+            data["carrier"],
+            data["color"]
         )
 
     return nations

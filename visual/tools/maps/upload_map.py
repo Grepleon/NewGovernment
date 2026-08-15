@@ -8,13 +8,15 @@ from visual.tools.maps.political_map import upload_political_map
 from visual.tools.maps.demographic_map import upload_demographic_map
 from visual.tools.maps.economic_map import upload_economic_map
 from visual.tools.maps.gdp_per_capita_map import upload_gdp_per_capita_map
+from visual.tools.maps.ethnic_map import upload_ethnic_map
 
 map_tools:dict = {
     "Областная карта": upload_regional_map,
     "Политическая карта": upload_political_map,
     "Демографическая карта": upload_demographic_map,
     "Экономическая карта": upload_economic_map,
-    "Карта ВВП на д.н.": upload_gdp_per_capita_map
+    "Карта ВВП на д.н.": upload_gdp_per_capita_map,
+    "Этническая карта": upload_ethnic_map,
 }
 
 def upload_map(name_map, display:Display, game_state:GameState, area_cities):
