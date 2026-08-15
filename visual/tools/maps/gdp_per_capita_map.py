@@ -14,8 +14,6 @@ def upload_gdp_per_capita_map(display:Display, game_state:GameState, cities):
                 city = area.cities[name_city]
                 max_val = max(max_val, city.budget // city.peoples)
 
-    print(max_val)
-
     for name_country in game_state.countries:
         country = game_state.countries[name_country]
         for name_area in country.areas:

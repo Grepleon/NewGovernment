@@ -18,4 +18,7 @@ class City:
         return (f"Город {self.name}:"
                 f"\nМэр: {self.mayor}"
                 f"\nБюджет: {its.int_to_str(self.budget)}"
-                f"\nНаселение: {its.int_to_str(self.peoples * 1000)}")
+                f"\nЭтнически группы:"
+                f"\n- {"\n- ".join([nation.to_str() for nation in self.nations])}"
+                f"\nНаселение: {its.int_to_str(self.peoples * 1000)}"
+                )

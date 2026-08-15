@@ -7,4 +7,4 @@ class EthnicGroup:
         self.count:int = count
 
     def to_str(self):
-        return f"{self.nation}: {its.int_to_str(self.count)}"
+        return f"{self.nation}: {its.int_to_str(int(self.count * 100))}%"

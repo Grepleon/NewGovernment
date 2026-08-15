@@ -13,6 +13,5 @@ class Area:
     def to_str(self):
         return (f"{self.name}:"
                 f"\nГубернатор: {self.governor}"
-                f"\nГорода: \n- {"\n- ".join([name for name in self.cities])}"
                 f"\nБюджет: {its(self.budget)}"
                 f"\nНаселение: {its(sum([self.cities[city].peoples for city in self.cities]) * 1000)}")
