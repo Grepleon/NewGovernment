@@ -27,4 +27,4 @@ def upload_demographic_map(display:Display, game_state:GameState, cities):
                 display.recolor(lite(color, -120), name_city + config.pref_text_city)
                 display.recolor(lite(color, -120), name_city + config.pref_text_area)
                 display.recolor(lite(color, -120), name_city + config.pref_text_country)
-                display.recolor("WHITE", name_city + config.pref_text_null)
+                display.recolor("DARKGREEN", name_city + config.pref_text_null)
