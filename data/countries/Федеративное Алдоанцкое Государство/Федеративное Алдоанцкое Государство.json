@@ -1,0 +1,23 @@
+{
+  "name": "Федеративное Алдоанцкое Государство",
+  "name_capital": "Алдостол",
+  "areas": [
+    "Малая республика"
+  ],
+  "officials":{
+    "president": "Екатерина Соколова Андреевна",
+    "ministry_of_finance": "",
+    "ministry_of_internal_affairs": "",
+    "ministry_of_foreign_affairs": "",
+    "ministry_of_defence": "",
+    "ministry_of_social_policy": "",
+    "ministry_of_justice": "",
+    "prime_minister": "",
+    "head_of_cb": ""
+  },
+  "budget": 1400000000,
+  "costs": {
+
+  },
+  "color": "#bb6655"
+}

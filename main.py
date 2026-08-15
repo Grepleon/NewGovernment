@@ -1,3 +1,4 @@
+from time import time
 import config
 import politicians.politician as path_politician
 import mainloop.game_states as game_states
@@ -5,6 +6,9 @@ import visual.display as path_display
 from politicians.characters.variables import variable_characters, variables_nations
 from politicians.characters.variables import variables_country
 import visual.menu_builder.all_menu as path_all_menu
+import statistics as st
+
+statistics:st.Statistics = st.get_statistics()
 
 def create_politicians() -> dict[str:path_politician.Politician]:
     _politicians = variable_characters()
@@ -33,3 +37,6 @@ all_menu = path_all_menu.AllMenu(display, game_state)
 all_menu.checker()
 
 display.end()
+
+statistics.time += time() - statistics.time_start
+st.set_statistics(statistics)

@@ -1,13 +1,13 @@
 {
   "name": "Подречье",
   "mayor": "Ольга Рыбова Николаевна",
-  "population": 200,
+  "population": 800,
   "budget": 400000,
   "monthly_expenses": 130000,
   "is_capital": false,
   "is_regional_capital": false,
   "location":{
-    "x": 760,
+    "x": 530,
     "y": 460
   },
   "infrastructure": {

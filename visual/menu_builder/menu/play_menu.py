@@ -26,9 +26,11 @@ def get_menu(display, game_state:game_states.GameState):
             area = country.areas[name_area]
             for name_city in area.cities:
                 city = area.cities[name_city]
-                c_city = comp_city.VisualObjectCity(city.location.x, city.location.y,
-                                      city.location.x + city.peoples ** 0.5, # / config.size_cty,
-                                      city.location.y + city.peoples ** 0.5, # / config.size_cty,
+                c_city = comp_city.VisualObjectCity(
+                                      city.location.x - city.peoples ** 0.5 / 2,
+                                      city.location.y - city.peoples ** 0.5 / 2,
+                                      city.location.x + city.peoples ** 0.5 / 2, # / config.size_cty,
+                                      city.location.y + city.peoples ** 0.5 / 2, # / config.size_cty,
                                       city, area, country, display.add_id(), display)
                 cities.append(c_city)
                 dict_cities[name_city] = c_city

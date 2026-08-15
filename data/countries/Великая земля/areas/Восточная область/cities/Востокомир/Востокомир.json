@@ -1,0 +1,21 @@
+{
+  "name": "Великоград",
+  "mayor": "Мирослав Дубов Александрович",
+  "population": 700,
+  "budget": 2400000,
+  "monthly_expenses": 740000,
+  "is_capital": false,
+  "is_regional_capital": false,
+  "location":{
+    "x": 710,
+    "y": 300
+  },
+  "infrastructure": {
+
+  },
+  "nations": {
+    "Вреконы": 0.11,
+    "Великоземцы": 0.78,
+    "Чернешцы": 0.11
+  }
+}
