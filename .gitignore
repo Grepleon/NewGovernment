@@ -2,3 +2,5 @@ data/important/
 data/important/token
 .venv
 .idea
+data/statistics/
+data/statistics/times.json
