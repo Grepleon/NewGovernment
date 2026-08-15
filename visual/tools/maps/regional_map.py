@@ -1,3 +1,4 @@
+import config
 from visual.display import Display
 from mainloop.game_states import GameState
 from hints.lite import lite
@@ -12,3 +13,4 @@ def upload_regional_map(display:Display, game_state:GameState, cities):
 
                 cities[name_city].color = area.color
                 display.recolor(area.color, name_city)
+                display.recolor(area.color, name_city + config.pref_text_city)

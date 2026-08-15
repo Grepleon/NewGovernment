@@ -1,0 +1,23 @@
+{
+  "name": "Рубиновая долина",
+  "name_capital": "Рубинск",
+  "areas": [
+    "Рубиновая область"
+  ],
+  "officials":{
+    "president": "Владимир Ковров Анатольевич",
+    "ministry_of_finance": "Михаил Белов Вадимович",
+    "ministry_of_internal_affairs": "Дмитрий Зайцев Михайлович",
+    "ministry_of_foreign_affairs": "Ольга Порохова Владиславовна",
+    "ministry_of_defence": "Алексей Пирогов Вячеславович",
+    "ministry_of_social_policy": "Екатерина Лукова Максимовна",
+    "ministry_of_justice": "Евгений Обломов Александрович",
+    "prime_minister": "Дмитрий Угрюмов Иванович",
+    "head_of_cb": "Думов"
+  },
+  "budget": 1400000000,
+  "costs": {
+
+  },
+  "color": "#bb4455"
+}
