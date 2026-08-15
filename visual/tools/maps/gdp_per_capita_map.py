@@ -21,7 +21,7 @@ def upload_gdp_per_capita_map(display:Display, game_state:GameState, cities):
             for name_city in area.cities:
                 city = area.cities[name_city]
                 value = log2(1 + max(city.budget // city.peoples, 0)) / log2(1 + max_val)
-                color = lite("#000000", int(value * 250))
+                color = lite("#000011", int(value * 200))
                 cities[name_city].color = color
                 display.recolor(color, name_city)
                 display.recolor(lite(color, -120), name_city + config.pref_text_city)

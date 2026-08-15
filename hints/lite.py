@@ -11,4 +11,4 @@ def lite(color:str, val:int):
     return new_color
 
 if __name__ == "__main__":
-    print(lite("#00aa00", 33))
+    print(lite("#ffaa00", -160))
