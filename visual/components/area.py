@@ -176,11 +176,12 @@ def boundary_tag(
         country_keys: list[object],
         city_suffix: str = "-ct",
         area_suffix: str = "-A",
-        country_suffix: str = "-C"
-) -> str | None:
+        country_suffix: str = "-C",
+        outer_suffix: str = "-N"
+) -> str:
     """Name a city border according to the neighbour's administrative level."""
     if neighbor_index is None:
-        return None
+        return f"{city_names[city_index]}{outer_suffix}"
 
     if country_keys[city_index] != country_keys[neighbor_index]:
         suffix = country_suffix

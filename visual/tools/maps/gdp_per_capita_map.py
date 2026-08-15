@@ -4,7 +4,7 @@ from hints.lite import lite
 import config
 from math import log2
 
-def upload_demographic_map(display:Display, game_state:GameState, cities):
+def upload_gdp_per_capita_map(display:Display, game_state:GameState, cities):
     max_val = 0
     for name_country in game_state.countries:
         country = game_state.countries[name_country]
@@ -12,7 +12,7 @@ def upload_demographic_map(display:Display, game_state:GameState, cities):
             area = country.areas[name_area]
             for name_city in area.cities:
                 city = area.cities[name_city]
-                max_val = max(max_val, city.peoples)
+                max_val = max(max_val, city.budget // city.peoples)
 
     print(max_val)
 
@@ -22,7 +22,7 @@ def upload_demographic_map(display:Display, game_state:GameState, cities):
             area = country.areas[name_area]
             for name_city in area.cities:
                 city = area.cities[name_city]
-                value = log2(1 + max(city.peoples, 0)) / log2(1 + max_val)
+                value = log2(1 + max(city.budget // city.peoples, 0)) / log2(1 + max_val)
                 color = lite("#000000", int(value * 250))
                 cities[name_city].color = color
                 display.recolor(color, name_city)

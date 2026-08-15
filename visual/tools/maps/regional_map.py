@@ -13,4 +13,7 @@ def upload_regional_map(display:Display, game_state:GameState, cities):
 
                 cities[name_city].color = area.color
                 display.recolor(area.color, name_city)
-                display.recolor(area.color, name_city + config.pref_text_city)
+                display.recolor(lite(area.color, -120), name_city + config.pref_text_city)
+                display.recolor(area.color, name_city + config.pref_text_null)
+                display.recolor(area.color, name_city + config.pref_text_area)
+                display.recolor(area.color, name_city + config.pref_text_country)

@@ -10,6 +10,8 @@ import countries.areas.base_area as ba
 import countries.cities.base_city as bc
 from countries.cities.location import Location
 import countries.cities.infrastructure.buildings as buildings
+import politicians.nation.base_nationality as bn
+from politicians.nation.base_nation import Nation
 
 characters = []
 
@@ -56,6 +58,9 @@ def variable_characters() -> dict[str:pol.Politician]:
             data_pol["location"],
             data_pol["citizenship"],
             data_pol["place_of_residence"],
+            bn.Nationality(
+                data_pol["nationality"]
+            ),
             data_pol["party"],
             data_pol["nickname"],
             data_pol["bio"]
@@ -145,6 +150,21 @@ def variables_country() -> dict[str:country.Country]:
         )
 
     return returned_countries
+
+def variables_nations() -> dict[str:Nation]:
+    nations:dict[str:Nation] = {}
+    folder = "data/nations/"
+    files = os.listdir(folder)
+    print(files)
+
+    for file in files:
+        data = saves.Saves(folder + file).loaded_data
+        nations[data["name"]] = Nation(
+            data["name"],
+            data["carrier"]
+        )
+
+    return nations
 
 if __name__ == "__main__":
     pols = variable_characters()
