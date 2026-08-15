@@ -11,5 +11,5 @@ def upload_political_map(display: Display, game_state: GameState, cities):
             for name_city in area.cities:
                 city = area.cities[name_city]
 
-                cities[name_city].color = lite(country.color, -0)
-                display.recolor(lite(country.color, -0), name_city)
+                cities[name_city].color = country.color
+                display.recolor(country.color, name_city)

@@ -72,3 +72,6 @@ quantity_buttons_map = int(os.getenv("QUANTITYBUTTONSMAP", 5))
 texts_buttons_map = os.getenv("TEXTSBUTTONSMAP").split(", ")
 
 selected_map = os.getenv("SELECTEDMAP")
+pref_text_area = os.getenv("PREFTEXTLINEAREA", "-A")
+pref_text_country = os.getenv("PREFTEXTLINECOUNTRY", "-C")
+pref_text_city = os.getenv("PREFTEXTLINECITY", "-ct")
