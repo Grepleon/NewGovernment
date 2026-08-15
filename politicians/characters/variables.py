@@ -91,7 +91,6 @@ def get_cities(_file:str, area:str) -> dict[str:bc.City]:
             data["budget"]
         )
 
-        print(cities[data["name"]].to_str())
 
     return cities
 
@@ -113,7 +112,6 @@ def get_areas(_file:str) -> dict[str:ba.Area]:
             data["budget"],
             data["color"]
         )
-        print(areas[data["name"]].to_str())
 
 
     return areas
@@ -145,8 +143,6 @@ def variables_country() -> dict[str:country.Country]:
             data["costs"],
             data["color"]
         )
-
-        print(returned_countries[name].to_str())
 
     return returned_countries
 

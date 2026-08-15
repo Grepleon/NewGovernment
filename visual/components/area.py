@@ -136,6 +136,62 @@ def _squared_distance(first: Point, second: Point) -> float:
     return (first[0] - second[0]) ** 2 + (first[1] - second[1]) ** 2
 
 
+def find_edge_neighbor(
+        start: Point,
+        end: Point,
+        city_index: int,
+        points: list[Point]
+) -> int | None:
+    """Return the city on the other side of a Voronoi edge, if any."""
+    midpoint = ((start[0] + end[0]) / 2, (start[1] + end[1]) / 2)
+    samples = (start, midpoint, end)
+
+    for other_index, other_point in enumerate(points):
+        if other_index == city_index:
+            continue
+        if _squared_distance(points[city_index], other_point) <= _EPSILON:
+            continue
+
+        is_shared_bisector = True
+        for sample in samples:
+            city_distance = _squared_distance(sample, points[city_index])
+            other_distance = _squared_distance(sample, other_point)
+            tolerance = max(1.0, city_distance, other_distance) * 1e-7
+
+            if abs(city_distance - other_distance) > tolerance:
+                is_shared_bisector = False
+                break
+
+        if is_shared_bisector:
+            return other_index
+
+    return None
+
+
+def boundary_tag(
+        city_index: int,
+        neighbor_index: int | None,
+        city_names: list[str],
+        area_keys: list[object],
+        country_keys: list[object],
+        city_suffix: str = "-ct",
+        area_suffix: str = "-A",
+        country_suffix: str = "-C"
+) -> str | None:
+    """Name a city border according to the neighbour's administrative level."""
+    if neighbor_index is None:
+        return None
+
+    if country_keys[city_index] != country_keys[neighbor_index]:
+        suffix = country_suffix
+    elif area_keys[city_index] != area_keys[neighbor_index]:
+        suffix = area_suffix
+    else:
+        suffix = city_suffix
+
+    return f"{city_names[city_index]}{suffix}"
+
+
 def _is_internal_area_edge(
         start: Point,
         end: Point,
@@ -231,19 +287,26 @@ def create_area_backgrounds(
         background_color: str
 ) -> list[str]:
     """Draw one Voronoi cell per city and colour it with its area's colour."""
+    import config
+
     seeds = []
 
     for country in countries.values():
         for area in country.areas.values():
             for city in area.cities.values():
-                seeds.append((city.location.x, city.location.y, city, area))
+                seeds.append((city.location.x, city.location.y, city, area, country))
 
-    points = [(x, y) for x, y, _city, _area in seeds]
+    points = [(x, y) for x, y, _city, _area, _country in seeds]
     radii = [max_distance] * len(seeds)
-    area_keys = [area.name for _x, _y, _city, area in seeds]
+    city_names = [city.name for _x, _y, city, _area, _country in seeds]
+    country_keys = [country.name for _x, _y, _city, _area, country in seeds]
+    area_keys = [
+        (country.name, area.name)
+        for _x, _y, _city, area, country in seeds
+    ]
     fill_colors = [
         lite(area.color, -120)
-        for _x, _y, _city, area in seeds
+        for _x, _y, _city, area, _country in seeds
     ]
 
     cells = build_voronoi_cells(
@@ -253,20 +316,24 @@ def create_area_backgrounds(
     )
     object_ids = []
 
+    def remember_object_id(object_id: str):
+        if object_id not in object_ids:
+            object_ids.append(object_id)
+
     # Draw every fill first. Outlines are separate objects so shared borders
     # between cities in the same area can be omitted.
-    for city_index, ((_x, _y, _city, _area), cell) in enumerate(zip(seeds, cells)):
+    for city_index, ((_x, _y, city, _area, _country), cell) in enumerate(zip(seeds, cells)):
         if len(cell) < 3:
             continue
 
-        object_id = _city.name
+        object_id = city.name
         display.create_polygon(
             cell,
-            color= fill_colors[city_index],
+            color=fill_colors[city_index],
             outline="",
             tag=object_id
         )
-        object_ids.append(object_id)
+        remember_object_id(object_id)
 
     for start, end, city_index in build_visible_edges(
             cells,
@@ -274,7 +341,17 @@ def create_area_backgrounds(
             radii,
             area_keys
     ):
-        object_id = display.add_id()
+        neighbor_index = find_edge_neighbor(start, end, city_index, points)
+        object_id = boundary_tag(
+            city_index,
+            neighbor_index,
+            city_names,
+            area_keys,
+            country_keys,
+            city_suffix=config.pref_text_city,
+            area_suffix=config.pref_text_area,
+            country_suffix=config.pref_text_country
+        ) or display.add_id()
         display.create_line(
             start[0],
             start[1],
@@ -283,7 +360,7 @@ def create_area_backgrounds(
             color=seeds[city_index][3].color,
             tag=object_id
         )
-        object_ids.append(object_id)
+        remember_object_id(object_id)
 
     # A larger cell can have a longer bisector than its smaller neighbour.
     # Paint the genuinely shared part last so no internal outline remains.
@@ -293,7 +370,17 @@ def create_area_backgrounds(
             radii,
             area_keys
     ):
-        object_id = display.add_id()
+        neighbor_index = find_edge_neighbor(start, end, city_index, points)
+        object_id = boundary_tag(
+            city_index,
+            neighbor_index,
+            city_names,
+            area_keys,
+            country_keys,
+            city_suffix=config.pref_text_city,
+            area_suffix=config.pref_text_area,
+            country_suffix=config.pref_text_country
+        ) or display.add_id()
         display.create_line(
             start[0],
             start[1],
@@ -302,6 +389,6 @@ def create_area_backgrounds(
             color=fill_colors[city_index],
             tag=object_id
         )
-        object_ids.append(object_id)
+        remember_object_id(object_id)
 
     return object_ids
