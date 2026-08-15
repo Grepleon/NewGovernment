@@ -28,7 +28,8 @@ game_state = game_states.GameState(
     None,
     politicians,
     all_countries,
-    nations
+    nations,
+    statistics
 )
 
 display = path_display.Display(config.width, config.height)
