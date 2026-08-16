@@ -57,3 +57,11 @@ def set_statistics(statistics:Statistics):
         "max_date": statistics.max_date_time,
         "time": statistics.game_time
     })
+
+def save(statistics:Statistics, game_state):
+    statistics.time += timer() - statistics.time_start
+    statistics.game_time += game_state.ticks
+
+    if statistics.max_game_time < game_state.ticks:
+        statistics.max_game_time = game_state.ticks
+        statistics.max_date_time = game_state.get_str_year()

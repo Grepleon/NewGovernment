@@ -45,11 +45,6 @@ all_menu.checker()
 
 display.end()
 
-statistics.time += time() - statistics.time_start
-statistics.game_time += game_state.ticks
-
-if statistics.max_game_time < game_state.ticks:
-    statistics.max_game_time = game_state.ticks
-    statistics.max_date_time = game_state.get_str_year()
+st.save(statistics, game_state)
 
 st.set_statistics(statistics)
