@@ -80,8 +80,8 @@ class PlayManager(base_manager.Manager):
         self.check_cities()
         self.check_map()
         self.button_time.rewrite_text(self.game_state.year_to_str())
-        print( self.game_state.year_to_str())
         self.game_state.time += dt.timedelta(minutes=config.dtime)
+        self.game_state.ticks += 1
 
     def delete(self):
         for _button in self.buttons:

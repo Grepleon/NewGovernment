@@ -25,7 +25,12 @@ all_countries = variables_country()
 nations = variables_nations()
 
 game_state = game_states.GameState(
-    dt.datetime(config.first_year[0], config.first_year[1], config.first_year[2], config.first_year[3], config.first_year[4]),
+    dt.datetime(config.first_year[0],
+                config.first_year[1],
+                config.first_year[2],
+                config.first_year[3],
+                config.first_year[4]
+                ), 0,
     None,
     politicians,
     all_countries,
@@ -41,4 +46,10 @@ all_menu.checker()
 display.end()
 
 statistics.time += time() - statistics.time_start
+statistics.game_time += game_state.ticks
+
+if statistics.max_game_time < game_state.ticks:
+    statistics.max_game_time = game_state.ticks
+    statistics.max_date_time = game_state.get_str_year()
+
 st.set_statistics(statistics)
