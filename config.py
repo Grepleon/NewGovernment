@@ -6,7 +6,7 @@ load_dotenv()
 name_project = os.getenv("NAMEPROJECT", "New Government")
 bg_color = os.getenv("BGCOLOR", "black")
 name_country = os.getenv("NAME", "Великая Земля")
-first_year = int(os.getenv("YEAR", 2053))
+first_year = [int(d) for d in os.getenv("YEAR", "07 00 23 5 2053").split()]
 width = int(os.getenv("WIDTH", 1200))
 height = int(os.getenv("HEIGHT", 650))
 

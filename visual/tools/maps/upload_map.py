@@ -21,3 +21,4 @@ map_tools:dict = {
 
 def upload_map(name_map, display:Display, game_state:GameState, area_cities):
     map_tools[name_map](display, game_state, area_cities)
+    game_state.statistics.maps_choose[name_map] = game_state.statistics.maps_choose.get(name_map, 0) + 1

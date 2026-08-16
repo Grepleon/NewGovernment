@@ -137,6 +137,8 @@ class PlayManager(base_manager.Manager):
                                       + config.hover_flag + config.format_pictures))
 
     def show(self):
+        self.map_buttons[0].on = True
+        upload_map(config.selected_map, self.display, self.game_state, self.id_cities)
         self.show_selected_politician()
         for _button in self.buttons:
             _button.show()

@@ -27,10 +27,10 @@ def get_menu(display, game_state:game_states.GameState):
             for name_city in area.cities:
                 city = area.cities[name_city]
                 c_city = comp_city.VisualObjectCity(
-                                      city.location.x - city.peoples ** 0.5 / 2,
-                                      city.location.y - city.peoples ** 0.5 / 2,
-                                      city.location.x + city.peoples ** 0.5 / 2, # / config.size_cty,
-                                      city.location.y + city.peoples ** 0.5 / 2, # / config.size_cty,
+                                      city.location.x - city.peoples ** 0.4 / 2,
+                                      city.location.y - city.peoples ** 0.4 / 2,
+                                      city.location.x + city.peoples ** 0.4 / 2, # / config.size_cty,
+                                      city.location.y + city.peoples ** 0.4 / 2, # / config.size_cty,
                                       city, area, country, display.add_id(), display)
                 cities.append(c_city)
                 dict_cities[name_city] = c_city
@@ -43,7 +43,7 @@ def get_menu(display, game_state:game_states.GameState):
                           config.coord_year_text[3],
                           config.base_off_button_color, config.base_off_bg_button_color,
                           config.base_on_button_color, config.base_on_bg_button_color,
-                          str(game_state.year) + " год, 23 мая", display.add_id(), display))
+                          game_state.year_to_str(), display.add_id(), display))
 
     map_buttons = []
 
