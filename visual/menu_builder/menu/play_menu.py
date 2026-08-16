@@ -44,7 +44,7 @@ def get_menu(display, game_state:game_states.GameState):
                           config.base_off_button_color, config.base_off_bg_button_color,
                           config.base_on_button_color, config.base_on_bg_button_color,
                           game_state.year_to_str(), display.add_id(), display))
-
+    year = buttons[-1]
     map_buttons = []
 
     for index in range(config.quantity_buttons_map):
@@ -79,5 +79,6 @@ def get_menu(display, game_state:game_states.GameState):
     play_manager.hint = new_hint
     play_manager.id_cities = dict_cities
     play_manager.map_buttons = map_buttons
+    play_manager.button_time = year
 
     return play_manager

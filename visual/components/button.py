@@ -45,6 +45,10 @@ class Button(b_object.BaseObject):
                 self.display.recolor(self.bg_active_color, self.object_id)
                 self.display.recolor(self.active_color, self.object_id + self.pref_text)
 
+    def rewrite_text(self, text):
+        self.text = text
+        self.display.rewrite_text(text, self.object_id + self.pref_text)
+
     def mouse_into_object(self, mx, my):
         self.into_mouse = self.x1 <= mx <= self.x2 and self.y1 <= my <= self.y2
         return self.into_mouse

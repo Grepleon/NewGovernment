@@ -10,6 +10,8 @@ first_year = [int(d) for d in os.getenv("YEAR", "07 00 23 5 2053").split()]
 width = int(os.getenv("WIDTH", 1200))
 height = int(os.getenv("HEIGHT", 650))
 
+dtime = int(os.getenv("DTIME", 15))
+
 base_off_button_color = os.getenv("BASEOFFBUTTONCOLOR")
 base_off_bg_button_color = os.getenv("BASEOFFBGBUTTONCOLOR")
 base_on_button_color = os.getenv("BASEONBUTTONCOLOR")

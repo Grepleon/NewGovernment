@@ -7,6 +7,7 @@ from politicians.characters.variables import variable_characters, variables_nati
 from politicians.characters.variables import variables_country
 import visual.menu_builder.all_menu as path_all_menu
 import statistics as st
+import datetime as dt
 
 statistics:st.Statistics = st.get_statistics()
 
@@ -24,7 +25,7 @@ all_countries = variables_country()
 nations = variables_nations()
 
 game_state = game_states.GameState(
-    config.first_year,
+    dt.datetime(config.first_year[0], config.first_year[1], config.first_year[2], config.first_year[3], config.first_year[4]),
     None,
     politicians,
     all_countries,

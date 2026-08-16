@@ -1,3 +1,4 @@
+from visual.components.button import Button
 from visual.components.city import VisualObjectCity
 import visual.menu_builder.managers.manager as base_manager
 import mainloop.game_states as game_states
@@ -7,6 +8,7 @@ from hints.rename_politicians import rename
 from hints.lite import lite
 import visual.components.button as button
 from visual.tools.maps.upload_map import upload_map
+import datetime as dt
 
 class PlayManager(base_manager.Manager):
     def __init__(self, display, buttons, id_objects, game_state:game_states.GameState):
@@ -17,6 +19,8 @@ class PlayManager(base_manager.Manager):
         self.id_cities:dict[str:VisualObjectCity] = []
         self.map_buttons:list[str:button.Button] = []
         self.selected_map = config.selected_map
+        self.button_time:Button|None = None
+        self.play = True
 
     def check_cities(self):
         flag = False
@@ -75,6 +79,9 @@ class PlayManager(base_manager.Manager):
 
         self.check_cities()
         self.check_map()
+        self.button_time.rewrite_text(self.game_state.year_to_str())
+        print( self.game_state.year_to_str())
+        self.game_state.time += dt.timedelta(minutes=config.dtime)
 
     def delete(self):
         for _button in self.buttons:
