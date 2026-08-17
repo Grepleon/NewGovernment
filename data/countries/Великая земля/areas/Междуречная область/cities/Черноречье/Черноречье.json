@@ -8,7 +8,7 @@
     "is_regional_capital": false,
     "location": {
         "x": 510,
-        "y": 425
+        "y": 275
     },
     "infrastructure": {},
     "nations": {
@@ -16,5 +16,11 @@
         "Чернешцы": 0.79,
         "Алдоанцы": 0.02
     },
-    "products": 147000
+    "products": 147000,
+    "geography": {
+        "height": 411,
+        "forests": 0.35,
+        "average_temperature": 19,
+        "purity": 0.85
+    }
 }

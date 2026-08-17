@@ -2,7 +2,7 @@ import visual.components.base_object as b_object
 import visual.display
 from countries.cities.base_city import City
 from countries.areas.base_area import Area
-from hints.lite import lite
+from hints.colors.lite import lite
 from countries.country import Country
 
 class VisualObjectCity(b_object.BaseObject):

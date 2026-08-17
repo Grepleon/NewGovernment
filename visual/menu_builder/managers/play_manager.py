@@ -5,7 +5,7 @@ import mainloop.game_states as game_states
 import config
 import visual.components.text as text
 from hints.rename_politicians import rename
-from hints.lite import lite
+from hints.colors.lite import lite
 import visual.components.button as button
 from visual.tools.maps.upload_map import upload_map
 import datetime as dt

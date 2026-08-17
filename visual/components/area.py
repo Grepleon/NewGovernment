@@ -1,6 +1,6 @@
 from collections.abc import Iterable
 from math import cos, pi, sin
-from hints.lite import lite
+from hints.colors.lite import lite
 
 
 Point = tuple[float, float]

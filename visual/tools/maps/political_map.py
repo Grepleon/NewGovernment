@@ -1,6 +1,6 @@
 from visual.display import Display
 from mainloop.game_states import GameState
-from hints.lite import lite
+from hints.colors.lite import lite
 import config
 
 def upload_political_map(display: Display, game_state: GameState, cities):

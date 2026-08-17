@@ -13,6 +13,7 @@ import countries.cities.infrastructure.buildings as buildings
 import politicians.nation.base_nationality as bn
 from politicians.nation.base_nation import Nation
 from politicians.nation.ethnic_group import EthnicGroup
+from countries.cities.geography import Geography
 
 characters = []
 
@@ -102,7 +103,13 @@ def get_cities(_file:str, area:str) -> dict[str:bc.City]:
                 )
                 for ethnic_group in data["nations"]
             ],
-            data["products"]
+            data["products"],
+            Geography(
+                data["geography"]["height"],
+                data["geography"]["forests"],
+                data["geography"]["average_temperature"],
+                data["geography"]["purity"]
+            )
         )
 
 

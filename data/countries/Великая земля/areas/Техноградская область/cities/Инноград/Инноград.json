@@ -8,7 +8,7 @@
     "is_regional_capital": false,
     "location": {
         "x": 560,
-        "y": 350
+        "y": 200
     },
     "infrastructure": {},
     "nations": {
@@ -16,5 +16,11 @@
         "Великоземцы": 0.65,
         "Чернешцы": 0.28
     },
-    "products": 1820000
+    "products": 1820000,
+    "geography": {
+        "height": 120,
+        "forests": 0.2,
+        "average_temperature": 10,
+        "purity": 0.85
+    }
 }

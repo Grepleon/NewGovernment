@@ -1,7 +1,7 @@
 import config
 from visual.display import Display
 from mainloop.game_states import GameState
-from hints.lite import lite
+from hints.colors.lite import lite
 
 def upload_regional_map(display:Display, game_state:GameState, cities):
     for name_country in game_state.countries:

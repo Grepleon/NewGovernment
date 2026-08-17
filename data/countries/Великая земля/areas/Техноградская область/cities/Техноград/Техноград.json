@@ -8,7 +8,7 @@
     "is_regional_capital": true,
     "location": {
         "x": 630,
-        "y": 310
+        "y": 160
     },
     "infrastructure": {},
     "nations": {
@@ -17,5 +17,11 @@
         "Чернешцы": 0.33,
         "Вреконы": 0.05
     },
-    "products": 3120000
+    "products": 3120000,
+    "geography": {
+        "height": 0,
+        "forests": 0.1,
+        "average_temperature": 5,
+        "purity": 0.85
+    }
 }

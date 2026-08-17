@@ -8,12 +8,18 @@
     "is_regional_capital": true,
     "location": {
         "x": 670,
-        "y": 260
+        "y": 110
     },
     "infrastructure": {},
     "nations": {
         "Алдоанцы": 0.71,
         "Великоземцы": 0.29
     },
-    "products": 838000
+    "products": 838000,
+    "geography": {
+        "height": 0,
+        "forests": 0.7,
+        "average_temperature": -1,
+        "purity": 0.85
+    }
 }

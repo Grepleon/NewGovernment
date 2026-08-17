@@ -3,10 +3,11 @@ import countries.cities.infrastructure.roads as roads
 import countries.cities.infrastructure.buildings as buildings
 import hints.int_to_str as its
 import politicians.nation.ethnic_group as eg
+from countries.cities.geography import Geography
 
 class City:
     def __init__(self, name, mayor, location, infrastructure, peoples, budget, nations,
-                 products):
+                 products, geography):
         self.name:str = name
         self.mayor:str = mayor
         self.location:loc.Location = location
@@ -15,6 +16,7 @@ class City:
         self.budget:int = budget # бюджет
         self.nations:dict[str:eg.EthnicGroup] = nations
         self.products = products
+        self.geography:Geography = geography
 
     def to_str(self):
         return (f"Город {self.name}:"
