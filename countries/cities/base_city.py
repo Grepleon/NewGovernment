@@ -26,4 +26,5 @@ class City:
                 f"\n- {"\n- ".join([nation.to_str() for nation in self.nations])}"
                 f"\nНаселение: {its.int_to_str(self.peoples * 1000)}"
                 f"\nПроизведено товаров и услуг: {its.int_to_str(self.products)}"
+                f"\nГеография: {self.geography.to_str()}"
                 )

@@ -19,7 +19,7 @@ class GameState:
         self.statistics:Statistics = statistics
 
     def year_to_str(self):
-        return format_datetime(self.time, "HH:00, d MMMM y", locale='ru')
+        return format_datetime(self.time, "HH:00, d MMMM, y год", locale='ru')
 
     def get_str_year(self):
         return format_datetime(self.time, "HH:mm d.M.y", locale='ru')
