@@ -1,21 +1,20 @@
 {
-  "name": "Рубинск",
-  "mayor": "Светлана Сиренева Сергеевна",
-  "population": 600,
-  "budget": 13400000,
-  "monthly_expenses": 1440000,
-  "is_capital": true,
-  "is_regional_capital": true,
-  "location":{
-    "x": 550,
-    "y": 250
-  },
-  "infrastructure": {
-
-  },
-  "nations": {
-    "Алдоанцы": 0.67,
-    "Великоземцы": 0.21,
-    "Чернешцы": 0.12
-  }
+    "name": "Рубинск",
+    "mayor": "Светлана Сиренева Сергеевна",
+    "population": 600,
+    "budget": 13400000,
+    "monthly_expenses": 1440000,
+    "is_capital": true,
+    "is_regional_capital": true,
+    "location": {
+        "x": 550,
+        "y": 250
+    },
+    "infrastructure": {},
+    "nations": {
+        "Алдоанцы": 0.67,
+        "Великоземцы": 0.21,
+        "Чернешцы": 0.12
+    },
+    "products": 1400000
 }

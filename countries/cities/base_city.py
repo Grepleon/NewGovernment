@@ -5,7 +5,8 @@ import hints.int_to_str as its
 import politicians.nation.ethnic_group as eg
 
 class City:
-    def __init__(self, name, mayor, location, infrastructure, peoples, budget, nations):
+    def __init__(self, name, mayor, location, infrastructure, peoples, budget, nations,
+                 products):
         self.name:str = name
         self.mayor:str = mayor
         self.location:loc.Location = location
@@ -13,6 +14,7 @@ class City:
         self.peoples:int = peoples # указывается в тысячах
         self.budget:int = budget # бюджет
         self.nations:dict[str:eg.EthnicGroup] = nations
+        self.products = products
 
     def to_str(self):
         return (f"Город {self.name}:"
@@ -21,4 +23,5 @@ class City:
                 f"\nЭтнически группы:"
                 f"\n- {"\n- ".join([nation.to_str() for nation in self.nations])}"
                 f"\nНаселение: {its.int_to_str(self.peoples * 1000)}"
+                f"\nПроизведено товаров и услуг: {its.int_to_str(self.products)}"
                 )

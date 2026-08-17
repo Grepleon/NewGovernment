@@ -101,7 +101,8 @@ def get_cities(_file:str, area:str) -> dict[str:bc.City]:
                     data["nations"][ethnic_group]
                 )
                 for ethnic_group in data["nations"]
-            ]
+            ],
+            data["products"]
         )
 
 

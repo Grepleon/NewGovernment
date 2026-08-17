@@ -1,21 +1,20 @@
 {
-  "name": "Инноград",
-  "mayor": "Владислав Зимов Васильевич",
-  "population": 1000,
-  "budget": 17200000,
-  "monthly_expenses": 540000,
-  "is_capital": false,
-  "is_regional_capital": false,
-  "location":{
-    "x": 560,
-    "y": 350
-  },
-  "infrastructure": {
-
-  },
-  "nations": {
-    "Алдоанцы": 0.07,
-    "Великоземцы": 0.65,
-    "Чернешцы": 0.28
-  }
+    "name": "Инноград",
+    "mayor": "Владислав Зимов Васильевич",
+    "population": 1000,
+    "budget": 17200000,
+    "monthly_expenses": 540000,
+    "is_capital": false,
+    "is_regional_capital": false,
+    "location": {
+        "x": 560,
+        "y": 350
+    },
+    "infrastructure": {},
+    "nations": {
+        "Алдоанцы": 0.07,
+        "Великоземцы": 0.65,
+        "Чернешцы": 0.28
+    },
+    "products": 1820000
 }

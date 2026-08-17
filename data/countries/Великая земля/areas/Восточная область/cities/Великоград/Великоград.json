@@ -1,21 +1,20 @@
 {
-  "name": "Востокомир",
-  "mayor": "София Тихонова Валерьевна",
-  "population": 500,
-  "budget": 3700000,
-  "monthly_expenses": 840000,
-  "is_capital": false,
-  "is_regional_capital": true,
-  "location":{
-    "x": 720,
-    "y": 270
-  },
-  "infrastructure": {
-
-  },
-  "nations": {
-    "Вреконы": 0.61,
-    "Великоземцы": 0.28,
-    "Чернешцы": 0.11
-  }
+    "name": "Востокомир",
+    "mayor": "София Тихонова Валерьевна",
+    "population": 500,
+    "budget": 3700000,
+    "monthly_expenses": 840000,
+    "is_capital": false,
+    "is_regional_capital": true,
+    "location": {
+        "x": 720,
+        "y": 270
+    },
+    "infrastructure": {},
+    "nations": {
+        "Вреконы": 0.61,
+        "Великоземцы": 0.28,
+        "Чернешцы": 0.11
+    },
+    "products": 420000
 }

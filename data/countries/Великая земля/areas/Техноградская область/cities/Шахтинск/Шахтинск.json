@@ -1,21 +1,20 @@
 {
-  "name": "Шахтинск",
-  "mayor": "Василий Золотов Алексеевич",
-  "population": 336,
-  "budget": 2200000,
-  "monthly_expenses": 540000,
-  "is_capital": false,
-  "is_regional_capital": false,
-  "location":{
-    "x": 580,
-    "y": 290
-  },
-  "infrastructure": {
-
-  },
-  "nations": {
-    "Алдоанцы": 0.41,
-    "Великоземцы": 0.34,
-    "Чернешцы": 0.25
-  }
+    "name": "Шахтинск",
+    "mayor": "Василий Золотов Алексеевич",
+    "population": 336,
+    "budget": 2200000,
+    "monthly_expenses": 540000,
+    "is_capital": false,
+    "is_regional_capital": false,
+    "location": {
+        "x": 580,
+        "y": 290
+    },
+    "infrastructure": {},
+    "nations": {
+        "Алдоанцы": 0.41,
+        "Великоземцы": 0.34,
+        "Чернешцы": 0.25
+    },
+    "products": 253600
 }

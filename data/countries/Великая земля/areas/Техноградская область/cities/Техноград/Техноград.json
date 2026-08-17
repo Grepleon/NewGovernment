@@ -1,22 +1,21 @@
 {
-  "name": "Техноград",
-  "mayor": "Антон Лисов Игнатьевич",
-  "population": 3000,
-  "budget": 28200000,
-  "monthly_expenses": 120000,
-  "is_capital": true,
-  "is_regional_capital": true,
-  "location":{
-    "x": 630,
-    "y": 310
-  },
-  "infrastructure": {
-
-  },
-  "nations": {
-    "Алдоанцы": 0.07,
-    "Великоземцы": 0.55,
-    "Чернешцы": 0.33,
-    "Вреконы": 0.05
-  }
+    "name": "Техноград",
+    "mayor": "Антон Лисов Игнатьевич",
+    "population": 3000,
+    "budget": 28200000,
+    "monthly_expenses": 120000,
+    "is_capital": true,
+    "is_regional_capital": true,
+    "location": {
+        "x": 630,
+        "y": 310
+    },
+    "infrastructure": {},
+    "nations": {
+        "Алдоанцы": 0.07,
+        "Великоземцы": 0.55,
+        "Чернешцы": 0.33,
+        "Вреконы": 0.05
+    },
+    "products": 3120000
 }

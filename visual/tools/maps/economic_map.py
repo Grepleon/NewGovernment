@@ -12,7 +12,7 @@ def upload_economic_map(display:Display, game_state:GameState, cities):
             area = country.areas[name_area]
             for name_city in area.cities:
                 city = area.cities[name_city]
-                max_val = max(max_val, city.budget)
+                max_val = max(max_val, city.products)
 
     for name_country in game_state.countries:
         country = game_state.countries[name_country]
@@ -20,7 +20,7 @@ def upload_economic_map(display:Display, game_state:GameState, cities):
             area = country.areas[name_area]
             for name_city in area.cities:
                 city = area.cities[name_city]
-                value = log2(1 + max(city.budget, 0)) / log2(1 + max_val)
+                value = log2(1 + max(city.products, 0)) / log2(1 + max_val)
                 color = lite("#dad871", int(value * 180) - 180)
                 cities[name_city].color = color
                 display.recolor(color, name_city)

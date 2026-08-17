@@ -1,21 +1,20 @@
 {
-  "name": "Алдоанцк",
-  "mayor": "Даниил Ночной Александрович",
-  "population": 400,
-  "budget": 400000,
-  "monthly_expenses": 440000,
-  "is_capital": false,
-  "is_regional_capital": true,
-  "location":{
-    "x": 500,
-    "y": 280
-  },
-  "infrastructure": {
-
-  },
-  "nations": {
-    "Алдоанцы": 0.71,
-    "Великоземцы": 0.28,
-    "Чернешцы": 0.01
-  }
+    "name": "Алдоанцк",
+    "mayor": "Даниил Ночной Александрович",
+    "population": 400,
+    "budget": 400000,
+    "monthly_expenses": 440000,
+    "is_capital": false,
+    "is_regional_capital": true,
+    "location": {
+        "x": 500,
+        "y": 280
+    },
+    "infrastructure": {},
+    "nations": {
+        "Алдоанцы": 0.71,
+        "Великоземцы": 0.28,
+        "Чернешцы": 0.01
+    },
+    "products": 80000
 }
