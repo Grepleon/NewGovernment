@@ -20,7 +20,7 @@ class PlayManager(base_manager.Manager):
         self.map_buttons:list[str:button.Button] = []
         self.selected_map = config.selected_map
         self.button_time:Button|None = None
-        self.play = True
+        self.play = False
 
     def check_cities(self):
         flag = False
@@ -70,6 +70,8 @@ class PlayManager(base_manager.Manager):
                 map_button.on = False
 
     def check(self):
+        self.play = self.button_time.on
+
         for _button in self.buttons:
             if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 if self.display.fast_left_button_pressed:
@@ -80,8 +82,9 @@ class PlayManager(base_manager.Manager):
         self.check_cities()
         self.check_map()
         self.button_time.rewrite_text(self.game_state.year_to_str())
-        self.game_state.time += dt.timedelta(minutes=config.dtime)
-        self.game_state.ticks += 1
+        if self.play:
+            self.game_state.time += dt.timedelta(minutes=config.dtime)
+            self.game_state.ticks += 1
 
     def delete(self):
         for _button in self.buttons:

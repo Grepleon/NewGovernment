@@ -46,5 +46,4 @@ all_menu.checker()
 display.end()
 
 st.save(statistics, game_state)
-
 st.set_statistics(statistics)
