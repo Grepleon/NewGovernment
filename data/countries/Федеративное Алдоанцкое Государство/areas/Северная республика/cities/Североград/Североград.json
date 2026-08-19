@@ -3,12 +3,11 @@
     "mayor": "Виктор Северов Алексеевич",
     "population": 280,
     "budget": 2400000,
-    "monthly_expenses": 240000,
     "is_capital": false,
     "is_regional_capital": true,
     "location": {
         "x": 720,
-        "y": 75
+        "y": 70
     },
     "infrastructure": {},
     "nations": {
@@ -26,5 +25,6 @@
     "popular_ideas": {
         "left-right": -5,
         "freedom": 5
-    }
+    },
+    "autonomy": 25
 }

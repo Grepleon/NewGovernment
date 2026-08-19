@@ -3,7 +3,6 @@
     "mayor": "Василий Золотов Алексеевич",
     "population": 336,
     "budget": 2200000,
-    "monthly_expenses": 540000,
     "is_capital": false,
     "is_regional_capital": false,
     "location": {
@@ -26,5 +25,6 @@
     "popular_ideas": {
         "left-right": 6,
         "freedom": -6
-    }
+    },
+    "autonomy": 25
 }

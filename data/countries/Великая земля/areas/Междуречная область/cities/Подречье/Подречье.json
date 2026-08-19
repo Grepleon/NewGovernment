@@ -3,7 +3,6 @@
     "mayor": "Ольга Рыбова Николаевна",
     "population": 800,
     "budget": 400000,
-    "monthly_expenses": 130000,
     "is_capital": false,
     "is_regional_capital": false,
     "location": {
@@ -25,5 +24,6 @@
     "popular_ideas": {
         "left-right": -10,
         "freedom": -8
-    }
+    },
+    "autonomy": 25
 }

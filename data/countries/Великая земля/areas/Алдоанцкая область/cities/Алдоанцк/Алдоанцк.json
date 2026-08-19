@@ -3,7 +3,6 @@
     "mayor": "Даниил Ночной Александрович",
     "population": 400,
     "budget": 400000,
-    "monthly_expenses": 440000,
     "is_capital": false,
     "is_regional_capital": true,
     "location": {
@@ -26,5 +25,6 @@
     "popular_ideas": {
         "left-right": 5,
         "freedom": -7
-    }
+    },
+    "autonomy": 25
 }

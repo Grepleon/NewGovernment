@@ -3,7 +3,6 @@
     "mayor": "Антон Лисов Игнатьевич",
     "population": 3000,
     "budget": 28200000,
-    "monthly_expenses": 120000,
     "is_capital": true,
     "is_regional_capital": true,
     "location": {
@@ -27,5 +26,6 @@
     "popular_ideas": {
         "left-right": 9,
         "freedom": -6
-    }
+    },
+    "autonomy": 25
 }

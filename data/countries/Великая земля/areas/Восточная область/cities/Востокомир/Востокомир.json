@@ -3,7 +3,6 @@
     "mayor": "Мирослав Дубов Александрович",
     "population": 700,
     "budget": 2400000,
-    "monthly_expenses": 740000,
     "is_capital": false,
     "is_regional_capital": false,
     "location": {
@@ -26,5 +25,6 @@
     "popular_ideas": {
         "left-right": 5,
         "freedom": 3
-    }
+    },
+    "autonomy": 25
 }

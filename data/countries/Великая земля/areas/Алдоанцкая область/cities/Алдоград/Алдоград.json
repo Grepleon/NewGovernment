@@ -3,7 +3,6 @@
     "mayor": "Евгений Мудренов Федорович",
     "population": 72,
     "budget": 312000,
-    "monthly_expenses": 213000,
     "is_capital": false,
     "is_regional_capital": false,
     "location": {
@@ -25,5 +24,6 @@
     "popular_ideas": {
         "left-right": 0,
         "freedom": 0
-    }
+    },
+    "autonomy": 25
 }

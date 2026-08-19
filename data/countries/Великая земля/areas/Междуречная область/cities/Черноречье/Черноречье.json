@@ -3,7 +3,6 @@
     "mayor": "Давид Бородов Арамович",
     "population": 970,
     "budget": 500000,
-    "monthly_expenses": 70000,
     "is_capital": false,
     "is_regional_capital": false,
     "location": {
@@ -26,5 +25,6 @@
     "popular_ideas": {
         "left-right": -7,
         "freedom": -8
-    }
+    },
+    "autonomy": 25
 }
