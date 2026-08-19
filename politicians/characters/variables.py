@@ -14,6 +14,7 @@ import politicians.nation.base_nationality as bn
 from politicians.nation.base_nation import Nation
 from politicians.nation.ethnic_group import EthnicGroup
 from countries.cities.geography import Geography
+from politicians.policy.political_compass import PoliticalCompass
 
 characters = []
 
@@ -109,6 +110,10 @@ def get_cities(_file:str, area:str) -> dict[str:bc.City]:
                 data["geography"]["forests"],
                 data["geography"]["average_temperature"],
                 data["geography"]["purity"]
+            ),
+            PoliticalCompass(
+                data["popular_ideas"]["left-right"],
+                data["popular_ideas"]["freedom"]
             )
         )
 

@@ -13,7 +13,7 @@ class PoliticalCompass:
             return  "центрист"
         elif self.left_right <= 4:
             return  "либерал"
-        elif self.left_right <= 8:
+        elif self.left_right < 8:
             return  "консерватор"
         else:
             return  "ультраправый"
@@ -33,7 +33,42 @@ class PoliticalCompass:
             return  "либертарианец-"
         else:
             return  "анархист-"
-    
+
+    def left_right_str_name(self) -> str:
+        if self.left_right < -8:
+            return "коммунизм"
+        elif self.left_right <= -6:
+            return "социализм"
+        elif self.left_right <= -2:
+            return "социал-демократия"
+        elif self.left_right <= 1:
+            return "центризм"
+        elif self.left_right <= 4:
+            return "либерализм"
+        elif self.left_right < 8:
+            return "консерватизм"
+        else:
+            return "ультраправый"
+
+    def liberal_str_name(self) -> str:
+        if self.freedom <= -8:
+            return "тоталитаризм-"
+        elif self.freedom <= -5:
+            return "автократичный(ая) "
+        elif self.freedom <= -2:
+            return "этатизм-"
+        elif self.freedom <= 2:
+            return "умеренный(ая) "
+        elif self.freedom <= 5:
+            return "демократ-"
+        elif self.freedom <= 8:
+            return "либертарианец-"
+        else:
+            return "анархизм-"
+
+    def to_str_name(self):
+        return self.liberal_str_name() + self.left_right_str_name()
+
     def to_str(self) -> str:
         word1 = "некий"
         word2 = "некто"

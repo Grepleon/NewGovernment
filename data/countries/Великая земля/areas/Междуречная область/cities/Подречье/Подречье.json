@@ -21,5 +21,9 @@
         "forests": 0.25,
         "average_temperature": 24,
         "purity": 0.85
+    },
+    "popular_ideas": {
+        "left-right": -10,
+        "freedom": -8
     }
 }

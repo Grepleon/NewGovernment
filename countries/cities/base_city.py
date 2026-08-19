@@ -4,10 +4,11 @@ import countries.cities.infrastructure.buildings as buildings
 import hints.int_to_str as its
 import politicians.nation.ethnic_group as eg
 from countries.cities.geography import Geography
+from politicians.policy.political_compass import PoliticalCompass
 
 class City:
     def __init__(self, name, mayor, location, infrastructure, peoples, budget, nations,
-                 products, geography):
+                 products, geography, popular_ideas):
         self.name:str = name
         self.mayor:str = mayor
         self.location:loc.Location = location
@@ -17,6 +18,7 @@ class City:
         self.nations:dict[str:eg.EthnicGroup] = nations
         self.products = products
         self.geography:Geography = geography
+        self.popular_ideas:PoliticalCompass = popular_ideas
 
     def to_str(self):
         return (f"Город {self.name}:"
@@ -27,4 +29,5 @@ class City:
                 f"\nНаселение: {its.int_to_str(self.peoples * 1000)}"
                 f"\nПроизведено товаров и услуг: {its.int_to_str(self.products)}"
                 f"\nГеография: {self.geography.to_str()}"
+                f"\nПопулярные взгляды: {self.popular_ideas.to_str_name()}"
                 )
