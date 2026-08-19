@@ -20,7 +20,6 @@ def upload_populist_map(display:Display, game_state:GameState, cities):
                 freedom = log2(11 + city.popular_ideas.freedom) / log2(1 + max_val2)
 
                 color = lite(mix("#770000", "#000077", economic), int(freedom * 180))
-                print(color, city.name)
 
                 cities[name_city].color = color
                 display.recolor(color, name_city)

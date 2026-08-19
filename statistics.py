@@ -1,5 +1,6 @@
 from saves import Saves
 from time import time as timer
+import shutil, os
 
 class Statistics:
     def __init__(self,
@@ -23,7 +24,16 @@ class Statistics:
     def add_selected_politician(self, politician):
         self.count_politicians[politician] = self.count_politicians.get(politician, 0) + 1
 
+def check_first():
+    destination = r"data/statistics/"
+    source = r"data/statistics_recording/"
+    if not os.path.exists(destination):
+        shutil.copytree(source, destination)
+        print("Папка успешно скопирована")
+
 def get_statistics():
+    check_first()
+
     data_time = Saves("data/statistics/times.json").loaded_data
     data_counts = Saves("data/statistics/counts.json").loaded_data
     data_play_time = Saves("data/statistics/play_time.json").loaded_data
