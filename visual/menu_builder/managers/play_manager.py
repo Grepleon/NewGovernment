@@ -9,6 +9,7 @@ from hints.colors.lite import lite
 import visual.components.button as button
 from visual.tools.maps.upload_map import upload_map
 import datetime as dt
+import visual.tools.maps.specific_ethnic_map as sem
 
 class PlayManager(base_manager.Manager):
     def __init__(self, display, buttons, id_objects, game_state:game_states.GameState):
@@ -17,10 +18,11 @@ class PlayManager(base_manager.Manager):
         self.hint = None
         self.flag_del = False
         self.id_cities:dict[str:VisualObjectCity] = []
-        self.map_buttons:list[str:button.Button] = []
+        self.map_buttons:list[str:Button] = []
         self.selected_map = config.selected_map
         self.button_time:Button|None = None
         self.play = False
+        self.additional_buttons_map:list[Button] = []
 
     def check_cities(self):
         flag = False
@@ -62,12 +64,23 @@ class PlayManager(base_manager.Manager):
         for map_button in self.map_buttons:
             if map_button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 if self.display.fast_left_button_pressed:
-                    self.selected_map = map_button.name
-                    upload_map(self.selected_map, self.display, self.game_state, self.id_cities)
+                    if (map_button.name not in self.game_state.nations or
+                                config.specific_ethnic_map == self.selected_map or
+                                        self.selected_map in self.game_state.nations):
+                        self.selected_map = map_button.name
+                        upload_map(self.selected_map, self.display, self.game_state, self.id_cities)
 
         for map_button in self.map_buttons:
             if map_button.on and map_button.name != self.selected_map:
                 map_button.on = False
+
+    def ethno_button_check(self):
+        if config.specific_ethnic_map == self.selected_map or self.selected_map in self.game_state.nations:
+            for _button in self.additional_buttons_map:
+                _button.show()
+        else:
+            for _button in self.additional_buttons_map:
+                _button.hide()
 
     def check(self):
         self.play = self.button_time.on
@@ -85,6 +98,7 @@ class PlayManager(base_manager.Manager):
         if self.play:
             self.game_state.time += dt.timedelta(minutes=config.dtime)
             self.game_state.ticks += 1
+        self.ethno_button_check()
 
     def delete(self):
         for _button in self.buttons:

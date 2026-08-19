@@ -14,12 +14,15 @@ def upload_ethnic_map(display:Display, game_state:GameState, cities, ethnos):
             area = country.areas[name_area]
             for name_city in area.cities:
                 city = area.cities[name_city]
-                most_nation = city.nations.get(ethnos, get_null(ethnos))
+                most_nation = get_null(ethnos)
+                for ethno in city.nations:
+                    if ethno.nation == ethnos:
+                        most_nation = ethno
                 value = log2(1 + max(int(most_nation.count * 100), 0)) / log2(1 + max_val) - 0.85
-                color = lite(game_state.nations[most_nation.nation].color, int(2 * value * 250))
+                color = lite(game_state.nations[most_nation.nation].color, int(value * 220 + 10))
                 cities[name_city].color = color
                 display.recolor(color, name_city)
                 display.recolor(lite(color, -120), name_city + config.pref_text_city)
                 display.recolor(lite(color, -120), name_city + config.pref_text_area)
                 display.recolor(lite(color, -120), name_city + config.pref_text_country)
-                display.recolor(color, name_city + config.pref_text_null)
+                display.recolor(game_state.nations[most_nation.nation].color, name_city + config.pref_text_null)

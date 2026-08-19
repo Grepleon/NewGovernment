@@ -46,6 +46,7 @@ def get_menu(display, game_state:game_states.GameState):
                           game_state.year_to_str(), display.add_id(), display))
     year = buttons[-1]
     map_buttons = []
+    additional_buttons_map = []
 
     for index in range(config.quantity_buttons_map):
         map_buttons.append(
@@ -64,7 +65,30 @@ def get_menu(display, game_state:game_states.GameState):
                 name=config.texts_buttons_map[index]
             )
         )
+
+    for index, ethnos in enumerate(game_state.nations):
+        additional_buttons_map.append(
+            Button(
+                config.coordinates_button_map[0] + config.distance_button_map[0] * index + config.size_button_map[0]
+                + config.distance_button_map_x,
+                config.coordinates_button_map[1] + config.distance_button_map[1] * index + config.size_button_map[1],
+                config.coordinates_button_map[0] + config.distance_button_map[0] * index
+                + config.distance_button_map_x,
+                config.coordinates_button_map[1] + config.distance_button_map[1] * index,
+                config.base_off_button_color,
+                config.base_off_bg_button_color,
+                config.base_on_button_color,
+                config.base_on_bg_button_color,
+                ethnos,
+                display.add_id(),
+                display,
+                name=ethnos
+            )
+        )
+
     buttons += map_buttons
+    buttons += additional_buttons_map
+    map_buttons += additional_buttons_map
     new_hint = hint.Hint(-1, -1, config.base_off_button_color, config.base_off_bg_button_color,
                          "", display.add_id(), display)
     buttons.append(new_hint)
@@ -80,5 +104,6 @@ def get_menu(display, game_state:game_states.GameState):
     play_manager.id_cities = dict_cities
     play_manager.map_buttons = map_buttons
     play_manager.button_time = year
+    play_manager.additional_buttons_map = additional_buttons_map
 
     return play_manager

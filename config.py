@@ -78,3 +78,6 @@ pref_text_area = os.getenv("PREFTEXTLINEAREA", "-A")
 pref_text_country = os.getenv("PREFTEXTLINECOUNTRY", "-C")
 pref_text_city = os.getenv("PREFTEXTLINECITY", "-ct")
 pref_text_null = os.getenv("PREFTEXTLINENULL", "-N")
+
+specific_ethnic_map = os.getenv("SPECIFICETHNICMAP", "Этническая карта")
+distance_button_map_x = int(os.getenv("DISTANCEBUTTONSMAPX"))

@@ -14,6 +14,7 @@ from visual.tools.maps.climate_map import upload_climate_map
 from visual.tools.maps.climate_map import upload_climate_map
 from visual.tools.maps.populist_map import upload_populist_map
 from visual.tools.maps.autonomy_map import upload_autonomy_map
+from visual.tools.maps.specific_ethnic_map import upload_ethnic_map as upload_specific_ethnic_map
 
 map_tools:dict = {
     "Областная карта": upload_regional_map,
@@ -29,5 +30,8 @@ map_tools:dict = {
 }
 
 def upload_map(name_map, display:Display, game_state:GameState, area_cities):
-    map_tools[name_map](display, game_state, area_cities)
     game_state.statistics.maps_choose[name_map] = game_state.statistics.maps_choose.get(name_map, 0) + 1
+    if name_map in game_state.nations:
+        upload_specific_ethnic_map(display, game_state, area_cities, name_map)
+        return
+    map_tools[name_map](display, game_state, area_cities)
