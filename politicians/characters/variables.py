@@ -136,6 +136,7 @@ def get_areas(_file:str) -> dict[str:ba.Area]:
             data["governor"],
             data["costs"],
             data["budget"],
+            data["autonomy"],
             data["color"]
         )
 

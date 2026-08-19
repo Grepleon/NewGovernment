@@ -25,9 +25,9 @@ def c_add_to_cities(_file:str, area:str, key, val) -> dict[str:bc.City]:
 
     for file in files:
         data = saves.Saves(folder + get_country_json_file(file))
-        data.loaded_data[key]["freedom"] = int(data.loaded_data["geography"]["average_temperature"] // 2)
+        data.loaded_data[key] = val
         #data.loaded_data["location"]["y"] += 50
-        print(data.loaded_data[key])
+        del data.loaded_data["autonomy"]
         data.save()
 
 
@@ -41,8 +41,10 @@ def a_add_to_cities(_file:str, key, val) -> dict[str:ba.Area]:
     print(files)
 
     for file in files:
-        data:dict = saves.Saves(folder + get_country_json_file(file)).loaded_data
-        cities = c_add_to_cities(folder + file + "/", data["name"] + "/", key, val)
+        data = saves.Saves(folder + get_country_json_file(file))
+        cities = c_add_to_cities(folder + file + "/", data.loaded_data["name"] + "/", key, val)
+        data.loaded_data[key] = val
+        data.save()
 
 
     return areas

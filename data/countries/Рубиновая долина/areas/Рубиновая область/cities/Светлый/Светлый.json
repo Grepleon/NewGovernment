@@ -24,7 +24,7 @@
         "purity": 0.85
     },
     "popular_ideas": {
-        "left-right": 3,
+        "left-right": -5,
         "freedom": 5
     }
 }

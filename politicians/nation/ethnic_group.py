@@ -8,3 +8,6 @@ class EthnicGroup:
 
     def to_str(self):
         return f"{self.nation}: {its.int_to_str(int(self.count * 100))}%"
+
+def get_null(name):
+    return EthnicGroup(name, 0)

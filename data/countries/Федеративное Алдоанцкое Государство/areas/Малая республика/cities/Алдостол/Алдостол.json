@@ -12,8 +12,9 @@
     },
     "infrastructure": {},
     "nations": {
-        "Алдоанцы": 0.71,
-        "Великоземцы": 0.29
+        "Алдоанцы": 0.41,
+        "Великоземцы": 0.29,
+        "Вреконы": 0.3
     },
     "products": 838000,
     "geography": {
@@ -23,7 +24,7 @@
         "purity": 0.85
     },
     "popular_ideas": {
-        "left-right": 5,
+        "left-right": -3,
         "freedom": 7
     }
 }

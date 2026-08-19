@@ -62,7 +62,7 @@ class PoliticalCompass:
         elif self.freedom <= 5:
             return "демократ-"
         elif self.freedom <= 8:
-            return "либертарианец-"
+            return "либертарианство-"
         else:
             return "анархизм-"
 

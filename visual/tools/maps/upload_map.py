@@ -13,6 +13,7 @@ from visual.tools.maps.physical_map import upload_physical_map
 from visual.tools.maps.climate_map import upload_climate_map
 from visual.tools.maps.climate_map import upload_climate_map
 from visual.tools.maps.populist_map import upload_populist_map
+from visual.tools.maps.autonomy_map import upload_autonomy_map
 
 map_tools:dict = {
     "Областная карта": upload_regional_map,
@@ -24,6 +25,7 @@ map_tools:dict = {
     "Этническая карта": upload_ethnic_map,
     "Климатическая карта": upload_climate_map,
     "Популистская карта": upload_populist_map,
+    "Карта автономности": upload_autonomy_map,
 }
 
 def upload_map(name_map, display:Display, game_state:GameState, area_cities):
