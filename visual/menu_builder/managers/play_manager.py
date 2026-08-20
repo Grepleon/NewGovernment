@@ -35,7 +35,7 @@ class PlayManager(base_manager.Manager):
             if city.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 flag = True
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
-                self.hint.rewrite_text(city.area.to_str() + "\n" + "\n" + city.city.to_str())
+                self.hint.rewrite_text(city.country.to_str() + "\n" + "\n" + city.area.to_str() + "\n" + "\n" + city.city.to_str())
                 self.hint.recolor(lite(city.area.color, 40), lite(city.area.color, -120))
                 area = city.area
                 object_city = city
@@ -58,7 +58,7 @@ class PlayManager(base_manager.Manager):
             self.hint.hide()
         else:
             self.hint.show()
-            self.hint.display_object(7)
+            self.hint.display_object(7, 16)
 
     def check_map(self):
         for map_button in self.map_buttons:

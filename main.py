@@ -21,7 +21,7 @@ def create_politicians() -> dict[str:path_politician.Politician]:
     return _politicians
 
 politicians = create_politicians()
-all_countries = variables_country()
+all_countries, all_areas = variables_country()
 nations = variables_nations()
 
 game_state = game_states.GameState(
@@ -33,6 +33,7 @@ game_state = game_states.GameState(
                 ), 0,
     None,
     politicians,
+    all_areas,
     all_countries,
     nations,
     statistics

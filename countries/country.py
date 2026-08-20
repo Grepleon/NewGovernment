@@ -28,6 +28,13 @@ class Country:
         self.color = color
 
     def to_str(self):
+        """
+        можно будет потом еще добавить регионы
+        f"\nРегионы:\n" +
+"\n".join(["- " + self.areas[area].name + ':\n' + "\n".join(['-- ' +
+self.areas[area].cities[city].name for city in self.areas[area].cities]) for area in self.areas])
+        """
+
         return (f"Государство \"{self.name}\":"
                 f"\nСтолица: {self.name_capital}"
                 f"\nПравитель: {self.president}"
@@ -41,10 +48,9 @@ class Country:
                 f"\n- министр юстиций: {self.ministry_of_justice}"
                 f"\n- глава ЦБ: {self.head_of_cb}"
                 f"\nБюджет: {int_to_str(self.budget)}"
-                f"\nРегионы:\n" +
-                "\n".join(["- " + self.areas[area].name + ':\n' + "\n".join(['-- ' +
-                self.areas[area].cities[city].name for city in self.areas[area].cities]) for area in self.areas])
                 )
+
+
 
 if __name__ == "__main__":
     print(Country("Государственное государство", "Государственная столица",

@@ -143,8 +143,9 @@ def get_areas(_file:str) -> dict[str:ba.Area]:
 
     return areas
 
-def variables_country() -> dict[str:country.Country]:
+def variables_country() -> tuple[dict[str:country.Country], dict[str:ba.Area]]:
     returned_countries: dict[str:country.Country] = {}
+    returned_areas: dict[str:ba.Area] = {}
 
     folder = "data/countries/"
     files = os.listdir(folder)
@@ -171,7 +172,9 @@ def variables_country() -> dict[str:country.Country]:
             data["color"]
         )
 
-    return returned_countries
+        returned_areas = returned_areas | areas
+
+    return returned_countries, returned_areas
 
 def variables_nations() -> dict[str:Nation]:
     nations:dict[str:Nation] = {}
