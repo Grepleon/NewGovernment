@@ -81,3 +81,5 @@ pref_text_null = os.getenv("PREFTEXTLINENULL", "-N")
 
 specific_ethnic_map = os.getenv("SPECIFICETHNICMAP", "Этническая карта")
 distance_button_map_x = int(os.getenv("DISTANCEBUTTONSMAPX"))
+
+tools_text_coord = [int(coord) for coord in os.getenv("TOOLSTEXTCOORD").split()]

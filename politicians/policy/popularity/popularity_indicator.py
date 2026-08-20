@@ -73,6 +73,13 @@ class Popularity:
                 f"\n- рейтинг с элитами: {self.total()}%"
                 f"\nстатусы: {", ".join(self.get_str_status())}")
 
+    def to_str2(self) -> str:
+        return (
+                    f"{self.get_avg_status()}:"
+                    f"\n- суммарный рейтинг: {self.peoples_total()}%"
+                    f"\n- рейтинг с элитами: {self.total()}%"
+                )
+
     def get_avg_status(self) -> str:
         avg = self.peoples_total()
         if avg >= 80:

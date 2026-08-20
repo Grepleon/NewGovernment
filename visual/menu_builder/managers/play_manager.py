@@ -23,6 +23,9 @@ class PlayManager(base_manager.Manager):
         self.button_time:Button|None = None
         self.play = False
         self.additional_buttons_map:list[Button] = []
+        self.info_text = None
+        self.tools_texts = None
+        self.tools_button = None
 
     def check_cities(self):
         flag = False
@@ -35,7 +38,7 @@ class PlayManager(base_manager.Manager):
             if city.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 flag = True
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
-                self.hint.rewrite_text(city.country.to_str() + "\n" + "\n" + city.area.to_str() + "\n" + "\n" + city.city.to_str())
+                self.hint.rewrite_text(city.area.to_str() + "\n" + "\n" + city.city.to_str())
                 self.hint.recolor(lite(city.area.color, 40), lite(city.area.color, -120))
                 area = city.area
                 object_city = city
@@ -98,7 +101,10 @@ class PlayManager(base_manager.Manager):
         if self.play:
             self.game_state.time += dt.timedelta(minutes=config.dtime)
             self.game_state.ticks += 1
+        self.info_text.rewrite_text(self.game_state.selected_politician.to_str2())
+        self.info_text.display_object(7)
         self.ethno_button_check()
+
 
     def delete(self):
         for _button in self.buttons:

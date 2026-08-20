@@ -69,3 +69,8 @@ class Support:
                 f"- итоговая помощь: {self.total()}%\n" +
                 f"статусы: {", ".join(self.to_status())}"
                 )
+
+    def to_str2(self):
+        return (f"{self.to_str_name()}:\n"
+                f"- итоговая помощь: {self.total()}%"
+                )

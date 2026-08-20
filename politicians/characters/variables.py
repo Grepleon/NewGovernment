@@ -64,6 +64,7 @@ def variable_characters() -> dict[str:pol.Politician]:
             bn.Nationality(
                 data_pol["nationality"]
             ),
+            data_pol["political_hour"],
             data_pol["party"],
             data_pol["nickname"],
             data_pol["bio"]

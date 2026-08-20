@@ -25,7 +25,7 @@ def str_years(year):
 class Politician:
     def __init__(self, name, year, political_compass, characteristics, money, alive, at_large,
                  position, popularity, support, mind, old_age, track, location, citizenship,
-                 place_of_residence, nationality:base_nationality.Nationality,
+                 place_of_residence, nationality:base_nationality.Nationality, political_hour,
                  name_party=None, nickname=None, bio=None):
         self.name:str = name
         self.nickname:str = nickname # псевдоним, None - его нет
@@ -48,6 +48,7 @@ class Politician:
         self.citizenship:list[str] = citizenship
         self.place_of_residence:list[str] = place_of_residence
         self.nationality:base_nationality.Nationality = nationality
+        self.political_hour = political_hour
 
     def to_briefly_str(self):
         return (f"{self.name}" + ("" if self.nickname is None else f" ({self.nickname})") +
@@ -110,7 +111,26 @@ class Politician:
                 f"\n".join(['- ' + char.to_str().lower() for char in self.characteristics]) +
                 f"\n{self.popularity.to_str()}"
                 f"\n{self.support.to_str()}"
+                f"\nПолитических часов: {self.political_hour}"
                 f"{"" if self.bio is None else '\nБиография: ' + self.bio}")
+
+    def to_str2(self) -> str:
+        return (f"{self.name}" + ("" if self.nickname is None else f" ({self.nickname})") +
+                f"\n{self.political_compass.to_str()}" +
+                f"\nВозраст: {self.year} {str_years(self.year)}\n"
+                f"Статус: {'жив' if self.alive else 'мертв'},"
+                f" {"на свободе" if self.at_large else "сидит в тюрьме"}\n"
+                f"Должность: {self.position.name}\n"
+                f"{"Не с" if self.name_party is None else "С"}остоит "
+                f"в партии{"" if self.name_party is None else " " + str(self.name_party)}\n"
+                f"Национальность: {self.nationality.to_str()}\n"
+                f"Денег: {int_to_str(self.money)}\n" +
+                "Характеристики:\n- " +
+                f", ".join([char.name.lower() for char in self.characteristics]) +
+                f"\n{self.popularity.to_str2()}"
+                f"\n{self.support.to_str2()}"
+                f"\nПолитических часов: {self.political_hour}"
+                )
 
     def new_month(self):
         for char in self.characteristics:
@@ -168,7 +188,7 @@ if __name__ == "__main__":
                         pi.Popularity(50, 60, 70, 90, 80, 0),
                             p_support.Support(90, 50, 99, 15, 15),
                             100, 60, 0, "Москва", ["СССР"],
-                            ["Москва", "Ленинград"], base_nationality.Nationality("русский"),
+                 ["Москва", "Ленинград"], base_nationality.Nationality("русский"), 100,
                       "Большевики", "Ленин", "устроил революцию в РИ")
 
     print(politician.to_str())
