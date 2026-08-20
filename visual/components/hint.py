@@ -71,8 +71,10 @@ class Hint(b_object.BaseObject):
             dy *= -1
             out_y *= -1
 
-        if self.y + dy + self.out_y > config.height or self.y + dy + self.out_y < 0:
-            dy = 15
+        if self.y + dy + out_y > config.height or out_y + dy + self.y < 0:
+            self.y = 5
+            dy *= -1
+            out_y *= -1
 
         self.display.rewrite_text(self.text, self.object_id + self.pref_text)
         self.display.move_to_coord(self.object_id, self.x + out_x, self.y + out_y,
