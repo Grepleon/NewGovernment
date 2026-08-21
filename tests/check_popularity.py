@@ -46,11 +46,21 @@ for area_name in all_areas:
         min_p = 0
         for pol in politicians:
             polt = politicians[pol]
-            print(polt.name, "в городе", city_name, ":", city.vote(polt))
-            sum_p += city.vote(polt)
+            val = city.vote(polt)
+            print(polt.name, "в городе", city_name, ":", val)
             if city.vote(polt) < min_p:
-                min_p = city.vote(polt)
+                min_p = val
         print(f"ГОРОД {city_name}:")
         for pol in politicians:
             polt = politicians[pol]
-            print(f"- {polt.name}: {(-min_p + city.vote(polt)) / sum_p * 100}%")
+            val = city.vote(polt) - min_p
+            if polt.name_party == "Единство":
+                val *= 1.25
+            sum_p += val
+        for pol in politicians:
+            polt = politicians[pol]
+            val = city.vote(polt) - min_p
+            if polt.name_party == "Единство":
+                val *= 1.25
+            polt = politicians[pol]
+            print(f"- {polt.name}: {val / sum_p * 100}%")
