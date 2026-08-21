@@ -1,0 +1,48 @@
+{
+    "name": "Карл Марков Алексеевич",
+    "nickname": "Последний коммунист",
+    "year": 41,
+    "position": "blogger",
+    "alive": true,
+    "at_large": true,
+    "political_compass": {
+      "left-right": -8,
+      "freedom": -10
+    },
+    "money": 211000,
+    "party": "КОММУНИЗМ",
+    "characteristics": [
+        "good_health",
+        "charisma",
+        "generosity"
+    ],
+    "popularity": {
+        "youth": 17,
+        "middle-aged": 47,
+        "elderly": 97,
+        "in_power": 40,
+        "poor": 97,
+        "rich": 21
+    },
+    "support": {
+        "media": 92,
+        "oligarchs": 0,
+        "military": 0,
+        "foreign": 21,
+        "religious": 0
+    },
+    "track": 0,
+    "mind": 100,
+    "old_age": 80,
+    "citizenship": [
+        "Великая Земля"
+    ],
+    "place_of_residence": [
+        "Междуречная область, Черноречье"
+    ],
+    "nationality": "великоземец",
+    "location": "Междуречная область, Черноречье",
+    "political_hour": 120,
+    "reputation": 91,
+    "bio": "Родился в 2002 году в Черноречье. Тамже он и узнал об идеях коммунизма, после чего начал снимать пропагандисткие ролики про коммунизм из-за чего и стал он популярным."
+}

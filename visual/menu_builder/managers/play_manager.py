@@ -101,8 +101,7 @@ class PlayManager(base_manager.Manager):
         if self.play:
             self.game_state.time += dt.timedelta(minutes=config.dtime)
             self.game_state.ticks += 1
-        self.info_text.rewrite_text(self.game_state.selected_politician.to_str2())
-        self.info_text.display_object(7)
+
         self.ethno_button_check()
 
 

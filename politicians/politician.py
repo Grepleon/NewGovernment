@@ -26,6 +26,7 @@ class Politician:
     def __init__(self, name, year, political_compass, characteristics, money, alive, at_large,
                  position, popularity, support, mind, old_age, track, location, citizenship,
                  place_of_residence, nationality:base_nationality.Nationality, political_hour,
+                 reputation,
                  name_party=None, nickname=None, bio=None):
         self.name:str = name
         self.nickname:str = nickname # псевдоним, None - его нет
@@ -49,6 +50,7 @@ class Politician:
         self.place_of_residence:list[str] = place_of_residence
         self.nationality:base_nationality.Nationality = nationality
         self.political_hour = political_hour
+        self.reputation = reputation
 
     def to_briefly_str(self):
         return (f"{self.name}" + ("" if self.nickname is None else f" ({self.nickname})") +

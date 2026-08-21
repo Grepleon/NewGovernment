@@ -5,6 +5,7 @@ import hints.int_to_str as its
 import politicians.nation.ethnic_group as eg
 from countries.cities.geography import Geography
 from politicians.policy.political_compass import PoliticalCompass
+from politicians.politician import Politician
 
 class City:
     def __init__(self, name, mayor, location, infrastructure, peoples, budget, nations,
@@ -31,3 +32,12 @@ class City:
                 f"\nГеография: {self.geography.to_str()}"
                 f"\nПопулярные взгляды: {self.popular_ideas.to_str_name()}"
                 )
+
+    def vote(self, politician: Politician):
+        x1 = self.popular_ideas.left_right
+        x2 = politician.political_compass.left_right
+        y1 = self.popular_ideas.freedom
+        y2 = politician.political_compass.freedom
+        distance = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
+        fine_distance = distance ** 1.5
+        return politician.popularity.peoples_total() * politician.reputation ** 2 * (100 - fine_distance) / 100

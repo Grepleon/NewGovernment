@@ -1,2 +1,1 @@
-import generator.add_to_cities as atc
-atc.add_to_cities("autonomy", 25)
+import tests.check_popularity

@@ -90,16 +90,7 @@ def get_menu(display, game_state:game_states.GameState):
 
     tools_button = []
     tools_texts = []
-    info_text = hint.Hint(
-             config.tools_text_coord[0],
-             config.tools_text_coord[1],
-             config.base_off_button_color,
-             config.base_off_bg_button_color,
-             "",
-             display.add_id(),
-             display
-        )
-    tools_texts.append(info_text)
+    info_text = None
 
     buttons += tools_button
     buttons += tools_texts
