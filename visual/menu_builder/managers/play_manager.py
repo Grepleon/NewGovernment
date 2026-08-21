@@ -1,3 +1,4 @@
+from hints.int_to_str import int_to_str
 from visual.components.button import Button
 from visual.components.city import VisualObjectCity
 import visual.menu_builder.managers.manager as base_manager
@@ -38,7 +39,13 @@ class PlayManager(base_manager.Manager):
             if city.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 flag = True
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
-                self.hint.rewrite_text(city.area.to_str() + "\n" + "\n" + city.city.to_str())
+                self.hint.rewrite_text(
+                    city.area.to_str()
+                    + "\n" + "\n" +
+                    city.city.to_str()
+                    + "\n" +
+                    f"Ваша популярность: {int_to_str(int(city.city.vote(self.game_state.selected_politician)))}"
+                )
                 self.hint.recolor(lite(city.area.color, 40), lite(city.area.color, -120))
                 area = city.area
                 object_city = city

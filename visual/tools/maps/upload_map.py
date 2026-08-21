@@ -13,6 +13,7 @@ from visual.tools.maps.physical_map import upload_physical_map
 from visual.tools.maps.climate_map import upload_climate_map
 from visual.tools.maps.climate_map import upload_climate_map
 from visual.tools.maps.populist_map import upload_populist_map
+from visual.tools.maps.popularity_map import upload_popularity_map
 from visual.tools.maps.autonomy_map import upload_autonomy_map
 from visual.tools.maps.specific_ethnic_map import upload_ethnic_map as upload_specific_ethnic_map
 
@@ -26,6 +27,7 @@ map_tools:dict = {
     "Этническая карта": upload_ethnic_map,
     "Климатическая карта": upload_climate_map,
     "Популистская карта": upload_populist_map,
+    "Карта популярности": upload_popularity_map,
     "Карта автономности": upload_autonomy_map,
 }
 

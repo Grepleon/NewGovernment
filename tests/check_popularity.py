@@ -37,7 +37,30 @@ game_state = game_states.GameState(
     None
 )
 
+sum = 0
+for pol in ["Карл Марков Алексеевич", "Антон Кулаков Викторович"]:
+    points = 0
+    for area_name in all_areas:
+        area = all_areas[area_name]
+        for city_name in area.cities:
+            city = area.cities[city_name]
+            polt = politicians[pol]
+            points += city.vote(polt) * city.peoples / 1000 * (1 if polt.name_party == "Единство" else 1)
+    print(pol, points)
+    sum += points
 
+for pol in ["Карл Марков Алексеевич", "Антон Кулаков Викторович"]:
+    points = 0
+    for area_name in all_areas:
+        area = all_areas[area_name]
+        for city_name in area.cities:
+            city = area.cities[city_name]
+            polt = politicians[pol]
+            points += city.vote(polt) * city.peoples / 1000 * (1 if polt.name_party == "Единство" else 1)
+    print(pol, points / sum * 100, "%")
+
+
+"""
 for area_name in all_areas:
     area = all_areas[area_name]
     for city_name in area.cities:
@@ -64,3 +87,4 @@ for area_name in all_areas:
                 val *= 1.25
             polt = politicians[pol]
             print(f"- {polt.name}: {val / sum_p * 100}%")
+"""
