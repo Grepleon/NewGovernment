@@ -1,9 +1,7 @@
 {
-    "selected_politician": {
-
-    },
-    "launches": 0,
-    "maps_choose": {
+    "max_points": 0,
+    "votes": 0,
+    "winners": {
 
     }
 }
