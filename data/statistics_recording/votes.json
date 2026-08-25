@@ -1,4 +1,7 @@
 {
-  "votes": 0,
-  "winners": []
+    "max_points": 0,
+    "votes": 0,
+    "winners": {
+
+    }
 }
