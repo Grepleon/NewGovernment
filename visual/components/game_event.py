@@ -51,5 +51,24 @@ class GameEvent(BaseObject):
         self.display.create_text(self.x1 / 2 + self.x2 / 2,
             (self.y2 + (- self.out - self.size_button) * self.quantity_buttons
                                  - self.out - self.out * self.quantity_buttons + self.y1) / 2,
-                                 self.text, self.color)
+                                 self.text, self.color, self.object_id)
 
+    def mouse_into_object(self, mx, my):
+        return True
+
+    def mouse_clicked_object(self):
+        for _button in self.buttons:
+            if _button.on:
+                self.hide()
+                return True
+        return False
+
+    def hide(self):
+        self.display.hide(self.object_id)
+        for _button in self.buttons:
+            _button.hide()
+
+    def show(self):
+        self.display.show(self.object_id)
+        for _button in self.buttons:
+            _button.show()

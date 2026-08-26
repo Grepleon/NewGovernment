@@ -26,6 +26,7 @@ def get_menu(display):
 
     test_event = ge.GameEvent(50, 50, 1150, 550, 10, 4, 50, ["Тест-1", "тест-2", "Сюда жми", "Тест-4"], "#00ff00", "#003300", "#00ff33", "#006600", "Супер ивент жми куда \n хочешь уу шесть семь", "СУПЕР", display)
     buttons += test_event.buttons
+    buttons.append(test_event)
 
     noice = path_noice.Noice(display.add_id(), display)
     noice.display_object()
