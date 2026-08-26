@@ -1,5 +1,3 @@
-from lib2to3.btm_utils import token_labels
-
 import visual.menu_builder.managers.play_manager as manager
 import visual.components.noice as path_noice
 import mainloop.game_states as game_states

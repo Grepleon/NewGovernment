@@ -27,6 +27,7 @@ class PlayManager(base_manager.Manager):
         self.info_text = None
         self.tools_texts = None
         self.tools_button = None
+        self.game_event = None
 
     def check_cities(self):
         flag = False
