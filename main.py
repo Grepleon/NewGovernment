@@ -31,7 +31,7 @@ game_state = game_states.GameState(
                 config.first_year[3],
                 config.first_year[4]
                 ), 0,
-    None,
+    politicians["NULL"],
     politicians,
     all_areas,
     all_countries,

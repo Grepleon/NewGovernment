@@ -1,51 +1,46 @@
 {
-    "name": "Алексей Бабочкин Федорович",
-    "nickname": "Железный Фриц",
-    "year": 65,
-    "position": "president",
+    "name": "NULL",
+    "nickname": "Noname",
+    "year": 0,
+    "position": "unemployed",
     "alive": true,
     "at_large": true,
     "political_compass": {
-      "left-right": 5,
-      "freedom": -7
+      "left-right": 0,
+      "freedom": 0
     },
-    "money": 427000,
-    "party": "Единство",
+    "money": 0,
+    "party": null,
     "characteristics": [
-        "paranoia",
-        "charisma",
-        "erudition",
-        "vindictiveness"
+
     ],
     "popularity": {
-        "youth": 30,
-        "middle-aged": 60,
-        "elderly": 90,
-        "in_power": 100,
-        "poor": 60,
-        "rich": 82
+        "youth": 0,
+        "middle-aged": 0,
+        "elderly": 0,
+        "in_power": 0,
+        "poor": 0,
+        "rich": 0
     },
     "support": {
-        "media": 60,
-        "oligarchs": 80,
-        "military": 96,
-        "foreign": 15,
-        "religious": 80
+        "media": 0,
+        "oligarchs": 0,
+        "military": 0,
+        "foreign": 0,
+        "religious": 0
     },
-    "track": 4,
-    "mind": 120,
-    "old_age": 79,
+    "track": 0,
+    "mind": 100,
+    "old_age": 80,
     "citizenship": [
-        "Великая Земля"
+
     ],
     "place_of_residence": [
-        "Техноградская область, Техноград",
-        "Техноградская область, Инноград",
-        "Междуречная область, Междуречье"
+
     ],
-    "nationality": "великоземец",
-    "location": "Техноградская область, Техноград",
-    "political_hour": 50,
-    "reputation": 83,
-    "bio": "Родился в 1988 году в столице. В 2018 году возглавил парту Единство.\nС 2028 года занимает пост президента"
+    "nationality": "неизвестно",
+    "location": "Неизвестная область, Неизвестно",
+    "political_hour": 300,
+    "reputation": 100,
+    "bio": null
 }

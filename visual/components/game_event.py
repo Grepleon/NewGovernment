@@ -62,10 +62,12 @@ class GameEvent(BaseObject):
         return True
 
     def mouse_clicked_object(self):
-        for _button in self.buttons:
+        for i, _button in enumerate(self.buttons):
+            if i == self.show_buttons:
+                break
             if _button.on:
                 self.hide()
-                return True
+                return i
         return False
 
     def hide(self):
