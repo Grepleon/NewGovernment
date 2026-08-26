@@ -40,4 +40,4 @@ class City:
         y2 = politician.political_compass.freedom
         distance = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
         fine_distance = distance ** 1.5
-        return politician.popularity.peoples_total() * politician.reputation ** 2 * (100 - fine_distance) / 100
+        return politician.popularity.peoples_total() * politician.reputation ** 1.5 * (100 - fine_distance) / 100

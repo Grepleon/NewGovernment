@@ -11,6 +11,7 @@ import visual.components.button as button
 from visual.tools.maps.upload_map import upload_map
 import datetime as dt
 import visual.tools.maps.specific_ethnic_map as sem
+from countries.inter_city.inter_to_str import inter_to_str
 
 class PlayManager(base_manager.Manager):
     def __init__(self, display, buttons, id_objects, game_state:game_states.GameState):
@@ -45,7 +46,7 @@ class PlayManager(base_manager.Manager):
                     + "\n" + "\n" +
                     city.city.to_str()
                     + "\n" +
-                    f"Ваша популярность: {int_to_str(int(city.city.vote(self.game_state.selected_politician)))}"
+                    inter_to_str(city.country, city.area, city.city, self.game_state.selected_politician)
                 )
                 self.hint.recolor(lite(city.area.color, 40), lite(city.area.color, -120))
                 area = city.area

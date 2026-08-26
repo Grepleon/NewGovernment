@@ -5,7 +5,7 @@ import config
 from math import log2
 
 def upload_popularity_map(display:Display, game_state:GameState, cities):
-    max_val = 1000000 / 100000
+    max_val = 100000 / 100000
 
     for name_country in game_state.countries:
         country = game_state.countries[name_country]
