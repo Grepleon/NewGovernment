@@ -6,6 +6,8 @@ import config
 import visual.components.city as comp_city
 from visual.components.area import *
 from visual.components.button import Button
+from visual.components.game_event import GameEvent
+
 
 def get_menu(display, game_state:game_states.GameState):
     buttons = []
@@ -103,6 +105,27 @@ def get_menu(display, game_state:game_states.GameState):
     noice = path_noice.Noice(display.add_id(), display)
     noice.display_object()
 
+    game_event = GameEvent(config.coord_game_event[0],
+                           config.coord_game_event[1],
+                           config.coord_game_event[2],
+                           config.coord_game_event[3],
+                           config.out_game_event,
+                           5,
+                           1,
+                           config.size_buttons_event,
+                           ["Начать игру", "", "", "", ""],
+                           config.base_off_button_color,
+                           config.base_off_bg_button_color,
+                           config.base_on_button_color,
+                           config.base_on_bg_button_color,
+                           "Приятной игры!",
+                           display.add_id(),
+                           display
+    )
+
+
+    buttons += game_event.buttons
+    buttons.append(game_event)
     buttons.append(noice)
 
     play_manager = manager.PlayManager(display, buttons, id_objects_in_main_menu, game_state)

@@ -5,8 +5,8 @@ from visual.components.base_object import BaseObject
 from visual.display import Display
 
 class GameEvent(BaseObject):
-    def __init__(self, x1, y1, x2, y2, out, quantity_buttons, size_button,
-                 texts,
+    def __init__(self, x1, y1, x2, y2, out, quantity_buttons, show_buttons,
+                 size_button, texts,
                  color, bg_color, active_color, bg_active_color,
                  text, tag, display: Display, name="NULL"):
         super().__init__(tag, display)
@@ -21,6 +21,7 @@ class GameEvent(BaseObject):
         self.quantity_buttons = quantity_buttons
         self.size_button = size_button
         self.texts = texts
+        self.show_buttons = show_buttons
 
         self.into_mouse = False
         self.on = False
@@ -52,6 +53,10 @@ class GameEvent(BaseObject):
             (self.y2 + (- self.out - self.size_button) * self.quantity_buttons
                                  - self.out - self.out * self.quantity_buttons + self.y1) / 2,
                                  self.text, self.color, self.object_id)
+
+    def display_object(self):
+        for i in range(self.show_buttons, self.quantity_buttons):
+            self.buttons[i].hide()
 
     def mouse_into_object(self, mx, my):
         return True

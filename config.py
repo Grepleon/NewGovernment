@@ -83,3 +83,9 @@ specific_ethnic_map = os.getenv("SPECIFICETHNICMAP", "Этническая ка�
 distance_button_map_x = int(os.getenv("DISTANCEBUTTONSMAPX"))
 
 tools_text_coord = [int(coord) for coord in os.getenv("TOOLSTEXTCOORD").split()]
+
+coord_game_event = [int(coord) for coord in os.getenv("GAMEEVENTCOORD").split()]
+game_event_texts_new_month = os.getenv("GAMEEVENTNEWMOTHTEXT").split(';')
+game_event_texts_new_year = os.getenv("GAMEEVENTNEWYEAR").split(';')
+out_game_event = int(os.getenv("OUTGAMEEVENT"))
+size_buttons_event = int(os.getenv("SIZEBUTTONSEVENT"))
