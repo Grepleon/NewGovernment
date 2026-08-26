@@ -34,9 +34,9 @@ class GameEvent(BaseObject):
             self.buttons.append(
                 button.Button(
                     self.x1 + self.out,
-                    self.y2 + (- self.out - self.size_button) * (index + 1) - self.out,
+                    self.y2 + (- self.out - self.size_button) * (index + 1) - self.out - self.out * index,
                     self.x2 - self.out,
-                    self.y2 + (- self.out - self.size_button) * index - self.out,
+                    self.y2 + (- self.out - self.size_button) * index - self.out - self.out * index,
                     self.color,
                     self.bg_color,
                     self.active_color,
@@ -47,4 +47,9 @@ class GameEvent(BaseObject):
 
                 )
             )
+
+        self.display.create_text(self.x1 / 2 + self.x2 / 2,
+            (self.y2 + (- self.out - self.size_button) * self.quantity_buttons
+                                 - self.out - self.out * self.quantity_buttons + self.y1) / 2,
+                                 self.text, self.color)
 
