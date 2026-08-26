@@ -2,6 +2,7 @@ import config
 import visual.components.button as button
 import visual.menu_builder.managers.manager as manager
 import visual.components.noice as path_noice
+import visual.components.game_event as ge
 
 def get_menu(display):
     buttons = []
@@ -22,6 +23,7 @@ def get_menu(display):
                                       config.path_to_picture_into_main)
 
     id_objects_in_main_menu.append(main_image)
+
 
     noice = path_noice.Noice(display.add_id(), display)
     noice.display_object()

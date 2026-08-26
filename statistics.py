@@ -10,7 +10,10 @@ class Statistics:
                  maps_choose,
                  max_game_time,
                  game_time,
-                 max_date_time
+                 max_date_time,
+                 winners,
+                 votes,
+                 max_points
                  ):
         self.time = time
         self.time_start = timer()
@@ -20,6 +23,9 @@ class Statistics:
         self.max_game_time = max_game_time
         self.game_time = game_time
         self.max_date_time = max_date_time
+        self.winners = winners
+        self.votes = votes
+        self.max_points = max_points
 
     def add_selected_politician(self, politician):
         self.count_politicians[politician] = self.count_politicians.get(politician, 0) + 1
@@ -37,6 +43,7 @@ def get_statistics():
     data_time = Saves("data/statistics/times.json").loaded_data
     data_counts = Saves("data/statistics/counts.json").loaded_data
     data_play_time = Saves("data/statistics/play_time.json").loaded_data
+    data_vote = Saves("data/statistics/votes.json").loaded_data
 
     statistics = Statistics(data_time["time"],
                             data_counts["selected_politician"],
@@ -44,7 +51,11 @@ def get_statistics():
                             data_counts["maps_choose"],
                             data_play_time["max_time"],
                             data_play_time["time"],
-                            data_play_time["max_date"])
+                            data_play_time["max_date"],
+                            data_vote["winners"],
+                            data_vote["votes"],
+                            data_vote["max_points"],
+                            )
 
     return statistics
 
@@ -66,6 +77,13 @@ def set_statistics(statistics:Statistics):
         "max_time": statistics.max_game_time,
         "max_date": statistics.max_date_time,
         "time": statistics.game_time
+    })
+
+    file = Saves("data/statistics/votes.json")
+    file.save_file({
+        "winners": statistics.winners,
+        "votes": statistics.votes,
+        "max_points": statistics.max_points
     })
 
 def save(statistics:Statistics, game_state):
