@@ -4,3 +4,4 @@ data/important/token
 .idea
 data/statistics
 data/statistics/*
+__pycache__

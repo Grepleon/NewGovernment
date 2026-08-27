@@ -13,7 +13,7 @@ def support_opposition(game_state:GameState):
     game_state.selected_politician.support.oligarchs = max(game_state.selected_politician.support.oligarchs - 3, 0)
 
 def support_ruler(game_state:GameState):
-    game_state.selected_politician.popularity.for_in_power(1)
+    game_state.selected_politician.popularity.for_in_power(2)
     game_state.selected_politician.support.oligarchs = min(game_state.selected_politician.support.oligarchs + 5, 100)
 
 
