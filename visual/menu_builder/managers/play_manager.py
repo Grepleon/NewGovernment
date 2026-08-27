@@ -30,7 +30,7 @@ class PlayManager(base_manager.Manager):
         self.tools_texts = None
         self.tools_button = None
         self.game_event = None
-        self.checker_events:CheckerEvents = None
+        self.checker_events:CheckerEvents|None = None
 
     def check_cities(self):
         flag = False
@@ -98,6 +98,17 @@ class PlayManager(base_manager.Manager):
             for _button in self.additional_buttons_map:
                 _button.hide()
 
+    def check_hints_events(self):
+        if not self.game_event.on:
+            return
+        for i, event_button in enumerate(self.game_event.buttons):
+            event_button:button.Button = event_button
+            if event_button.into_mouse and self.game_event.hints_texts[i] != "":
+                self.hint.rewrite_text(self.game_event.hints_texts[i])
+                self.hint.recolor(config.base_off_button_color, config.base_off_bg_button_color)
+                self.hint.show()
+                self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
+
     def check(self):
         self.play = self.button_time.on
 
@@ -117,6 +128,7 @@ class PlayManager(base_manager.Manager):
             self.game_state.time += dt.timedelta(minutes=config.dtime)
             self.game_state.ticks += 1
 
+        self.check_hints_events()
         self.ethno_button_check()
 
 

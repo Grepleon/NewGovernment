@@ -86,6 +86,7 @@ class GameEvent(BaseObject):
         self.display.hide(self.object_id + self.pref_text)
         for _button in self.buttons:
             _button.hide()
+        self.on = False
 
     def show(self):
         self.display.show(self.object_id)
@@ -93,3 +94,4 @@ class GameEvent(BaseObject):
         for _button in self.buttons:
             _button.on = False
             _button.show()
+        self.on = True
