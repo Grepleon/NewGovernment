@@ -8,7 +8,7 @@
     "Междуречная область"
   ],
   "officials":{
-    "president": "Алексей Бабочкин Федорович",
+    "ruler": "Алексей Бабочкин Федорович",
     "ministry_of_finance": "Федор Мирской Александрович",
     "ministry_of_internal_affairs": "Елена Сердечная Михайловна",
     "ministry_of_foreign_affairs": "Анна Кошкина Владимировна",
@@ -22,5 +22,10 @@
   "costs": {
 
   },
-  "color": "#55aa33"
+  "color": "#55aa33",
+  "falsifications": {
+    "ruler": 1.6,
+    "ruling_party": 1.35
+  },
+  "next_vote": "07:00 8.8.2053"
 }

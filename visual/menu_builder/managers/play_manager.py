@@ -1,4 +1,5 @@
 from hints.int_to_str import int_to_str
+from mainloop.game_states import GameState
 from visual.components.button import Button
 from visual.components.city import VisualObjectCity
 import visual.menu_builder.managers.manager as base_manager
@@ -13,11 +14,12 @@ import datetime as dt
 import visual.tools.maps.specific_ethnic_map as sem
 from countries.inter_city.inter_to_str import inter_to_str
 from visual.tools.events.check_events import CheckerEvents
+from hints.replace_var import replace_var
 
 class PlayManager(base_manager.Manager):
     def __init__(self, display, buttons, id_objects, game_state:game_states.GameState):
         super().__init__(display, buttons, id_objects)
-        self.game_state = game_state
+        self.game_state:GameState = game_state
         self.hint = None
         self.flag_del = False
         self.id_cities:dict[str:VisualObjectCity] = []
@@ -31,6 +33,7 @@ class PlayManager(base_manager.Manager):
         self.tools_button = None
         self.game_event = None
         self.checker_events:CheckerEvents|None = None
+        self.info_texts = None
 
     def check_cities(self):
         flag = False
@@ -124,6 +127,10 @@ class PlayManager(base_manager.Manager):
             self.game_state.ticks += 1
 
         self.ethno_button_check()
+
+        for _text in self.info_texts:
+            _text:text.Text = _text
+            _text.rewrite_text(replace_var(_text.name, self.game_state))
 
     def check(self):
         for _button in self.buttons:

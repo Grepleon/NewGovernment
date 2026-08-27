@@ -6,3 +6,4 @@ class HeadCB(bjt.BaseJobTitle):
     name:str|None = "глава ЦБ"
     salary:int|None = 8_000
     power:bp.BasePower|None = p.EconomicInfluence()
+    importance = 8

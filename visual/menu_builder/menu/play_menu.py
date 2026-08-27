@@ -8,6 +8,7 @@ from visual.components.area import *
 from visual.components.button import Button
 from visual.components.game_event import GameEvent
 from visual.tools.events.check_events import CheckerEvents
+from visual.components.text import Text
 
 
 def get_menu(display, game_state:game_states.GameState):
@@ -89,6 +90,25 @@ def get_menu(display, game_state:game_states.GameState):
             )
         )
 
+    info_texts = []
+    for i, text in enumerate(config.info_texts):
+        info_texts.append(
+            Text(
+                config.coord_info_texts_start[0] + i * config.out_info_texts[0],
+                config.coord_info_texts_start[1] + i * config.out_info_texts[1],
+                config.coord_info_texts_start[0] + i * config.out_info_texts[0] + config.size_info_texts[0],
+                config.coord_info_texts_start[1] + i * config.out_info_texts[1] + config.size_info_texts[1],
+                config.base_off_button_color,
+                config.base_off_bg_button_color,
+                config.info_texts[i],
+                display.add_id(),
+                display,
+                config.info_texts[i]
+            )
+        )
+
+    buttons += info_texts
+
     tools_button = []
     tools_texts = []
     info_text = None
@@ -144,6 +164,7 @@ def get_menu(display, game_state:game_states.GameState):
     play_manager.tools_button = tools_button
     play_manager.game_event = game_event
     play_manager.checker_events = CheckerEvents(display, game_state, game_event)
+    play_manager.info_texts = info_texts
 
 
     return play_manager

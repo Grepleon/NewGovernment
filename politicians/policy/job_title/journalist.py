@@ -6,3 +6,4 @@ class Journalist(bjt.BaseJobTitle):
     name:str|None = "журналист"
     salary:int|None = 1_500
     power:bp.BasePower|None = p.PropagandaActivities()
+    importance = 2

@@ -29,6 +29,7 @@ def variable_characters() -> dict[str:pol.Politician]:
 
     for file in files:
         data_pol = saves.Saves(folder + file).loaded_data
+        print(file)
         #data_pol:dict = data[data_pol2]
         politicians[data_pol["name"]] = pol.Politician(
             data_pol["name"],
@@ -66,6 +67,7 @@ def variable_characters() -> dict[str:pol.Politician]:
             ),
             data_pol["political_hour"],
             data_pol["reputation"],
+            data_pol["ambitions"],
             data_pol["party"],
             data_pol["nickname"],
             data_pol["bio"]
@@ -159,7 +161,7 @@ def variables_country() -> tuple[dict[str:country.Country], dict[str:ba.Area]]:
         returned_countries[name] = country.Country(
             name,
             data["name_capital"],
-            data["officials"]["president"],
+            data["officials"]["ruler"],
             areas,
             data["officials"]["ministry_of_finance"],
             data["officials"]["ministry_of_internal_affairs"],
@@ -171,7 +173,9 @@ def variables_country() -> tuple[dict[str:country.Country], dict[str:ba.Area]]:
             data["officials"]["head_of_cb"],
             data["budget"],
             data["costs"],
-            data["color"]
+            data["color"],
+            data["falsifications"],
+            data["next_vote"]
         )
 
         returned_areas = returned_areas | areas

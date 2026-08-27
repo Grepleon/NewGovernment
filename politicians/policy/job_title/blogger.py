@@ -6,3 +6,5 @@ class Blogger(bjt.BaseJobTitle):
     name:str|None = "блогер"
     salary:int|None = 3_000
     power:bp.BasePower|None = p.PropagandaActivities()
+    importance = 1
+

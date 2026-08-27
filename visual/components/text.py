@@ -49,3 +49,7 @@ class Text(b_object.BaseObject):
         self.display.show(self.object_id)
         self.display.show(self.object_id + self.pref_text)
 
+    def rewrite_text(self, new_text):
+        self.text = new_text
+        self.display.rewrite_text(self.text, self.object_id + self.pref_text)
+
