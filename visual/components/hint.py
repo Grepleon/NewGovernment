@@ -16,9 +16,16 @@ class Hint(b_object.BaseObject):
         self.out_x = 5
         self.out_y = 0
 
-    def size_to_text(self, x=6, y=17) -> tuple[int, int]:
-        val = self.text
-        return x * len(max(val.split("\n"), key=lambda x: len(x))), len(val.split("\n")) * y
+    def size_to_text(self, x=8, y=5) -> tuple[int, int]:
+        bbox = self.display.get_bbox(self.object_id + self.pref_text)
+
+        if bbox is None:
+            return 0, 0
+
+        text_width = bbox[2] - bbox[0]
+        text_height = bbox[3] - bbox[1]
+
+        return text_width + x, text_height + y
 
     def hide(self):
         self.display.hide(self.object_id)

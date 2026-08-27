@@ -111,6 +111,7 @@ class PlayManager(base_manager.Manager):
                 self.hint.recolor(config.base_off_button_color, config.base_off_bg_button_color)
                 self.hint.show()
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
+                self.hint.display_object(6.5, 17)
             if i >= self.game_event.show_buttons:
                 event_button.hide()
 
