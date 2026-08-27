@@ -101,6 +101,8 @@ class PlayManager(base_manager.Manager):
     def check_hints_events(self):
         if not self.game_event.on:
             return
+        else:
+            self.hint.hide()
         for i, event_button in enumerate(self.game_event.buttons):
             event_button:button.Button = event_button
             if event_button.into_mouse and self.game_event.hints_texts[i] != "":
@@ -108,18 +110,11 @@ class PlayManager(base_manager.Manager):
                 self.hint.recolor(config.base_off_button_color, config.base_off_bg_button_color)
                 self.hint.show()
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
+            if i >= self.game_event.show_buttons:
+                event_button.hide()
 
-    def check(self):
+    def base_check(self):
         self.play = self.button_time.on
-
-        for _button in self.buttons:
-            if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
-                if self.display.fast_left_button_pressed:
-                    _button.mouse_clicked_object()
-
-            _button.display_object()
-
-        self.checker_events.check()
 
         self.check_cities()
         self.check_map()
@@ -128,10 +123,21 @@ class PlayManager(base_manager.Manager):
             self.game_state.time += dt.timedelta(minutes=config.dtime)
             self.game_state.ticks += 1
 
-        self.check_hints_events()
         self.ethno_button_check()
 
+    def check(self):
+        for _button in self.buttons:
+            if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
+                if self.display.fast_left_button_pressed:
+                    _button.mouse_clicked_object()
 
+            _button.display_object()
+
+        if not self.game_event.on:
+            self.base_check()
+
+        self.checker_events.check()
+        self.check_hints_events()
 
     def delete(self):
         for _button in self.buttons:

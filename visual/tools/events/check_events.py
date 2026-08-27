@@ -12,8 +12,9 @@ class CheckerEvents:
         if self.game_state.get_day() == "00:00 1":
             self.game_event.show()
             self.game_event.rewrite(
-                "С новым месяцем!",
+                f"С {self.game_state.get_str_month()}!",
                 ["Ура!", "", "", "", ""],
-            ["Гип-гип, ура!", "", "", "", ""]
+            ["Вы получите свою зарплату", "", "", "", ""]
             )
+            self.game_event.show_buttons = 1
 

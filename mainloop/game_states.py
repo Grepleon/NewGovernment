@@ -29,5 +29,8 @@ class GameState:
     def get_month(self):
         return format_datetime(self.time, "HH:mm d.M", locale='ru')
 
+    def get_str_month(self):
+        return format_datetime(self.time, "первым MMMM", locale='ru')
+
     def get_day(self):
         return format_datetime(self.time, "HH:mm d", locale='ru')
