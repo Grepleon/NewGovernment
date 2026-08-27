@@ -9,11 +9,11 @@
 class PoliticalCompass:
     # Границы проходят между условными целыми зонами компаса. Поэтому, например,
     # координата -8 попадает в крайнюю область, а -7 — в соседнюю с ней.
-    _BAND_BORDERS = (-7.5, -4.5, -1.5, 1.5, 4.5, 7.5)
+    band_borders = (-7.5, -4.5, -1.5, 1.5, 4.5, 7.5)
 
     # Строки: от авторитарных взглядов к либертарианским (freedom: -10 -> 10).
     # Столбцы: от левых взглядов к правым (left_right: -10 -> 10).
-    _IDEOLOGIES = (
+    ideologies = (
         (
             "большевизм",
             "национал-большевизм",
@@ -84,18 +84,18 @@ class PoliticalCompass:
         self.left_right, self.freedom = left_right, freedom
 
     @classmethod
-    def _band_index(cls, value) -> int:
+    def _band_index(self, value) -> int:
         """Возвращает номер одной из семи областей для значения оси."""
-        for index, border in enumerate(cls._BAND_BORDERS):
+        for index, border in enumerate(self.band_borders):
             if value < border:
                 return index
-        return len(cls._BAND_BORDERS)
+        return len(self.band_borders)
 
     def ideology_name(self) -> str:
         """Возвращает цельное название идеологии для текущей точки компаса."""
         freedom_band = self._band_index(self.freedom)
         left_right_band = self._band_index(self.left_right)
-        return self._IDEOLOGIES[freedom_band][left_right_band]
+        return self.ideologies[freedom_band][left_right_band]
 
     # Следующие четыре метода оставлены как совместимые помощники для тех мест
     # проекта, где отдельно показываются горизонтальная или вертикальная ось.
