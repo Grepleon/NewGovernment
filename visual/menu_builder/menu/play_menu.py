@@ -7,6 +7,7 @@ import visual.components.city as comp_city
 from visual.components.area import *
 from visual.components.button import Button
 from visual.components.game_event import GameEvent
+from visual.tools.events.check_events import CheckerEvents
 
 
 def get_menu(display, game_state:game_states.GameState):
@@ -98,12 +99,6 @@ def get_menu(display, game_state:game_states.GameState):
     buttons += map_buttons
     buttons += additional_buttons_map
     map_buttons += additional_buttons_map
-    new_hint = hint.Hint(-1, -1, config.base_off_button_color, config.base_off_bg_button_color,
-                         "", display.add_id(), display)
-    buttons.append(new_hint)
-
-    noice = path_noice.Noice(display.add_id(), display)
-    noice.display_object()
 
     game_event = GameEvent(config.coord_game_event[0],
                            config.coord_game_event[1],
@@ -114,6 +109,7 @@ def get_menu(display, game_state:game_states.GameState):
                            1,
                            config.size_buttons_event,
                            ["Начать игру", "", "", "", ""],
+                           ["Нажав на эту кнопку, вы начнете игру", "", "", "", ""],
                            config.base_off_button_color,
                            config.base_off_bg_button_color,
                            config.base_on_button_color,
@@ -122,6 +118,14 @@ def get_menu(display, game_state:game_states.GameState):
                            display.add_id(),
                            display
     )
+
+    new_hint = hint.Hint(-1, -1, config.base_off_button_color, config.base_off_bg_button_color,
+                         "", display.add_id(), display)
+    buttons.append(new_hint)
+
+    noice = path_noice.Noice(display.add_id(), display)
+    noice.display_object()
+
 
 
     buttons += game_event.buttons
@@ -138,6 +142,8 @@ def get_menu(display, game_state:game_states.GameState):
     play_manager.info_text = info_text
     play_manager.tools_texts = tools_texts
     play_manager.tools_button = tools_button
+    play_manager.game_event = game_event
+    play_manager.checker_events = CheckerEvents(display, game_state, game_event)
 
 
     return play_manager

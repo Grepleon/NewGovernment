@@ -6,7 +6,7 @@ from visual.display import Display
 
 class GameEvent(BaseObject):
     def __init__(self, x1, y1, x2, y2, out, quantity_buttons, show_buttons,
-                 size_button, texts,
+                 size_button, texts, hints_texts,
                  color, bg_color, active_color, bg_active_color,
                  text, tag, display: Display, name="NULL"):
         super().__init__(tag, display)
@@ -22,11 +22,12 @@ class GameEvent(BaseObject):
         self.size_button = size_button
         self.texts = texts
         self.show_buttons = show_buttons
+        self.hints_texts = hints_texts
 
         self.into_mouse = False
         self.on = False
 
-        self.buttons = []
+        self.buttons:list[button.Button] = []
         self._create()
 
     def _create(self):
@@ -52,7 +53,7 @@ class GameEvent(BaseObject):
         self.display.create_text(self.x1 / 2 + self.x2 / 2,
             (self.y2 + (- self.out - self.size_button) * self.quantity_buttons
                                  - self.out - self.out * self.quantity_buttons + self.y1) / 2,
-                                 self.text, self.color, self.object_id)
+                                 self.text, self.color, self.object_id  + self.pref_text)
 
     def display_object(self):
         for i in range(self.show_buttons, self.quantity_buttons):
@@ -70,12 +71,25 @@ class GameEvent(BaseObject):
                 return i
         return False
 
+    def rewrite(self, text, texts, hints_texts):
+        self.text = text
+        self.texts = texts
+        self.hints_texts = hints_texts
+
+        for i, _button in enumerate(self.buttons):
+            _button.rewrite_text(texts[i])
+
+        self.display.rewrite_text(self.text, self.object_id + self.pref_text)
+
     def hide(self):
         self.display.hide(self.object_id)
+        self.display.hide(self.object_id + self.pref_text)
         for _button in self.buttons:
             _button.hide()
 
     def show(self):
         self.display.show(self.object_id)
+        self.display.show(self.object_id + self.pref_text)
         for _button in self.buttons:
+            _button.on = False
             _button.show()

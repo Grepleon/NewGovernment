@@ -12,6 +12,7 @@ from visual.tools.maps.upload_map import upload_map
 import datetime as dt
 import visual.tools.maps.specific_ethnic_map as sem
 from countries.inter_city.inter_to_str import inter_to_str
+from visual.tools.events.check_events import CheckerEvents
 
 class PlayManager(base_manager.Manager):
     def __init__(self, display, buttons, id_objects, game_state:game_states.GameState):
@@ -29,6 +30,7 @@ class PlayManager(base_manager.Manager):
         self.tools_texts = None
         self.tools_button = None
         self.game_event = None
+        self.checker_events:CheckerEvents = None
 
     def check_cities(self):
         flag = False
@@ -42,10 +44,12 @@ class PlayManager(base_manager.Manager):
                 flag = True
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
                 self.hint.rewrite_text(
+                    city.country.name
+                    + "\n" +
                     city.area.to_str()
                     + "\n" + "\n" +
                     city.city.to_str()
-                    + "\n" +
+                    + "\n" + "\n" +
                     inter_to_str(city.country, city.area, city.city, self.game_state.selected_politician)
                 )
                 self.hint.recolor(lite(city.area.color, 40), lite(city.area.color, -120))
@@ -104,6 +108,8 @@ class PlayManager(base_manager.Manager):
 
             _button.display_object()
 
+        self.checker_events.check()
+
         self.check_cities()
         self.check_map()
         self.button_time.rewrite_text(self.game_state.year_to_str())
@@ -112,6 +118,7 @@ class PlayManager(base_manager.Manager):
             self.game_state.ticks += 1
 
         self.ethno_button_check()
+
 
 
     def delete(self):
