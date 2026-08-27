@@ -16,6 +16,11 @@ def support_ruler(game_state:GameState):
     game_state.selected_politician.popularity.for_in_power(2)
     game_state.selected_politician.support.oligarchs = min(game_state.selected_politician.support.oligarchs + 5, 100)
 
+def support_ruler2(game_state:GameState):
+    game_state.selected_politician.popularity.for_in_power(5)
+    game_state.selected_politician.support.oligarchs = min(game_state.selected_politician.support.oligarchs + 12, 100)
+
+
 
 class CheckerEvents:
     def __init__(self, display, game_state, game_event):
