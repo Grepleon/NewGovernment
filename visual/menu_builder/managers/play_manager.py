@@ -1,4 +1,3 @@
-from hints.int_to_str import int_to_str
 from mainloop.game_states import GameState
 from visual.components.button import Button
 from visual.components.city import VisualObjectCity
@@ -11,10 +10,9 @@ from hints.colors.lite import lite
 import visual.components.button as button
 from visual.tools.maps.upload_map import upload_map
 import datetime as dt
-import visual.tools.maps.specific_ethnic_map as sem
 from countries.inter_city.inter_to_str import inter_to_str
 from visual.tools.events.check_events import CheckerEvents
-from hints.replace_var import replace_var
+from hints.code.replace_var import replace_var
 
 class PlayManager(base_manager.Manager):
     def __init__(self, display, buttons, id_objects, game_state:game_states.GameState):

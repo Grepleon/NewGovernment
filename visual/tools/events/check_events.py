@@ -22,17 +22,18 @@ class CheckerEvents:
 
         for politician_name in self.game_state.politicians:
             politician = self.game_state.politicians[politician_name]
-            wish = (politician.position.importance * politician.popularity.peoples_total() *
-                    politician.reputation ** 1.5 * politician.ambitions)
-            if wish > 30_000_000: #100% идет
-                candidates.append(politician)
-                points[politician_name] = 0
-            elif wish > 15_000_000 and random.randint(1, 2) == 1: #50 на 50
-                candidates.append(politician)
-                points[politician_name] = 0
+            if country.name in politician.citizenship:
+                wish = (politician.position.importance * politician.popularity.peoples_total() *
+                        politician.reputation ** 1.5 * politician.ambitions)
+                if wish > 30_000_000: #100% идет
+                    candidates.append(politician)
+                    points[politician_name] = 0
+                elif wish > 15_000_000 and random.randint(1, 2) == 1: #50 на 50
+                    candidates.append(politician)
+                    points[politician_name] = 0
 
 
-            print(politician_name, "-", its(wish))
+                print(politician_name, "-", its(wish))
 
         sum_points = 0
         for politician in candidates:
@@ -41,7 +42,7 @@ class CheckerEvents:
                 area = country.areas[area_name]
                 for city_name in area.cities:
                     city = area.cities[city_name]
-                    point += city.vote(politician)
+                    point += city.vote(politician) * city.peoples / 100
             if self.game_state.politicians[country.ruler].name == politician.name:
                 point *= country.falsifications["ruler"]
             if self.game_state.politicians[country.ruler].name_party == politician.name_party:
