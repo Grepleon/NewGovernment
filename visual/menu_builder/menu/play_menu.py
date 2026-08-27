@@ -10,6 +10,8 @@ from visual.components.game_event import GameEvent
 from visual.tools.events.check_events import CheckerEvents
 from visual.components.text import Text
 
+def passed(null):
+    pass
 
 def get_menu(display, game_state:game_states.GameState):
     buttons = []
@@ -130,13 +132,15 @@ def get_menu(display, game_state:game_states.GameState):
                            config.size_buttons_event,
                            ["Начать игру", "", "", "", ""],
                            ["Нажав на эту кнопку, вы начнете игру", "", "", "", ""],
+                           [passed, passed, passed, passed, passed],
                            config.base_off_button_color,
                            config.base_off_bg_button_color,
                            config.base_on_button_color,
                            config.base_on_bg_button_color,
                            "Приятной игры!",
                            display.add_id(),
-                           display
+                           display,
+                           game_state
     )
 
     new_hint = hint.Hint(-1, -1, config.base_off_button_color, config.base_off_bg_button_color,

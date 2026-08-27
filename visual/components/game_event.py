@@ -6,9 +6,9 @@ from visual.display import Display
 
 class GameEvent(BaseObject):
     def __init__(self, x1, y1, x2, y2, out, quantity_buttons, show_buttons,
-                 size_button, texts, hints_texts,
+                 size_button, texts, hints_texts, events,
                  color, bg_color, active_color, bg_active_color,
-                 text, tag, display: Display, name="NULL"):
+                 text, tag, display: Display, game_state:GameState, name="NULL"):
         super().__init__(tag, display)
         self.x1, self.y1, self.x2, self.y2 = x1, y1, x2, y2
         self.color, self.bg_color, self.active_color, self.bg_active_color = \
@@ -23,6 +23,8 @@ class GameEvent(BaseObject):
         self.texts = texts
         self.show_buttons = show_buttons
         self.hints_texts = hints_texts
+        self.events = events
+        self.game_state = game_state
 
         self.into_mouse = False
         self.on = False
@@ -67,14 +69,16 @@ class GameEvent(BaseObject):
             if i == self.show_buttons:
                 break
             if _button.on:
+                self.events[i](self.game_state)
                 self.hide()
                 return i
         return False
 
-    def rewrite(self, text, texts, hints_texts):
+    def rewrite(self, text, texts, hints_texts, events):
         self.text = text
         self.texts = texts
         self.hints_texts = hints_texts
+        self.events = events
 
         for i, _button in enumerate(self.buttons):
             _button.rewrite_text(texts[i])

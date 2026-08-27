@@ -4,6 +4,19 @@ from mainloop.game_states import GameState
 from hints.int_to_str import int_to_str as its
 import random
 
+
+def passed(null):
+    pass
+
+def support_opposition(game_state:GameState):
+    game_state.selected_politician.popularity.for_peoples(5)
+    game_state.selected_politician.support.oligarchs = max(game_state.selected_politician.support.oligarchs - 3, 0)
+
+def support_ruler(game_state:GameState):
+    game_state.selected_politician.popularity.for_in_power(1)
+    game_state.selected_politician.support.oligarchs = min(game_state.selected_politician.support.oligarchs + 5, 100)
+
+
 class CheckerEvents:
     def __init__(self, display, game_state, game_event):
         self.display:Display = display
@@ -67,7 +80,8 @@ class CheckerEvents:
                 self.game_event.rewrite(
                     f"С новым {self.game_state.get_year()} годом!",
                     ["С новым годом!", "", "", "", ""],
-                ["Нажмите, чтобы продолжить играть", "", "", "", ""]
+                ["Нажмите, чтобы продолжить играть", "", "", "", ""],
+                    [passed, passed, passed, passed, passed]
                 )
                 self.game_event.show_buttons = 1
             for name_country in self.game_state.countries:
@@ -83,7 +97,8 @@ class CheckerEvents:
                         [
                          "Вас поддержат олигархия, и вы будете популярны \nсреди голосовавших за нового правителя",
                          "Вас будут призирать олигархия, но среди противников\nнового правителя вы будете популярны",
-                         "Ничего не произойдет", "", ""]
+                         "Ничего не произойдет", "", ""],
+                        [support_ruler, support_opposition, passed, passed, passed]
                     )
                     self.game_event.show_buttons = 3
                     self.game_event.show()
