@@ -164,3 +164,6 @@ class Display:
 
     def move(self, tag, dx, dy):
         self.canvas.move(tag, dx, dy)
+
+    def get_bbox(self, tag):
+        return self.canvas.bbox(tag)

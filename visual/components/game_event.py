@@ -5,10 +5,10 @@ from visual.components.base_object import BaseObject
 from visual.display import Display
 
 class GameEvent(BaseObject):
-    def __init__(self, x1, y1, x2, y2, out, quantity_buttons, size_button,
-                 texts,
+    def __init__(self, x1, y1, x2, y2, out, quantity_buttons, show_buttons,
+                 size_button, texts, hints_texts, events,
                  color, bg_color, active_color, bg_active_color,
-                 text, tag, display: Display, name="NULL"):
+                 text, tag, display: Display, game_state:GameState, name="NULL"):
         super().__init__(tag, display)
         self.x1, self.y1, self.x2, self.y2 = x1, y1, x2, y2
         self.color, self.bg_color, self.active_color, self.bg_active_color = \
@@ -21,11 +21,15 @@ class GameEvent(BaseObject):
         self.quantity_buttons = quantity_buttons
         self.size_button = size_button
         self.texts = texts
+        self.show_buttons = show_buttons
+        self.hints_texts = hints_texts
+        self.events = events
+        self.game_state = game_state
 
         self.into_mouse = False
         self.on = False
 
-        self.buttons = []
+        self.buttons:list[button.Button] = []
         self._create()
 
     def _create(self):
@@ -51,24 +55,47 @@ class GameEvent(BaseObject):
         self.display.create_text(self.x1 / 2 + self.x2 / 2,
             (self.y2 + (- self.out - self.size_button) * self.quantity_buttons
                                  - self.out - self.out * self.quantity_buttons + self.y1) / 2,
-                                 self.text, self.color, self.object_id)
+                                 self.text, self.color, self.object_id  + self.pref_text)
+
+    def display_object(self):
+        for i in range(self.show_buttons, self.quantity_buttons):
+            self.buttons[i].hide()
 
     def mouse_into_object(self, mx, my):
         return True
 
     def mouse_clicked_object(self):
-        for _button in self.buttons:
+        for i, _button in enumerate(self.buttons):
+            if i == self.show_buttons:
+                break
             if _button.on:
+                self.events[i](self.game_state)
                 self.hide()
-                return True
+                return i
         return False
+
+    def rewrite(self, text, texts, hints_texts, events):
+        self.text = text
+        self.texts = texts
+        self.hints_texts = hints_texts
+        self.events = events
+
+        for i, _button in enumerate(self.buttons):
+            _button.rewrite_text(texts[i])
+
+        self.display.rewrite_text(self.text, self.object_id + self.pref_text)
 
     def hide(self):
         self.display.hide(self.object_id)
+        self.display.hide(self.object_id + self.pref_text)
         for _button in self.buttons:
             _button.hide()
+        self.on = False
 
     def show(self):
         self.display.show(self.object_id)
+        self.display.show(self.object_id + self.pref_text)
         for _button in self.buttons:
+            _button.on = False
             _button.show()
+        self.on = True

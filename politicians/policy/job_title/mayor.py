@@ -6,4 +6,5 @@ class Mayor(bjt.BaseJobTitle):
     name:str|None = "мэр"
     salary:int|None = 3_000
     power:bp.BasePower|None = p.ExecutiveBranch()
+    importance = 5
 

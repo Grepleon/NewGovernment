@@ -5,7 +5,7 @@
     "Малая республика"
   ],
   "officials":{
-    "president": "Екатерина Соколова Андреевна",
+    "ruler": "Екатерина Соколова Андреевна",
     "ministry_of_finance": "",
     "ministry_of_internal_affairs": "",
     "ministry_of_foreign_affairs": "",
@@ -19,5 +19,10 @@
   "costs": {
 
   },
-  "color": "#bb6655"
+  "color": "#bb6655",
+  "falsifications": {
+    "ruler": 1.03,
+    "ruling_party": 1.01
+  },
+  "next_vote": "08:00 2.5.2055"
 }

@@ -5,7 +5,7 @@
     "Рубиновая область"
   ],
   "officials":{
-    "president": "Владимир Ковров Анатольевич",
+    "ruler": "Владимир Ковров Анатольевич",
     "ministry_of_finance": "Михаил Белов Вадимович",
     "ministry_of_internal_affairs": "Дмитрий Зайцев Михайлович",
     "ministry_of_foreign_affairs": "Ольга Порохова Владиславовна",
@@ -19,5 +19,10 @@
   "costs": {
 
   },
-  "color": "#bb4455"
+  "color": "#bb4455",
+  "falsifications": {
+    "ruler": 1.02,
+    "ruling_party": 1.01
+  },
+  "next_vote": "07:00 3.2.2056"
 }

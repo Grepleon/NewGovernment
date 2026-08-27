@@ -1,0 +1,47 @@
+{
+    "name": "NULL",
+    "nickname": "Noname",
+    "year": 0,
+    "position": "unemployed",
+    "alive": true,
+    "at_large": true,
+    "political_compass": {
+      "left-right": 0,
+      "freedom": 0
+    },
+    "money": 0,
+    "party": null,
+    "characteristics": [
+
+    ],
+    "popularity": {
+        "youth": 0,
+        "middle-aged": 0,
+        "elderly": 0,
+        "in_power": 0,
+        "poor": 0,
+        "rich": 0
+    },
+    "support": {
+        "media": 0,
+        "oligarchs": 0,
+        "military": 0,
+        "foreign": 0,
+        "religious": 0
+    },
+    "track": 0,
+    "mind": 100,
+    "old_age": 80,
+    "citizenship": [
+
+    ],
+    "place_of_residence": [
+
+    ],
+    "nationality": "неизвестно",
+    "location": "Неизвестная область, Неизвестно",
+    "political_hour": 300,
+    "reputation": 100,
+    "ambitions": 82,
+    "bio": null
+}

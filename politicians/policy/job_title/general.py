@@ -6,5 +6,6 @@ class General(bjt.BaseJobTitle):
     name:str|None = "генерал"
     salary:int|None = 6_500
     power:bp.BasePower|None = p.MilitaryAuthority()
+    importance = 8
 
 

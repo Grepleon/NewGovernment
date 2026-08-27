@@ -1,4 +1,4 @@
-from hints.int_to_str import int_to_str
+from mainloop.game_states import GameState
 from visual.components.button import Button
 from visual.components.city import VisualObjectCity
 import visual.menu_builder.managers.manager as base_manager
@@ -10,12 +10,14 @@ from hints.colors.lite import lite
 import visual.components.button as button
 from visual.tools.maps.upload_map import upload_map
 import datetime as dt
-import visual.tools.maps.specific_ethnic_map as sem
+from countries.inter_city.inter_to_str import inter_to_str
+from visual.tools.events.check_events import CheckerEvents
+from hints.code.replace_var import replace_var
 
 class PlayManager(base_manager.Manager):
     def __init__(self, display, buttons, id_objects, game_state:game_states.GameState):
         super().__init__(display, buttons, id_objects)
-        self.game_state = game_state
+        self.game_state:GameState = game_state
         self.hint = None
         self.flag_del = False
         self.id_cities:dict[str:VisualObjectCity] = []
@@ -28,6 +30,8 @@ class PlayManager(base_manager.Manager):
         self.tools_texts = None
         self.tools_button = None
         self.game_event = None
+        self.checker_events:CheckerEvents|None = None
+        self.info_texts = None
 
     def check_cities(self):
         flag = False
@@ -41,11 +45,13 @@ class PlayManager(base_manager.Manager):
                 flag = True
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
                 self.hint.rewrite_text(
+                    city.country.name
+                    + "\n" +
                     city.area.to_str()
                     + "\n" + "\n" +
                     city.city.to_str()
-                    + "\n" +
-                    f"Ваша популярность: {int_to_str(int(city.city.vote(self.game_state.selected_politician)))}"
+                    + "\n" + "\n" +
+                    inter_to_str(city.country, city.area, city.city, self.game_state.selected_politician)
                 )
                 self.hint.recolor(lite(city.area.color, 40), lite(city.area.color, -120))
                 area = city.area
@@ -93,15 +99,24 @@ class PlayManager(base_manager.Manager):
             for _button in self.additional_buttons_map:
                 _button.hide()
 
-    def check(self):
+    def check_hints_events(self):
+        if not self.game_event.on:
+            return
+        else:
+            self.hint.hide()
+        for i, event_button in enumerate(self.game_event.buttons):
+            event_button:button.Button = event_button
+            if event_button.into_mouse and self.game_event.hints_texts[i] != "":
+                self.hint.rewrite_text(self.game_event.hints_texts[i])
+                self.hint.recolor(config.base_off_button_color, config.base_off_bg_button_color)
+                self.hint.show()
+                self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
+                self.hint.display_object(6.5, 17)
+            if i >= self.game_event.show_buttons:
+                event_button.hide()
+
+    def base_check(self):
         self.play = self.button_time.on
-
-        for _button in self.buttons:
-            if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
-                if self.display.fast_left_button_pressed:
-                    _button.mouse_clicked_object()
-
-            _button.display_object()
 
         self.check_cities()
         self.check_map()
@@ -112,6 +127,23 @@ class PlayManager(base_manager.Manager):
 
         self.ethno_button_check()
 
+        for _text in self.info_texts:
+            _text:text.Text = _text
+            _text.rewrite_text(replace_var(_text.name, self.game_state))
+
+    def check(self):
+        for _button in self.buttons:
+            if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
+                if self.display.fast_left_button_pressed:
+                    _button.mouse_clicked_object()
+
+            _button.display_object()
+
+        if not self.game_event.on:
+            self.base_check()
+
+        self.checker_events.check()
+        self.check_hints_events()
 
     def delete(self):
         for _button in self.buttons:

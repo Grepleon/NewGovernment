@@ -6,6 +6,12 @@ import config
 import visual.components.city as comp_city
 from visual.components.area import *
 from visual.components.button import Button
+from visual.components.game_event import GameEvent
+from visual.tools.events.check_events import CheckerEvents
+from visual.components.text import Text
+
+def passed(null):
+    pass
 
 def get_menu(display, game_state:game_states.GameState):
     buttons = []
@@ -86,6 +92,25 @@ def get_menu(display, game_state:game_states.GameState):
             )
         )
 
+    info_texts = []
+    for i, text in enumerate(config.info_texts):
+        info_texts.append(
+            Text(
+                config.coord_info_texts_start[0] + i * config.out_info_texts[0],
+                config.coord_info_texts_start[1] + i * config.out_info_texts[1],
+                config.coord_info_texts_start[0] + i * config.out_info_texts[0] + config.size_info_texts[0],
+                config.coord_info_texts_start[1] + i * config.out_info_texts[1] + config.size_info_texts[1],
+                config.base_off_button_color,
+                config.base_off_bg_button_color,
+                config.info_texts[i],
+                display.add_id(),
+                display,
+                config.info_texts[i]
+            )
+        )
+
+    buttons += info_texts
+
     tools_button = []
     tools_texts = []
     info_text = None
@@ -96,6 +121,28 @@ def get_menu(display, game_state:game_states.GameState):
     buttons += map_buttons
     buttons += additional_buttons_map
     map_buttons += additional_buttons_map
+
+    game_event = GameEvent(config.coord_game_event[0],
+                           config.coord_game_event[1],
+                           config.coord_game_event[2],
+                           config.coord_game_event[3],
+                           config.out_game_event,
+                           5,
+                           1,
+                           config.size_buttons_event,
+                           ["Начать игру", "", "", "", ""],
+                           ["Нажав на эту кнопку, вы начнете игру", "", "", "", ""],
+                           [passed, passed, passed, passed, passed],
+                           config.base_off_button_color,
+                           config.base_off_bg_button_color,
+                           config.base_on_button_color,
+                           config.base_on_bg_button_color,
+                           "Приятной игры!",
+                           display.add_id(),
+                           display,
+                           game_state
+    )
+
     new_hint = hint.Hint(-1, -1, config.base_off_button_color, config.base_off_bg_button_color,
                          "", display.add_id(), display)
     buttons.append(new_hint)
@@ -103,6 +150,10 @@ def get_menu(display, game_state:game_states.GameState):
     noice = path_noice.Noice(display.add_id(), display)
     noice.display_object()
 
+
+
+    buttons += game_event.buttons
+    buttons.append(game_event)
     buttons.append(noice)
 
     play_manager = manager.PlayManager(display, buttons, id_objects_in_main_menu, game_state)
@@ -115,6 +166,9 @@ def get_menu(display, game_state:game_states.GameState):
     play_manager.info_text = info_text
     play_manager.tools_texts = tools_texts
     play_manager.tools_button = tools_button
+    play_manager.game_event = game_event
+    play_manager.checker_events = CheckerEvents(display, game_state, game_event)
+    play_manager.info_texts = info_texts
 
 
     return play_manager
