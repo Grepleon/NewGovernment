@@ -1,13 +1,13 @@
 {
-    "name": "NULL",
+    "name": "FULL",
     "nickname": "Noname",
     "year": 0,
-    "position": "unemployed",
+    "position": "deputy",
     "alive": true,
     "at_large": true,
     "political_compass": {
-      "left-right": 0,
-      "freedom": 0
+      "left-right": 6,
+      "freedom": -3
     },
     "money": 0,
     "party": null,
@@ -15,25 +15,25 @@
 
     ],
     "popularity": {
-        "youth": 0,
-        "middle-aged": 0,
-        "elderly": 0,
-        "in_power": 0,
-        "poor": 0,
-        "rich": 0
+        "youth": 100,
+        "middle-aged": 100,
+        "elderly": 100,
+        "in_power": 100,
+        "poor": 100,
+        "rich": 100
     },
     "support": {
-        "media": 0,
-        "oligarchs": 0,
-        "military": 0,
-        "foreign": 0,
-        "religious": 0
+        "media": 100,
+        "oligarchs": 100,
+        "military": 100,
+        "foreign": 100,
+        "religious": 100
     },
     "track": 0,
-    "mind": 100,
-    "old_age": 80,
+    "mind": 200,
+    "old_age": 120,
     "citizenship": [
-
+        "Великая Земля"
     ],
     "place_of_residence": [
 
@@ -42,6 +42,6 @@
     "location": "Неизвестная область, Неизвестно",
     "political_hour": 300,
     "reputation": 100,
-    "ambitions": 0,
+    "ambitions": 100,
     "bio": null
 }

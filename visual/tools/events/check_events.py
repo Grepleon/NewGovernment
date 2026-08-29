@@ -16,11 +16,6 @@ def support_ruler(game_state:GameState):
     game_state.selected_politician.popularity.for_in_power(2)
     game_state.selected_politician.support.oligarchs = min(game_state.selected_politician.support.oligarchs + 5, 100)
 
-def support_ruler2(game_state:GameState):
-    game_state.selected_politician.popularity.for_in_power(5)
-    game_state.selected_politician.support.oligarchs = min(game_state.selected_politician.support.oligarchs + 12, 100)
-
-
 
 class CheckerEvents:
     def __init__(self, display, game_state, game_event):
@@ -37,6 +32,8 @@ class CheckerEvents:
         candidates = []
         re_candidates = []
         points = {}
+        max_points = 0
+        winner = None
 
         for politician_name in self.game_state.politicians:
             politician = self.game_state.politicians[politician_name]
@@ -72,9 +69,13 @@ class CheckerEvents:
 
         for politician in candidates:
             point = points[politician.name]
+            if max_points < point:
+                winner = politician.name
+                max_points = point
+            print(politician.name, ':', its(point))
             re_candidates.append(f"{politician.name} - {round(point / sum_points * 100, 2)}%")
 
-        return re_candidates
+        return re_candidates, winner
 
     def check(self):
         if not self.game_event.on:
@@ -92,10 +93,11 @@ class CheckerEvents:
             for name_country in self.game_state.countries:
                 country = self.game_state.countries[name_country]
                 if country.next_vote == self.game_state.get_str_year():
-                    candidates = self.voted(country)
+                    candidates, winner = self.voted(country)
                     self.game_event.rewrite(
                         f"Выборы в государстве {country.name}\n"
-                        f"Кандидаты: \n{"\n".join(candidates)}",
+                        f"Кандидаты: \n{"\n".join(candidates)}"
+                        f"\nНовым правителем стал {winner}!",
                         ["Поздравляю нового правителя!",
                          "Выборы точно были фальсифицированы...",
                          "Промолчать", "", ""],
