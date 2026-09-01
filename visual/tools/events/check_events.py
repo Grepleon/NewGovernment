@@ -26,7 +26,12 @@ class CheckerEvents:
     def get_salary(self):
         for name_politician in self.game_state.politicians:
             politician = self.game_state.politicians[name_politician]
-            politician.money += politician.position.get_money()
+            politician.new_month()
+
+    def get_new_year(self):
+        for name_politician in self.game_state.politicians:
+            politician = self.game_state.politicians[name_politician]
+            politician.new_year()
 
     def voted(self, country):
         candidates = []
@@ -82,6 +87,7 @@ class CheckerEvents:
             if self.game_state.get_day() == "00:00 1":
                 self.get_salary()
             if self.game_state.get_month() == "00:00 1.1":
+                self.get_new_year()
                 self.game_event.show()
                 self.game_event.rewrite(
                     f"С новым {self.game_state.get_year()} годом!",
