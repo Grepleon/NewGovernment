@@ -11,3 +11,5 @@ __pycache__/
 */__pycache__
 *.py[cod]
 *$py.class
+data/characters/ideas
+data/characters/ideas/*
