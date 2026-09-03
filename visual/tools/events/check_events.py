@@ -80,6 +80,8 @@ class CheckerEvents:
             print(politician.name, ':', its(point))
             re_candidates.append(f"{politician.name} - {round(point / sum_points * 100, 2)}%")
 
+        self.game_state.statistics.check_votes(winner, max_points)
+
         return re_candidates, winner
 
     def check(self):

@@ -30,6 +30,11 @@ class Statistics:
     def add_selected_politician(self, politician):
         self.count_politicians[politician] = self.count_politicians.get(politician, 0) + 1
 
+    def check_votes(self, winner, points):
+        self.winners[winner] = self.winners.get(winner, 0) + 1
+        self.max_points = max(self.max_points, points)
+        self.votes += 1
+
 def check_first():
     destination = r"data/statistics/"
     source = r"data/statistics_recording/"
