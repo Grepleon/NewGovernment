@@ -16,6 +16,7 @@ class GameEvent(BaseObject):
         self.text = text
         self.pref_text = "-T"
         self.name = name
+        self.system_name = name
 
         self.out = out
         self.quantity_buttons = quantity_buttons
@@ -74,11 +75,13 @@ class GameEvent(BaseObject):
                 return i
         return False
 
-    def rewrite(self, text, texts, hints_texts, events):
+    def rewrite(self, text, texts, hints_texts, events, name=None):
         self.text = text
         self.texts = texts
         self.hints_texts = hints_texts
         self.events = events
+        if name not in None:
+            self.system_name = name
 
         for i, _button in enumerate(self.buttons):
             _button.rewrite_text(texts[i])
