@@ -30,9 +30,12 @@ class Statistics:
     def add_selected_politician(self, politician):
         self.count_politicians[politician] = self.count_politicians.get(politician, 0) + 1
 
-    def check_votes(self, winner, points):
-        self.winners[winner] = self.winners.get(winner, 0) + 1
-        self.max_points = max(self.max_points, points)
+    def check_votes(self, job, winner, points):
+        if job not in self.winners:
+            self.winners[job] = {}
+            print('null', self.winners)
+        self.winners[job][winner] = self.winners[job].get(winner, 0) + 1
+        self.max_points[job] = max(self.max_points[job], points)
         self.votes += 1
 
 def check_first():
