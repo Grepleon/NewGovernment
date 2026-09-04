@@ -71,6 +71,7 @@ class GameEvent(BaseObject):
                 break
             if _button.on:
                 self.events[i](self.game_state)
+                self.game_state.statistics.check_events(_button.text, self.system_name)
                 self.hide()
                 return i
         return False
@@ -80,7 +81,7 @@ class GameEvent(BaseObject):
         self.texts = texts
         self.hints_texts = hints_texts
         self.events = events
-        if name not in None:
+        if not name is None:
             self.system_name = name
 
         for i, _button in enumerate(self.buttons):

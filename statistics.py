@@ -13,7 +13,11 @@ class Statistics:
                  max_date_time,
                  winners,
                  votes,
-                 max_points
+                 yours_win,
+                 max_points,
+                 quantity_events,
+                 selected_actions,
+                 events
                  ):
         self.time = time
         self.time_start = timer()
@@ -24,19 +28,31 @@ class Statistics:
         self.game_time = game_time
         self.max_date_time = max_date_time
         self.winners = winners
+        self.yours_win = yours_win
         self.votes = votes
         self.max_points = max_points
+        self.quantity_events = quantity_events
+        self.selected_actions = selected_actions
+        self.events = events
 
     def add_selected_politician(self, politician):
         self.count_politicians[politician] = self.count_politicians.get(politician, 0) + 1
 
-    def check_votes(self, job, winner, points):
+    def check_votes(self, job, winner, points, you="NULL"):
         if job not in self.winners:
             self.winners[job] = {}
-            print('null', self.winners)
+        if job not in self.yours_win:
+            self.yours_win[job] = {}
         self.winners[job][winner] = self.winners[job].get(winner, 0) + 1
         self.max_points[job] = max(self.max_points[job], points)
         self.votes += 1
+        if you == winner:
+            self.yours_win[job][winner] = self.yours_win[job].get(winner, 0) + 1
+
+    def check_events(self, selected_event, event_name):
+        self.quantity_events += 1
+        self.selected_actions[selected_event] = self.selected_actions.get(selected_event, 0) + 1
+        self.events[event_name] = self.events.get(event_name, 0) + 1
 
 def check_first():
     destination = r"data/statistics/"
@@ -52,6 +68,7 @@ def get_statistics():
     data_counts = Saves("data/statistics/counts.json").loaded_data
     data_play_time = Saves("data/statistics/play_time.json").loaded_data
     data_vote = Saves("data/statistics/votes.json").loaded_data
+    data_events = Saves("data/statistics/actions.json").loaded_data
 
     statistics = Statistics(data_time["time"],
                             data_counts["selected_politician"],
@@ -62,7 +79,11 @@ def get_statistics():
                             data_play_time["max_date"],
                             data_vote["winners"],
                             data_vote["votes"],
+                            data_vote["yours_win"],
                             data_vote["max_points"],
+                            data_events["quantity_events"],
+                            data_events["selected_actions"],
+                            data_events["events"]
                             )
 
     return statistics
@@ -91,7 +112,15 @@ def set_statistics(statistics:Statistics):
     file.save_file({
         "winners": statistics.winners,
         "votes": statistics.votes,
-        "max_points": statistics.max_points
+        "max_points": statistics.max_points,
+        "yours_win": statistics.yours_win
+    })
+
+    file = Saves("data/statistics/actions.json")
+    file.save_file({
+        "quantity_events": statistics.quantity_events,
+        "selected_actions": statistics.selected_actions,
+        "events": statistics.events
     })
 
 def save(statistics:Statistics, game_state):
