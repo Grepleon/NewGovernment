@@ -1,8 +1,7 @@
-import os
 import config
 import politicians.politician as path_politician
 import visual.display
-from politicians.characters.variables import variable_characters
+from loader.load_data import variable_characters
 import visual.components.button as button
 
 def create_politicians() -> dict[str:path_politician.Politician]:

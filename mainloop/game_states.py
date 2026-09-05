@@ -6,11 +6,13 @@ import datetime as dt
 import pytz
 from babel.dates import format_datetime
 import countries.areas.base_area as ba
+from party.base_party import BaseParty
 
 class GameState:
     def __init__(self, year, ticks, selected_politician:politician.Politician|None,
                  politicians:dict[str:politician.Politician], areas:dict[str, ba.Area],
-                 countries: dict[str:country.Country], nations: dict[str:bn.Nation], statistics:Statistics):
+                 countries: dict[str:country.Country], nations: dict[str:bn.Nation], statistics:Statistics,
+                 parties: dict[str:BaseParty]):
         self.time:dt.datetime = year
         self.ticks = ticks
         self.selected_politician:politician.Politician = selected_politician
@@ -19,6 +21,7 @@ class GameState:
         self.nations: dict[str:bn.Nation] = nations
         self.statistics:Statistics = statistics
         self.areas = areas
+        self.parties = parties
 
     def year_to_str(self):
         return format_datetime(self.time, "HH:00, d MMMM, y год", locale='ru')

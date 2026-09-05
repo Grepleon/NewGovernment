@@ -1,5 +1,5 @@
 import politicians.politician as p
-import politicians.characters.variables as v
+from loader import load_data as v
 
 pols = v.variable_characters()
 pol:p.Politician = pols["Алексей Бабочкин Федорович"]
