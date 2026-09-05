@@ -1,6 +1,8 @@
 import visual.components.base_object as b_object
 import visual.display
 
+def passed(self):
+    pass
 
 class Button(b_object.BaseObject):
     def __init__(self, x1, y1, x2, y2,
@@ -17,6 +19,9 @@ class Button(b_object.BaseObject):
         self.into_mouse=False
         self.on=False
 
+        self.fun = passed
+        self.unfun = passed
+
         self._create()
 
     def disable(self):
@@ -31,6 +36,7 @@ class Button(b_object.BaseObject):
 
     def display_object(self):
         if not self.on:
+            self.unfun(self)
             if self.into_mouse:
                 self.display.recolor(self.color, self.object_id)
                 self.display.recolor(self.bg_color, self.object_id + self.pref_text)
@@ -38,12 +44,15 @@ class Button(b_object.BaseObject):
                 self.display.recolor(self.bg_color, self.object_id)
                 self.display.recolor(self.color, self.object_id + self.pref_text)
         else:
+            self.fun(self)
             if self.into_mouse:
                 self.display.recolor(self.active_color, self.object_id)
                 self.display.recolor(self.bg_active_color, self.object_id + self.pref_text)
             else:
                 self.display.recolor(self.bg_active_color, self.object_id)
                 self.display.recolor(self.active_color, self.object_id + self.pref_text)
+
+
 
     def rewrite_text(self, text):
         self.text = text

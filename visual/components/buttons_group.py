@@ -14,21 +14,14 @@ class ButtonsGroup(BaseObject):
     def display_object(self):
         if self.selected_button is None:
             return
-        for button in self.buttons:
-            if button.object_id == self.selected_button:
-                button.on = True
-            else:
-                button.on = False
 
-    def mouse_into_object(self):
+    def mouse_into_object(self, x1, y1):
         return True
 
     def mouse_clicked_object(self):
         selected_button = self.selected_button
         for button in self.buttons:
-            if button.on:
-                self.selected_button = button.object_id
-
-        for button in self.buttons:
-            if button.object_id == selected_button:
-                button.on = False
+            if button.on and self.selected_button != button:
+                if not self.selected_button is None:
+                    self.selected_button.on = False
+                self.selected_button = button

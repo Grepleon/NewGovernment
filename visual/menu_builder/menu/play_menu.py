@@ -9,9 +9,18 @@ from visual.components.button import Button
 from visual.components.game_event import GameEvent
 from visual.tools.events.check_events import CheckerEvents
 from visual.components.text import Text
+from visual.components.buttons_group import ButtonsGroup
 
 def passed(null):
     pass
+
+def add_big(button:Button):
+    button.text = button.text[0] + ">" + button.text[2:]
+    button.rewrite_text(button.text)
+
+def del_big(button:Button):
+    button.text = button.text[0] + " " + button.text[2:]
+    button.rewrite_text(button.text)
 
 def get_menu(display, game_state:game_states.GameState):
     buttons = []
@@ -65,12 +74,15 @@ def get_menu(display, game_state:game_states.GameState):
                 config.base_off_bg_button_color,
                 config.base_on_button_color,
                 config.base_on_bg_button_color,
-                config.texts_buttons_map[index],
+                ">  " + config.texts_buttons_map[index] + " " * (22 - len(config.texts_buttons_map[index])),
                 display.add_id(),
                 display,
                 name=config.texts_buttons_map[index]
             )
         )
+
+        map_buttons[-1].fun = add_big
+        map_buttons[-1].unfun = del_big
 
     for index, ethnos in enumerate(game_state.nations):
         additional_buttons_map.append(
@@ -85,12 +97,15 @@ def get_menu(display, game_state:game_states.GameState):
                 config.base_off_bg_button_color,
                 config.base_on_button_color,
                 config.base_on_bg_button_color,
-                ethnos,
+                ">  " + ethnos + " " * (22 - len(ethnos)),
                 display.add_id(),
                 display,
                 name=ethnos
             )
         )
+
+        additional_buttons_map[-1].fun = add_big
+        additional_buttons_map[-1].unfun = del_big
 
     solution_buttons = []
 
@@ -105,14 +120,24 @@ def get_menu(display, game_state:game_states.GameState):
                 config.base_off_bg_button_color,
                 config.base_on_button_color,
                 config.base_on_bg_button_color,
-                config.solutions[index],
+                "> " + config.solutions[index] + " " * (20 - len(config.solutions[index])),
                 display.add_id(),
                 display,
                 config.solutions[index]
             )
         )
+        solution_buttons[-1].fun = add_big
+        solution_buttons[-1].unfun = del_big
 
     buttons += solution_buttons
+    buttons.append(
+        ButtonsGroup(
+            solution_buttons,
+            display.add_id(),
+            display,
+            "SOLUTIONS"
+        )
+    )
 
     info_texts = []
     for i, text in enumerate(config.info_texts):

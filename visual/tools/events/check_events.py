@@ -41,7 +41,7 @@ class CheckerEvents:
                 self.get_new_year()
                 self.game_event.show()
                 self.game_event.rewrite(
-                    f"С новым {self.game_state.get_year()} годом!",
+                    f">> С новым {self.game_state.get_year()} годом!",
                     ["С новым годом!", "", "", "", ""],
                 ["Нажмите, чтобы продолжить играть", "", "", "", ""],
                     [passed, passed, passed, passed, passed],
@@ -53,7 +53,7 @@ class CheckerEvents:
                 if country.next_vote == self.game_state.get_str_year():
                     candidates, winner, turnout = voted(self, country, "ruler")
                     self.game_event.rewrite(
-                        f"Выборы в государстве {country.name}\n"
+                        f">> Выборы в государстве {country.name}\n"
                         f"Явка: {round(turnout * 100, 2)}%\n\n"
                         f"Кандидаты: \n{"\n".join(candidates)}"
                         f"\n\nНовым правителем стал:\n{winner.upper()}!",

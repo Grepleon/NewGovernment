@@ -58,10 +58,18 @@ def voted(self, country, job):
             winner = politician.name
             max_points = point
         print(politician.name, ':', its(point))
-        re_candidates.append(f"{politician.name} - {round(point / sum_points * 100, 2)}%")
         lens = 50
-        re_candidates.append(f"{'|' * int(point / sum_points * lens)}"
-                             f"{'.' * int(lens - point / sum_points * lens)}"
+        re_candidates.append(
+                             f"{politician.name} - {round(point / sum_points * 100, 2)}%" + " " +
+                             " " * (35 - len(politician.name) - len(str(round(point / sum_points * 100, 2)))) + " " +
+                             f"{'#' * int(point / sum_points * lens)}"
+                             f"{'.' * int(lens - point / sum_points * lens)}" +
+                             f""
+        )
+        print(f"{politician.name} - {round(point / sum_points * 100, 2)}%" + " " +
+                             " " * (35 - len(politician.name) - len(str(round(point / sum_points * 100, 2)))) + " " +
+                             f"{'#' * int(point / sum_points * lens)}"
+                             f"{'.' * int(lens - point / sum_points * lens)}" +
                              f"")
 
     self.game_state.statistics.check_votes(job, winner, max_points,

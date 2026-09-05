@@ -4,6 +4,7 @@ import config
 class Display:
     def __init__(self, x, y):
         self.root = Tk()
+        self.font = ("Courier", 8)
         self.root.title(config.name_project)
         self.canvas = Canvas(self.root, width=x, height=y, bg=config.bg_color)
         self.canvas.pack(anchor=CENTER, expand=1)
@@ -103,9 +104,9 @@ class Display:
         if tag is None:
             self.id_objects += 1
             self.canvas.create_text(x1, y1, text=text, fill=color,
-                                    tags=self.pref_tag + str(self.id_objects))
+                                    tags=self.pref_tag + str(self.id_objects), font=self.font)
             return self.pref_tag + str(self.id_objects)
-        self.canvas.create_text(x1, y1, text=text, fill=color, tags=str(tag))
+        self.canvas.create_text(x1, y1, text=text, fill=color, tags=str(tag), font=self.font)
         return str(tag)
 
     def create_image(self, x1, y1, path, tag=None) -> int | str:
