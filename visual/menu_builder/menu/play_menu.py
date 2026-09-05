@@ -92,6 +92,28 @@ def get_menu(display, game_state:game_states.GameState):
             )
         )
 
+    solution_buttons = []
+
+    for index, solution in enumerate(config.solutions):
+        solution_buttons.append(
+            Button(
+                config.buttons_solution_coordinate_first[0] + config.buttons_solution_coordinate_change[0] * index,
+                config.buttons_solution_coordinate_first[1] + config.buttons_solution_coordinate_change[1] * index,
+                config.buttons_solution_coordinate_first[2] + config.buttons_solution_coordinate_change[0] * index,
+                config.buttons_solution_coordinate_first[3] + config.buttons_solution_coordinate_change[1] * index,
+                config.base_off_button_color,
+                config.base_off_bg_button_color,
+                config.base_on_button_color,
+                config.base_on_bg_button_color,
+                config.solutions[index],
+                display.add_id(),
+                display,
+                config.solutions[index]
+            )
+        )
+
+    buttons += solution_buttons
+
     info_texts = []
     for i, text in enumerate(config.info_texts):
         info_texts.append(
@@ -169,6 +191,7 @@ def get_menu(display, game_state:game_states.GameState):
     play_manager.game_event = game_event
     play_manager.checker_events = CheckerEvents(display, game_state, game_event)
     play_manager.info_texts = info_texts
+    play_manager.solution_buttons = solution_buttons
 
 
     return play_manager

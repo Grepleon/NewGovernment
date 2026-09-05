@@ -96,3 +96,7 @@ out_info_texts = [int(coord) for coord in os.getenv("OUTINFOTEXTS").split()]
 
 info_texts = os.getenv("INFOTEXTS").split(', ')
 quantity_info_texts = len(info_texts)
+
+solutions = os.getenv("SOLUTIONS").split(",")
+buttons_solution_coordinate_first = [int(coord) for coord in os.getenv("BUTTONSOLUTIONCOORDFIRST").split()]
+buttons_solution_coordinate_change = [int(coord) for coord in os.getenv("BUTTONSOLUTIONCOORDCHANGE").split()]

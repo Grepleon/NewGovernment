@@ -32,6 +32,7 @@ class PlayManager(base_manager.Manager):
         self.game_event = None
         self.checker_events:CheckerEvents|None = None
         self.info_texts = None
+        self.solution_buttons:list[Button] = []
 
     def check_cities(self):
         flag = False
