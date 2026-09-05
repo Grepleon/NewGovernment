@@ -4,7 +4,7 @@ import config
 class Display:
     def __init__(self, x, y):
         self.root = Tk()
-        self.font = ("Courier", 8)
+        self.font = ("Courier New", 9)
         self.root.title(config.name_project)
         self.canvas = Canvas(self.root, width=x, height=y, bg=config.bg_color)
         self.canvas.pack(anchor=CENTER, expand=1)
