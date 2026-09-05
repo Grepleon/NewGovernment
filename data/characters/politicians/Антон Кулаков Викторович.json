@@ -6,8 +6,8 @@
     "alive": true,
     "at_large": true,
     "political_compass": {
-      "left-right": 4,
-      "freedom": -5
+        "left-right": 4,
+        "freedom": -5
     },
     "money": 84000,
     "party": "Единство",
@@ -47,5 +47,17 @@
     "political_hour": 60,
     "reputation": 95,
     "ambitions": 89,
-    "bio": "Родился в 2006 году в Востокограде. В 2024 году закончил университет,\nполучив юридическое образование. В 2030 году смог переехать в столицу.\nВ 2036 году стал премьер-министром."
+    "bio": "Родился в 2006 году в Востокограде. В 2024 году закончил университет,\nполучив юридическое образование. В 2030 году смог переехать в столицу.\nВ 2036 году стал премьер-министром.",
+    "participating": {
+        "ruler": false,
+        "governor": false,
+        "mayor": false,
+        "deputy": false
+    },
+    "blocked": {
+        "ruler": false,
+        "governor": false,
+        "mayor": false,
+        "deputy": false
+    }
 }

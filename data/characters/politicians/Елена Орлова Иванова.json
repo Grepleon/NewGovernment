@@ -6,8 +6,8 @@
     "alive": true,
     "at_large": true,
     "political_compass": {
-      "left-right": 3,
-      "freedom": -2
+        "left-right": 3,
+        "freedom": -2
     },
     "money": 102000,
     "party": "Единство",
@@ -46,5 +46,17 @@
     "political_hour": 80,
     "reputation": 63,
     "ambitions": 50,
-    "bio": "Родилась в 2019 году в столице. В 2040 году впервые вступила\nв роль главы ЦБ, сменив Федора Мирского."
+    "bio": "Родилась в 2019 году в столице. В 2040 году впервые вступила\nв роль главы ЦБ, сменив Федора Мирского.",
+    "participating": {
+        "ruler": false,
+        "governor": false,
+        "mayor": false,
+        "deputy": false
+    },
+    "blocked": {
+        "ruler": false,
+        "governor": false,
+        "mayor": false,
+        "deputy": false
+    }
 }

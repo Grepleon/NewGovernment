@@ -3,7 +3,7 @@ from visual.components.game_event import GameEvent
 from mainloop.game_states import GameState
 from hints.int_to_str import int_to_str as its
 import random
-
+from visual.tools.events.vote import voted
 
 def passed(null):
     pass
@@ -33,60 +33,6 @@ class CheckerEvents:
             politician = self.game_state.politicians[name_politician]
             politician.new_year()
 
-    def voted(self, country):
-        candidates = []
-        re_candidates = []
-        points = {}
-        max_points = 0
-        winner = None
-
-        for politician_name in self.game_state.politicians:
-            politician = self.game_state.politicians[politician_name]
-            if country.name in politician.citizenship:
-                wish = (politician.position.importance * politician.popularity.peoples_total() *
-                        politician.reputation ** 1.5 * politician.ambitions)
-                if wish > 30_000_000: #100% идет
-                    candidates.append(politician)
-                    points[politician_name] = 0
-                elif wish > 15_000_000 and random.randint(1, 2) == 1: #50 на 50
-                    candidates.append(politician)
-                    points[politician_name] = 0
-
-
-                print(politician_name, "-", its(wish))
-
-        sum_points = 0
-        for politician in candidates:
-            point = 0
-            for area_name in country.areas:
-                area = country.areas[area_name]
-                for city_name in area.cities:
-                    city = area.cities[city_name]
-                    point += city.vote(politician) * city.peoples / 100
-            if self.game_state.politicians[country.ruler].name == politician.name:
-                point *= country.falsifications["ruler"]
-            if self.game_state.politicians[country.ruler].name_party == politician.name_party:
-                point *= country.falsifications["ruling_party"]
-            point /= 100000
-            point **= 5
-            sum_points += point
-            points[politician.name] = int(point)
-
-            print(politician.name, "-", its(point))
-
-        for politician in candidates:
-            point = points[politician.name]
-            if max_points < point:
-                winner = politician.name
-                max_points = point
-            print(politician.name, ':', its(point))
-            re_candidates.append(f"{politician.name} - {round(point / sum_points * 100, 2)}%")
-
-        self.game_state.statistics.check_votes("ruler", winner, max_points,
-                                               self.game_state.selected_politician.name)
-
-        return re_candidates, winner
-
     def check(self):
         if not self.game_event.on:
             if self.game_state.get_day() == "00:00 1":
@@ -105,11 +51,12 @@ class CheckerEvents:
             for name_country in self.game_state.countries:
                 country = self.game_state.countries[name_country]
                 if country.next_vote == self.game_state.get_str_year():
-                    candidates, winner = self.voted(country)
+                    candidates, winner, turnout = voted(self, country, "ruler")
                     self.game_event.rewrite(
                         f"Выборы в государстве {country.name}\n"
+                        f"Явка: {round(turnout * 100, 2)}%\n\n"
                         f"Кандидаты: \n{"\n".join(candidates)}"
-                        f"\nНовым правителем стал {winner}!",
+                        f"\n\nНовым правителем стал:\n{winner.upper()}!",
                         ["Поздравляю нового правителя!",
                          "Выборы точно были фальсифицированы...",
                          "Промолчать", "", ""],

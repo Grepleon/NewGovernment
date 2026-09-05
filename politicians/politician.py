@@ -5,7 +5,7 @@ import politicians.policy.characteristics.charisma as charisma
 import politicians.policy.characteristics.poor_health as poor_health
 import politicians.policy.job_title.base_job_title as bjt
 import politicians.policy.job_title.deputy as deputy
-import politicians.policy.job_title.president as president
+import politicians.policy.job_title.ruler as president
 import politicians.policy.popularity.popularity_indicator as pi
 import politicians.policy.popularity.support as p_support
 from hints.int_to_str import int_to_str
@@ -26,8 +26,9 @@ class Politician:
     def __init__(self, name, year, political_compass, characteristics, money, alive, at_large,
                  position, popularity, support, mind, old_age, track, location, citizenship,
                  place_of_residence, nationality:base_nationality.Nationality, political_hour,
-                 reputation, ambitions,
-                 name_party=None, nickname=None, bio=None):
+                 reputation, ambitions, name_party, nickname, bio,
+                 participating, blocked
+                 ):
         self.name:str = name
         self.nickname:str = nickname # псевдоним, None - его нет
         self.year:int = year
@@ -52,6 +53,8 @@ class Politician:
         self.political_hour = political_hour
         self.reputation = reputation
         self.ambitions = ambitions
+        self.participating:dict[str:bool] = participating
+        self.blocked:dict[str:bool] = blocked
 
     def to_briefly_str(self):
         return (f"{self.name}" + ("" if self.nickname is None else f" ({self.nickname})") +

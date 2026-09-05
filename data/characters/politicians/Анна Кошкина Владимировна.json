@@ -6,8 +6,8 @@
     "alive": true,
     "at_large": true,
     "political_compass": {
-      "left-right": 0,
-      "freedom": 3
+        "left-right": 0,
+        "freedom": 3
     },
     "money": 62000,
     "party": "Наше око - Велико",
@@ -46,5 +46,17 @@
     "political_hour": 120,
     "reputation": 93,
     "ambitions": 33,
-    "bio": "Родилась в 2005 году в столице. В 2030 году основала партию\n\"Наше око - Велико\". А уже в 2036 году стала министром иностранных дел."
+    "bio": "Родилась в 2005 году в столице. В 2030 году основала партию\n\"Наше око - Велико\". А уже в 2036 году стала министром иностранных дел.",
+    "participating": {
+        "ruler": false,
+        "governor": false,
+        "mayor": false,
+        "deputy": false
+    },
+    "blocked": {
+        "ruler": false,
+        "governor": false,
+        "mayor": false,
+        "deputy": false
+    }
 }

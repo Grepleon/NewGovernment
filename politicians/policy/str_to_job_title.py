@@ -7,7 +7,7 @@ import politicians.policy.job_title.deputy as deputy
 import politicians.policy.job_title.head_cb as head_cb
 import politicians.policy.job_title.journalist as journalist
 import politicians.policy.job_title.minister as minister
-import politicians.policy.job_title.president as president
+import politicians.policy.job_title.ruler as president
 import politicians.policy.job_title.senator as senator
 import politicians.policy.job_title.supreme_judge as supreme_judge
 import politicians.policy.job_title.unemployed as unemployed
@@ -23,7 +23,7 @@ data = {
     "head_cb": jt.head_cb.HeadCB,
     "journalist": jt.journalist.Journalist,
     "minister": jt.minister.Minister,
-    "president": jt.president.President,
+    "ruler": jt.ruler.Ruler,
     "senator": jt.senator.Senator,
     "supreme_judge": jt.supreme_judge.SupremeJudge,
     "unemployed": jt.unemployed.Unemployed,

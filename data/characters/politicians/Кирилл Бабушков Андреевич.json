@@ -6,8 +6,8 @@
     "alive": true,
     "at_large": true,
     "political_compass": {
-      "left-right": 5,
-      "freedom": -6
+        "left-right": 5,
+        "freedom": -6
     },
     "money": 71000,
     "party": "Единство",
@@ -19,7 +19,7 @@
     "popularity": {
         "youth": 10,
         "middle-aged": 35,
-        "elderly": 95,
+        "elderly": 65,
         "in_power": 48,
         "poor": 82,
         "rich": 12
@@ -43,7 +43,19 @@
     "nationality": "алдоанец",
     "location": "Техноградская область, Техноград",
     "political_hour": 160,
-    "reputation": 80,
+    "reputation": 60,
     "ambitions": 11,
-    "bio": "Родился в 2010 году в столице. В 2030 году стал министром социальной\nполитики. Однако в 35 лет у него началась депрессия, которую он начал заедать.\nПотому состояние его здоровья сильно ухудшилось."
+    "bio": "Родился в 2010 году в столице. В 2030 году стал министром социальной\nполитики. Однако в 35 лет у него началась депрессия, которую он начал заедать.\nПотому состояние его здоровья сильно ухудшилось.",
+    "participating": {
+        "ruler": false,
+        "governor": false,
+        "mayor": false,
+        "deputy": false
+    },
+    "blocked": {
+        "ruler": false,
+        "governor": false,
+        "mayor": false,
+        "deputy": false
+    }
 }

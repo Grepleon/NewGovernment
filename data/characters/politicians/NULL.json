@@ -6,14 +6,12 @@
     "alive": true,
     "at_large": true,
     "political_compass": {
-      "left-right": 0,
-      "freedom": 0
+        "left-right": 0,
+        "freedom": 0
     },
     "money": 0,
     "party": null,
-    "characteristics": [
-
-    ],
+    "characteristics": [],
     "popularity": {
         "youth": 0,
         "middle-aged": 0,
@@ -32,16 +30,24 @@
     "track": 0,
     "mind": 100,
     "old_age": 80,
-    "citizenship": [
-
-    ],
-    "place_of_residence": [
-
-    ],
+    "citizenship": [],
+    "place_of_residence": [],
     "nationality": "неизвестно",
     "location": "Неизвестная область, Неизвестно",
     "political_hour": 300,
     "reputation": 100,
     "ambitions": 0,
-    "bio": null
+    "bio": null,
+    "participating": {
+        "ruler": false,
+        "governor": false,
+        "mayor": false,
+        "deputy": false
+    },
+    "blocked": {
+        "ruler": false,
+        "governor": false,
+        "mayor": false,
+        "deputy": false
+    }
 }

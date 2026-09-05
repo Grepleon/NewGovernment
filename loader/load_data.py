@@ -71,7 +71,9 @@ def variable_characters() -> dict[str:pol.Politician]:
             data_pol["ambitions"],
             data_pol["party"],
             data_pol["nickname"],
-            data_pol["bio"]
+            data_pol["bio"],
+            data_pol["participating"],
+            data_pol["blocked"]
         )
 
     return politicians
