@@ -3,5 +3,9 @@
   "leader": "Анна Кошкина Владимировна",
   "participants": [
     "Анна Кошкина Владимировна"
-  ]
+  ],
+  "political_ideas": {
+      "left-right": 0,
+      "freedom": 3
+    }
 }
