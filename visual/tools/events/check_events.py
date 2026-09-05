@@ -67,6 +67,8 @@ class CheckerEvents:
                 point *= country.falsifications["ruler"]
             if self.game_state.politicians[country.ruler].name_party == politician.name_party:
                 point *= country.falsifications["ruling_party"]
+            point /= 100000
+            point **= 5
             sum_points += point
             points[politician.name] = int(point)
 

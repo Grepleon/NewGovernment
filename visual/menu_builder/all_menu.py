@@ -39,7 +39,8 @@ class AllMenu:
                 self.manager_used.hide()
                 self.play_manager.show()
                 self.manager_used = self.play_manager
-                self.game_state.statistics.add_selected_politician(self.game_state.selected_politician.name)
+                self.game_state.statistics.add_selected_politician(self.game_state.selected_politician.name,
+                                                                   self.game_state.selected_politician)
 
         self.display.fast_left_button_pressed = False
         self.display.tact += 1

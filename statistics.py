@@ -17,7 +17,15 @@ class Statistics:
                  max_points,
                  quantity_events,
                  selected_actions,
-                 events
+                 events,
+                 nationality,
+                 liberated_nationalities,
+                 oppressed_nationalities,
+                 selected_nationalities,
+                 in_honor_of_a_nationality,
+                 against_a_nationality,
+                 number_of_tolerant_decisions,
+                 number_of_racist_decisions,
                  ):
         self.time = time
         self.time_start = timer()
@@ -34,9 +42,21 @@ class Statistics:
         self.quantity_events = quantity_events
         self.selected_actions = selected_actions
         self.events = events
+        self.nationality = nationality
+        self.liberated_nationalities = liberated_nationalities
+        self.oppressed_nationalities = oppressed_nationalities
+        self.selected_nationalities = selected_nationalities
+        self.in_honor_of_a_nationality = in_honor_of_a_nationality
+        self.against_a_nationality = against_a_nationality
+        self.number_of_tolerant_decisions = number_of_tolerant_decisions
+        self.number_of_racist_decisions = number_of_racist_decisions
 
-    def add_selected_politician(self, politician):
+
+    def add_selected_politician(self, politician, data_politician):
         self.count_politicians[politician] = self.count_politicians.get(politician, 0) + 1
+        self.selected_nationalities[data_politician.nationality.name] = (
+                self.selected_nationalities.get(data_politician.nationality.name, 0) + 1)
+        print(data_politician.nationality.name)
 
     def check_votes(self, job, winner, points, you="NULL"):
         if job not in self.winners:
@@ -69,6 +89,7 @@ def get_statistics():
     data_play_time = Saves("data/statistics/play_time.json").loaded_data
     data_vote = Saves("data/statistics/votes.json").loaded_data
     data_events = Saves("data/statistics/actions.json").loaded_data
+    data_ethno = Saves("data/statistics/nationality.json").loaded_data
 
     statistics = Statistics(data_time["time"],
                             data_counts["selected_politician"],
@@ -83,7 +104,15 @@ def get_statistics():
                             data_vote["max_points"],
                             data_events["quantity_events"],
                             data_events["selected_actions"],
-                            data_events["events"]
+                            data_events["events"],
+                            data_ethno["nationality"],
+                            data_ethno["liberated_nationalities"],
+                            data_ethno["oppressed_nationalities"],
+                            data_ethno["selected_nationalities"],
+                            data_ethno["in_honor_of_a_nationality"],
+                            data_ethno["against_a_nationality"],
+                            data_ethno["number_of_tolerant_decisions"],
+                            data_ethno["number_of_racist_decisions"],
                             )
 
     return statistics
@@ -121,6 +150,18 @@ def set_statistics(statistics:Statistics):
         "quantity_events": statistics.quantity_events,
         "selected_actions": statistics.selected_actions,
         "events": statistics.events
+    })
+
+    file = Saves("data/statistics/nationality.json")
+    file.save_file({
+        "nationality": statistics.nationality,
+        "liberated_nationalities": statistics.liberated_nationalities,
+        "oppressed_nationalities": statistics.oppressed_nationalities,
+        "selected_nationalities": statistics.selected_nationalities,
+        "in_honor_of_a_nationality": statistics.in_honor_of_a_nationality,
+        "against_a_nationality": statistics.against_a_nationality,
+        "number_of_tolerant_decisions": statistics.number_of_tolerant_decisions,
+        "number_of_racist_decisions": statistics.number_of_racist_decisions,
     })
 
 def save(statistics:Statistics, game_state):

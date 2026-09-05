@@ -1,1 +1,1 @@
-import tests.check_popularity
+import generator.add_to_peoples
