@@ -17,11 +17,19 @@ def passed(null):
 def add_big(button:Button):
     button.text = button.text[0] + ">" + button.text[2:]
     button.rewrite_text(button.text)
-    button.display.create_window()
 
 def del_big(button:Button):
     button.text = button.text[0] + " " + button.text[2:]
     button.rewrite_text(button.text)
+
+def add_big2(button:Button):
+    add_big(button)
+    if button.created_window is None:
+        button.created_window = button.display.create_window(button.text[2:], 350, 600, button.text[2:])
+
+def del_big2(button:Button):
+    del_big(button)
+    button.display.destroy_window(button.text[2:])
 
 def get_menu(display, game_state:game_states.GameState):
     buttons = []
@@ -127,8 +135,8 @@ def get_menu(display, game_state:game_states.GameState):
                 config.solutions[index]
             )
         )
-        solution_buttons[-1].fun = add_big
-        solution_buttons[-1].unfun = del_big
+        solution_buttons[-1].fun = add_big2
+        solution_buttons[-1].unfun = del_big2
 
     buttons += solution_buttons
     buttons.append(

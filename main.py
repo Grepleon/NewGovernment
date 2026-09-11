@@ -7,6 +7,7 @@ from loader.load_data import variables_country, variable_parties
 import visual.menu_builder.all_menu as path_all_menu
 import statistics as st
 import datetime as dt
+from hints.code.execute import execute
 
 statistics:st.Statistics = st.get_statistics()
 
@@ -46,6 +47,11 @@ game_state = game_states.GameState(
 all_menu = path_all_menu.AllMenu(display, game_state)
 
 all_menu.checker()
+
+print(game_state.selected_politician.popularity.total())
+execute("NUM random <RANDOM:5,10>\nPRINT random \nPRINT \"Проверка текста\" ", game_state)
+execute("NUM random <RANDOM:5,10>\nADD <POP->PEOPLES> random", game_state)
+print(game_state.selected_politician.popularity.total())
 
 display.end()
 

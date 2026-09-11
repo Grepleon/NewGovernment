@@ -21,6 +21,7 @@ class Button(b_object.BaseObject):
 
         self.fun = passed
         self.unfun = passed
+        self.created_window = None
 
         self._create()
 
@@ -63,6 +64,7 @@ class Button(b_object.BaseObject):
         return self.into_mouse
 
     def mouse_clicked_object(self):
+        self.created_window = None
         self.on = self.into_mouse and not self.on
         return self.on
 

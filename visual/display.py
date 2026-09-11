@@ -4,19 +4,19 @@ import config
 class Display:
     def __init__(self, x, y):
         self.root = Tk()
-        self.selected_root = Tk()
+        self.selected_root = self.root
         self.font = ("Courier New", 9)
         self.root.title(config.name_project)
         self.canvas = Canvas(self.root, width=x, height=y, bg=config.bg_color)
         self.canvas.pack(anchor=CENTER, expand=1)
         self.id_objects = 1
 
-        self.main_canvas = "<MAIN-WINDOW>"
+        self.main_window = "<MAIN-WINDOW>"
         self.canvases = {
-            self.main_canvas: self.canvas
+            self.main_window: self.canvas
         }
         self.roots = {
-            self.main_canvas: self.root
+            self.main_window: self.root
         }
         self.id_windows = 0
         self.pref_window_tag = "Window:"
@@ -46,9 +46,11 @@ class Display:
         self.tact = 0
 
     def create_window(self, name, x, y, id_tag=None):
+        self.destroy_window(name)
+
         root = Tk()
         root.title(name)
-        canvas = Canvas(self.root, width=x, height=y, bg=config.bg_color)
+        canvas = Canvas(root, width=x, height=y, bg=config.bg_color)
         canvas.pack(anchor=CENTER, expand=1)
 
         if id_tag is None:
@@ -64,7 +66,9 @@ class Display:
         self.selected_root = self.roots[name]
 
     def destroy_window(self, name):
-        self.selected_root.destroy()
+        if name in self.roots: self.roots[name].destroy()
+        if name in self.canvases: del self.canvases[name]
+        if name in self.roots: del self.roots[name]
 
     def right_on_press(self, event):
         if event.num == 3:

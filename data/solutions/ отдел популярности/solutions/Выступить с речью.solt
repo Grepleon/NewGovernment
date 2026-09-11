@@ -1,0 +1,7 @@
+name:Выступить с речью
+bio:Вы выступите с пафосной речью перед народом
+cost:10 <POLH>
+code: \code
+NUM random <RANDOM:2,5>
+ADD <POP->PEOPLES> random
+\code
