@@ -17,6 +17,7 @@ def passed(null):
 def add_big(button:Button):
     button.text = button.text[0] + ">" + button.text[2:]
     button.rewrite_text(button.text)
+    button.display.create_window()
 
 def del_big(button:Button):
     button.text = button.text[0] + " " + button.text[2:]

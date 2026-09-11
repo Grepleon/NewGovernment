@@ -7,12 +7,13 @@ import pytz
 from babel.dates import format_datetime
 import countries.areas.base_area as ba
 from party.base_party import BaseParty
+from visual.display import Display
 
 class GameState:
     def __init__(self, year, ticks, selected_politician:politician.Politician|None,
                  politicians:dict[str:politician.Politician], areas:dict[str, ba.Area],
                  countries: dict[str:country.Country], nations: dict[str:bn.Nation], statistics:Statistics,
-                 parties: dict[str:BaseParty]):
+                 parties: dict[str:BaseParty], display:Display):
         self.time:dt.datetime = year
         self.ticks = ticks
         self.selected_politician:politician.Politician = selected_politician

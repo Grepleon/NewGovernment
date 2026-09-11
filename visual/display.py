@@ -4,11 +4,22 @@ import config
 class Display:
     def __init__(self, x, y):
         self.root = Tk()
+        self.selected_root = Tk()
         self.font = ("Courier New", 9)
         self.root.title(config.name_project)
         self.canvas = Canvas(self.root, width=x, height=y, bg=config.bg_color)
         self.canvas.pack(anchor=CENTER, expand=1)
         self.id_objects = 1
+
+        self.main_canvas = "<MAIN-WINDOW>"
+        self.canvases = {
+            self.main_canvas: self.canvas
+        }
+        self.roots = {
+            self.main_canvas: self.root
+        }
+        self.id_windows = 0
+        self.pref_window_tag = "Window:"
 
         self.pref_tag = "Object:"
         self.images = []
@@ -33,6 +44,27 @@ class Display:
         self.root.bind('<KeyRelease>', self.on_key_release)
 
         self.tact = 0
+
+    def create_window(self, name, x, y, id_tag=None):
+        root = Tk()
+        root.title(name)
+        canvas = Canvas(self.root, width=x, height=y, bg=config.bg_color)
+        canvas.pack(anchor=CENTER, expand=1)
+
+        if id_tag is None:
+            self.id_windows += 1
+            id_tag = self.pref_window_tag + str(self.id_windows)
+
+        self.canvases[id_tag] = canvas
+        self.roots[id_tag] = root
+        return id_tag
+
+    def switch_window(self, name):
+        self.canvas = self.canvases[name]
+        self.selected_root = self.roots[name]
+
+    def destroy_window(self, name):
+        self.selected_root.destroy()
 
     def right_on_press(self, event):
         if event.num == 3:

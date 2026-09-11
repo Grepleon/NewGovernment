@@ -24,6 +24,8 @@ all_countries, all_areas = variables_country()
 nations = variables_nations()
 parties = variable_parties()
 
+display = path_display.Display(config.width, config.height)
+
 game_state = game_states.GameState(
     dt.datetime(config.first_year[0],
                 config.first_year[1],
@@ -37,10 +39,10 @@ game_state = game_states.GameState(
     all_countries,
     nations,
     statistics,
-    parties
+    parties,
+    display
 )
 
-display = path_display.Display(config.width, config.height)
 all_menu = path_all_menu.AllMenu(display, game_state)
 
 all_menu.checker()
