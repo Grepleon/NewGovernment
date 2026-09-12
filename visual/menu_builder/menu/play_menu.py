@@ -4,6 +4,7 @@ import mainloop.game_states as game_states
 import visual.components.hint as hint
 import config
 import visual.components.city as comp_city
+from mainloop.additional_windows import AdditionalWindow
 from visual.components.area import *
 from visual.components.button import Button
 from visual.components.game_event import GameEvent
@@ -11,25 +12,35 @@ from visual.tools.events.check_events import CheckerEvents
 from visual.components.text import Text
 from visual.components.buttons_group import ButtonsGroup
 
-def passed(null):
+def passed(null, null2):
     pass
 
-def add_big(button:Button):
+def add_big(button:Button, game_state:game_states.GameState):
     button.text = button.text[0] + ">" + button.text[2:]
     button.rewrite_text(button.text)
 
-def del_big(button:Button):
+def del_big(button:Button, game_state:game_states.GameState):
     button.text = button.text[0] + " " + button.text[2:]
     button.rewrite_text(button.text)
 
-def add_big2(button:Button):
-    add_big(button)
+def add_big2(button:Button, game_state:game_states.GameState):
+    add_big(button, game_state)
     if button.created_window is None:
+        print(game_state)
         button.created_window = button.display.create_window(button.text[2:], 350, 600, button.text[2:])
+        game_state.additional_windows.append(
+            AdditionalWindow(
+                button.text[2:],
+                game_state,
+                button.display
+            )
+        )
 
-def del_big2(button:Button):
-    del_big(button)
-    button.display.destroy_window(button.text[2:])
+def del_big2(button:Button, game_state:game_states.GameState):
+    del_big(button, game_state)
+
+    if button.text[2:] in button.display.activity_windows and button.display.activity_windows[button.text[2:]]:
+        button.display.destroy_window(button.text[2:])
 
 def get_menu(display, game_state:game_states.GameState):
     buttons = []
@@ -67,7 +78,7 @@ def get_menu(display, game_state:game_states.GameState):
                           config.coord_year_text[3],
                           config.base_off_button_color, config.base_off_bg_button_color,
                           config.base_on_button_color, config.base_on_bg_button_color,
-                          game_state.year_to_str(), display.add_id(), display))
+                          game_state.year_to_str(), display.add_id(), display, game_state))
     year = buttons[-1]
     map_buttons = []
     additional_buttons_map = []
@@ -86,6 +97,7 @@ def get_menu(display, game_state:game_states.GameState):
                 ">  " + config.texts_buttons_map[index] + " " * (22 - len(config.texts_buttons_map[index])),
                 display.add_id(),
                 display,
+                game_state,
                 name=config.texts_buttons_map[index]
             )
         )
@@ -109,6 +121,7 @@ def get_menu(display, game_state:game_states.GameState):
                 ">  " + ethnos + " " * (22 - len(ethnos)),
                 display.add_id(),
                 display,
+                game_state,
                 name=ethnos
             )
         )
@@ -132,6 +145,7 @@ def get_menu(display, game_state:game_states.GameState):
                 "> " + config.solutions[index] + " " * (20 - len(config.solutions[index])),
                 display.add_id(),
                 display,
+                game_state,
                 config.solutions[index]
             )
         )

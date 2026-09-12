@@ -43,7 +43,7 @@ def get_menu(display, politicians, game_states):
     config.coordinates_frame_picture[index_frame * 2 + 1] + config.frame_size_into[1] - config.frame_size_add,
                               config.base_off_button_color, config.dark_off_bg_button_color,
                               config.base_on_button_color, config.base_on_bg_button_color,
-                              rename(config.names_politicians[index_frame]), display.add_id(), display,
+                              rename(config.names_politicians[index_frame]), display.add_id(), display, None,
         config.names_politicians[index_frame]))
 
         try:

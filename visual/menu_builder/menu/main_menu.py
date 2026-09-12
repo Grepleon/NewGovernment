@@ -11,7 +11,7 @@ def get_menu(display):
                                      config.main_button_coordinates[2], config.main_button_coordinates[3],
                                      config.base_off_button_color, config.base_off_bg_button_color,
                                      config.base_on_button_color, config.base_on_bg_button_color,
-                                     config.main_button_text, display.add_id(), display)
+                                     config.main_button_text, display.add_id(), display, None)
     buttons.append(main_button)
 
     main_button.display_object()

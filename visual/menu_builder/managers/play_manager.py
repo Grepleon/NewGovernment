@@ -116,6 +116,14 @@ class PlayManager(base_manager.Manager):
             if i >= self.game_event.show_buttons:
                 event_button.hide()
 
+    def add_win_check(self):
+        for index, add_win in enumerate(self.game_state.additional_windows):
+            add_win.check_activity()
+            add_win.process()
+
+            if not add_win.display.activity_windows[add_win.name_window]:
+                self.game_state.additional_windows.pop(index)
+
     def base_check(self):
         self.play = self.button_time.on
 
@@ -132,6 +140,8 @@ class PlayManager(base_manager.Manager):
             _text:text.Text = _text
             _text.rewrite_text(replace_var(_text.name, self.game_state))
 
+        self.add_win_check()
+
     def check(self):
         for _button in self.buttons:
             if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
@@ -145,6 +155,7 @@ class PlayManager(base_manager.Manager):
 
         self.checker_events.check()
         self.check_hints_events()
+
 
     def delete(self):
         for _button in self.buttons:

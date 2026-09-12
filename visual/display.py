@@ -18,6 +18,9 @@ class Display:
         self.roots = {
             self.main_window: self.root
         }
+        self.activity_windows = {
+            self.main_window: True
+        }
         self.id_windows = 0
         self.pref_window_tag = "Window:"
 
@@ -59,6 +62,7 @@ class Display:
 
         self.canvases[id_tag] = canvas
         self.roots[id_tag] = root
+        self.activity_windows[id_tag] = True
         return id_tag
 
     def switch_window(self, name):
@@ -66,9 +70,11 @@ class Display:
         self.selected_root = self.roots[name]
 
     def destroy_window(self, name):
-        if name in self.roots: self.roots[name].destroy()
-        if name in self.canvases: del self.canvases[name]
-        if name in self.roots: del self.roots[name]
+        if name in self. activity_windows and self.activity_windows[name]:
+            if name in self.roots: self.roots[name].destroy()
+            if name in self.canvases: del self.canvases[name]
+            if name in self.roots: del self.roots[name]
+            if name in self.activity_windows: del self.activity_windows[name]
 
     def right_on_press(self, event):
         if event.num == 3:

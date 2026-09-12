@@ -1,6 +1,7 @@
 import politicians.politician as politician
 import countries.country as country
 import politicians.nation.base_nation as bn
+from mainloop.additional_windows import AdditionalWindow
 from statistics import Statistics
 import datetime as dt
 import pytz
@@ -23,6 +24,8 @@ class GameState:
         self.statistics:Statistics = statistics
         self.areas = areas
         self.parties = parties
+        self.display = display
+        self.additional_windows:list[AdditionalWindow] = []
 
     def year_to_str(self):
         return format_datetime(self.time, "HH:00, d MMMM, y год", locale='ru')

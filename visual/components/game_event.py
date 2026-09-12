@@ -70,7 +70,7 @@ class GameEvent(BaseObject):
             if i == self.show_buttons:
                 break
             if _button.on:
-                self.events[i](self.game_state)
+                self.events[i](self.game_state, None)
                 self.game_state.statistics.check_events(_button.text, self.system_name)
                 self.hide()
                 return i

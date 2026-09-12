@@ -55,6 +55,7 @@ def count_code_lines(directory='.'):
                     file_count += 1
                     results[relative_path] = lines
 
+
     return total_lines, file_count, results
 
 
