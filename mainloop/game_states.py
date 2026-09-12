@@ -1,10 +1,9 @@
 import politicians.politician as politician
 import countries.country as country
 import politicians.nation.base_nation as bn
-from mainloop.additional_windows import AdditionalWindow
+from mainloop.windows.additional_windows import AdditionalWindow
 from statistics import Statistics
 import datetime as dt
-import pytz
 from babel.dates import format_datetime
 import countries.areas.base_area as ba
 from party.base_party import BaseParty

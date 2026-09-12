@@ -4,7 +4,7 @@ import mainloop.game_states as game_states
 import visual.components.hint as hint
 import config
 import visual.components.city as comp_city
-from mainloop.additional_windows import AdditionalWindow
+from mainloop.windows.additional_windows import AdditionalWindow
 from visual.components.area import *
 from visual.components.button import Button
 from visual.components.game_event import GameEvent
@@ -13,6 +13,8 @@ from visual.components.text import Text
 from visual.components.buttons_group import ButtonsGroup
 
 def passed(null, null2):
+    pass
+def passed0(null, null2):
     pass
 
 def add_big(button:Button, game_state:game_states.GameState):
@@ -26,7 +28,6 @@ def del_big(button:Button, game_state:game_states.GameState):
 def add_big2(button:Button, game_state:game_states.GameState):
     add_big(button, game_state)
     if button.created_window is None:
-        print(game_state)
         button.created_window = button.display.create_window(button.text[2:], 350, 600, button.text[2:])
         game_state.additional_windows.append(
             AdditionalWindow(

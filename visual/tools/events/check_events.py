@@ -5,7 +5,10 @@ from hints.int_to_str import int_to_str as its
 import random
 from visual.tools.events.vote import voted
 
-def passed(null):
+def passed0(null):
+    pass
+
+def passed(null, null2):
     pass
 
 def support_opposition(game_state:GameState):

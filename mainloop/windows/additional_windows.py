@@ -21,8 +21,6 @@ class AdditionalWindow:
         except Exception:
             self.display.activity_windows[self.name_window] = 0
 
-
-
     def process(self):
         pass
 
