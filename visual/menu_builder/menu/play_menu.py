@@ -8,6 +8,7 @@ from mainloop.windows.additional_windows import AdditionalWindow
 from visual.components.area import *
 from visual.components.button import Button
 from visual.components.game_event import GameEvent
+from visual.menu_builder.create_add_win import create_add_win
 from visual.tools.events.check_events import CheckerEvents
 from visual.components.text import Text
 from visual.components.buttons_group import ButtonsGroup
@@ -28,7 +29,10 @@ def del_big(button:Button, game_state:game_states.GameState):
 def add_big2(button:Button, game_state:game_states.GameState):
     add_big(button, game_state)
     if button.created_window is None:
-        button.created_window = button.display.create_window(button.text[2:], 350, 600, button.text[2:])
+        button.created_window = button.display.create_window(button.text[2:],
+                                                             config.size_add_win_x,
+                                                             config.size_add_win_y,
+                                                             button.text[2:])
         game_state.additional_windows.append(
             AdditionalWindow(
                 button.text[2:],
@@ -36,6 +40,7 @@ def add_big2(button:Button, game_state:game_states.GameState):
                 button.display
             )
         )
+        create_add_win(game_state, button.text[2:], game_state.additional_windows[-1])
 
 def del_big2(button:Button, game_state:game_states.GameState):
     del_big(button, game_state)

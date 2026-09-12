@@ -100,3 +100,8 @@ quantity_info_texts = len(info_texts)
 solutions = os.getenv("SOLUTIONS").split(",")
 buttons_solution_coordinate_first = [int(coord) for coord in os.getenv("BUTTONSOLUTIONCOORDFIRST").split()]
 buttons_solution_coordinate_change = [int(coord) for coord in os.getenv("BUTTONSOLUTIONCOORDCHANGE").split()]
+
+size_add_win_x = int(os.getenv("SIZEADDWINX"))
+size_add_win_y = int(os.getenv("SIZEADDWINY"))
+
+add_text_color = os.getenv("ADDTEXTCOLOR")

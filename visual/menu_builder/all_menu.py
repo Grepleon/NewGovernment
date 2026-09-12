@@ -44,7 +44,7 @@ class AllMenu:
 
         self.display.fast_left_button_pressed = False
         self.display.tact += 1
-        self.display.update_fun(self.checker, 50)
+        self.display.update_fun(self.checker, 20)
 
 
 
