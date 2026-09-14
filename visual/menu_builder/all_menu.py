@@ -19,8 +19,9 @@ class AllMenu:
 
     def checker(self):
         for add_win in self.game_state.additional_windows:
-            add_win.base_process()
-            add_win.process()
+            if add_win.check_activity():
+                add_win.base_process()
+                add_win.process()
 
         self.manager_used.check()
         self.manager_used.active()
