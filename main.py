@@ -48,11 +48,6 @@ all_menu = path_all_menu.AllMenu(display, game_state)
 
 all_menu.checker()
 
-print(game_state.selected_politician.popularity.total())
-execute("NUM random <RANDOM:5,10>\nPRINT random \nPRINT \"Проверка текста\" ", game_state)
-execute("NUM random <RANDOM:5,10>\nADD <POP->PEOPLES> random", game_state)
-print(game_state.selected_politician.popularity.total())
-
 display.end()
 
 st.save(statistics, game_state)
