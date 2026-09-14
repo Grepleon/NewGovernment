@@ -38,15 +38,18 @@ class Display:
 
         self.info_root: list[Tk] = []
 
-        self.root.bind('<Button-1>', self.on_press)
-        self.root.bind('<ButtonRelease-1>', self.on_release)
-        self.root.bind('<Button-3>', self.right_on_press)
-        self.root.bind('<ButtonRelease-3>', self.right_on_release)
-        self.root.bind('<Motion>', self.on_motion)
-        self.root.bind('<KeyPress>', self.on_key_press)
-        self.root.bind('<KeyRelease>', self.on_key_release)
+        self.buttons_roots(self.root)
 
         self.tact = 0
+
+    def buttons_roots(self, root):
+        root.bind('<Button-1>', self.on_press)
+        root.bind('<ButtonRelease-1>', self.on_release)
+        root.bind('<Button-3>', self.right_on_press)
+        root.bind('<ButtonRelease-3>', self.right_on_release)
+        root.bind('<Motion>', self.on_motion)
+        root.bind('<KeyPress>', self.on_key_press)
+        root.bind('<KeyRelease>', self.on_key_release)
 
     def create_window(self, name, x, y, id_tag=None):
         self.destroy_window(name)
@@ -63,6 +66,8 @@ class Display:
         self.canvases[id_tag] = canvas
         self.roots[id_tag] = root
         self.activity_windows[id_tag] = True
+        self.buttons_roots(root)
+
         return id_tag
 
     def switch_window(self, name):

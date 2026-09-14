@@ -2,11 +2,12 @@ import visual.menu_builder.managers.manager as manager
 import visual.menu_builder.menu.main_menu as main_menu
 import visual.menu_builder.menu.character_menu as character_menu
 import visual.menu_builder.menu.play_menu as play_menu
+from mainloop.game_states import GameState
 
 class AllMenu:
     def __init__(self, display, game_state):
         self.display = display
-        self.game_state = game_state
+        self.game_state:GameState = game_state
 
         self.main_manager, self.main_button = main_menu.get_menu(display)
         self.character_manager, self.cancel_character_button, self.character_button = character_menu.get_menu(display,
@@ -17,6 +18,10 @@ class AllMenu:
 
 
     def checker(self):
+        for add_win in self.game_state.additional_windows:
+            add_win.base_process()
+            add_win.process()
+
         self.manager_used.check()
         self.manager_used.active()
 

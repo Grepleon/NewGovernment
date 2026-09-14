@@ -21,6 +21,15 @@ class AdditionalWindow:
         except Exception:
             self.display.activity_windows[self.name_window] = 0
 
+    def base_process(self):
+        for button in self.components:
+            print(self.display.mouse_x, self.display.mouse_y)
+            if button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
+                if self.display.left_button_pressed:
+                    button.mouse_clicked_object()
+        print()
+
+
     def process(self):
         pass
 
