@@ -22,12 +22,12 @@ class AdditionalWindow:
             self.display.activity_windows[self.name_window] = 0
 
     def base_process(self):
+        self.display.switch_window(self.name_window)
         for button in self.components:
-            print(self.display.mouse_x, self.display.mouse_y)
             if button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 if self.display.left_button_pressed:
                     button.mouse_clicked_object()
-        print()
+        self.display.switch_window(self.display.main_window)
 
 
     def process(self):
