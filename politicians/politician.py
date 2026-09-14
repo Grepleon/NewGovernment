@@ -144,7 +144,7 @@ class Politician:
         if self.at_large:
             self.money += self.position.get_money()
         self.check_kill()
-        self.political_hour = 300 # отсоси от тракториста
+        self.political_hour = 300
 
     def is_old(self) -> bool:
         return self.old_age <= self.year
