@@ -21,6 +21,7 @@ def create_add_win(game_state:GameState, win_name:str, add_win:AdditionalWindow)
 
     out_x = 10
     out_y = 55
+    out_y2 = 5
 
     size_button_y = 35
     gap_x = 5
@@ -69,5 +70,22 @@ def create_add_win(game_state:GameState, win_name:str, add_win:AdditionalWindow)
                     display
                 )
             )
+    add_win.components.append(
+        Button(
+            gap_x,
+            config.size_add_win_y - out_y2,
+            config.size_add_win_x - gap_x,
+            config.size_add_win_y - size_button_y - out_y2,
+
+                    config.cancel_off_button_color,
+                    config.cancel_off_bg_button_color,
+                    config.cancel_on_button_color,
+                    config.cancel_on_bg_button_color,
+
+                    "Подтвердить",
+
+                    display.add_id(),
+                    display
+        ))
 
     display.switch_window(display.main_window)
