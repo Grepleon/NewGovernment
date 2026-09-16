@@ -5,6 +5,7 @@ import visual.components.hint as hint
 import config
 import visual.components.city as comp_city
 from mainloop.windows.additional_windows import AdditionalWindow
+from mainloop.windows.solutions_window import SolutionWindow
 from visual.components.area import *
 from visual.components.button import Button
 from visual.components.game_event import GameEvent
@@ -34,7 +35,7 @@ def add_big2(button:Button, game_state:game_states.GameState):
                                                              config.size_add_win_y,
                                                              button.text[2:])
         game_state.additional_windows.append(
-            AdditionalWindow(
+            SolutionWindow(
                 button.text[2:],
                 game_state,
                 button.display

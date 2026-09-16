@@ -10,6 +10,8 @@ class Hint(b_object.BaseObject):
         self.color = color
         self.bg_color = bg_color
         self.x, self.y = x, y
+        self.width = config.width
+        self.height = config.height
         self.text = text
         self.pref_text = "-TEXT"
         self._create()
@@ -41,9 +43,9 @@ class Hint(b_object.BaseObject):
 
     def _create(self):
         dx, dy = self.size_to_text()
-        if self.x + dx > config.width:
+        if self.x + dx > self.width:
             dx *= -1
-        if self.y + dy > config.height:
+        if self.y + dy > self.height:
             dy *= -1
 
         self.display.create_rectangle(self.x, self.y, self.x + dx, self.y + dy,
@@ -71,14 +73,14 @@ class Hint(b_object.BaseObject):
         dx, dy = self.size_to_text(x, y)
         out_x = self.out_x
         out_y = self.out_y
-        if self.x + dx + self.out_x > config.width:
+        if self.x + dx + self.out_x > self.width:
             dx *= -1
             out_x *= -1
-        if self.y + dy + self.out_y> config.height:
+        if self.y + dy + self.out_y> self.height:
             dy *= -1
             out_y *= -1
 
-        if self.y + dy + out_y > config.height or out_y + dy + self.y < 0:
+        if self.y + dy + out_y > self.height or out_y + dy + self.y < 0:
             self.y = 5
             dy *= -1
             out_y *= -1

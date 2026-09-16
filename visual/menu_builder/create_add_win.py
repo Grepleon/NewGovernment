@@ -1,12 +1,13 @@
 import config
 from config import solutions
 from mainloop.game_states import GameState
+from mainloop.windows.solutions_window import SolutionWindow
 from mainloop.windows.additional_windows import AdditionalWindow
 from saves import Saves
 from visual.components.button import Button
+from visual.components.hint import Hint
 
-
-def create_add_win(game_state:GameState, win_name:str, add_win:AdditionalWindow):
+def create_add_win(game_state:GameState, win_name:str, add_win:SolutionWindow):
     display = game_state.display
     display.switch_window(win_name)
 
@@ -67,14 +68,16 @@ def create_add_win(game_state:GameState, win_name:str, add_win:AdditionalWindow)
                     name_into_solution,
 
                     display.add_id(),
-                    display
+                    display,
+                    game_state,
+                    into_solution[name_into_solution]["hint"]
                 )
             )
     add_win.components.append(
         Button(
-            gap_x,
+            out_x,
             config.size_add_win_y - out_y2,
-            config.size_add_win_x - gap_x,
+            config.size_add_win_x - out_x,
             config.size_add_win_y - size_button_y - out_y2,
 
                     config.cancel_off_button_color,
@@ -86,6 +89,24 @@ def create_add_win(game_state:GameState, win_name:str, add_win:AdditionalWindow)
 
                     display.add_id(),
                     display
-        ))
+        )
+    )
+    hint:Hint = Hint(
+            5, 5,
+
+            config.base_off_button_color,
+            config.base_off_bg_button_color,
+
+            "Информационное поле",
+
+            display.add_id(),
+            display
+        )
+    add_win.components.append(
+        hint
+    )
+    add_win.hint = hint
+    hint.width = config.size_add_win_x
+    hint.height = config.size_add_win_y
 
     display.switch_window(display.main_window)
