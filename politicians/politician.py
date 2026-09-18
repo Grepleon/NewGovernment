@@ -183,6 +183,9 @@ class Politician:
 
         return False
 
+    def get_populist_factors(self):
+        return self.mind *
+
     def find(self, val:str):
         if val.lower() in self.to_str().lower():
             return True
