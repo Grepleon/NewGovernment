@@ -72,6 +72,7 @@ def create_add_win(game_state:GameState, win_name:str, add_win:SolutionWindow):
                     into_solution[name_into_solution]["hint"]
             )
             button.add_info("polh", into_solution[name_into_solution]["cost"])
+            button.add_info("name", name_into_solution)
 
             add_win.components.append(
                 button

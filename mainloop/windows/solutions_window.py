@@ -38,10 +38,12 @@ class SolutionWindow(AdditionalWindow):
         if self.last_button.on:
             if selected_politician.political_hour >= self.get_sum_polh():
                 selected_politician.political_hour -= self.get_sum_polh()
+                self.game_state.statistics.spent_polh += self.get_sum_polh()
                 for component in self.components:
                     if type(component) == Button and component != self.last_button:
                         if component.on:
-                            self.carry_out(component.text)
+                            self.carry_out(component.info["name"])
+
 
             self.display.switch_window(self.display.main_window)
             self.display.destroy_window(self.name_window)

@@ -26,6 +26,9 @@ class Statistics:
                  against_a_nationality,
                  number_of_tolerant_decisions,
                  number_of_racist_decisions,
+                 counts,
+                 spent_polh,
+                 solutions,
                  ):
         self.time = time
         self.time_start = timer()
@@ -50,6 +53,9 @@ class Statistics:
         self.against_a_nationality = against_a_nationality
         self.number_of_tolerant_decisions = number_of_tolerant_decisions
         self.number_of_racist_decisions = number_of_racist_decisions
+        self.counts = counts
+        self.spent_polh = spent_polh
+        self.solutions = solutions
 
 
     def add_selected_politician(self, politician, data_politician):
@@ -90,6 +96,7 @@ def get_statistics():
     data_vote = Saves("data/statistics/votes.json").loaded_data
     data_events = Saves("data/statistics/actions.json").loaded_data
     data_ethno = Saves("data/statistics/nationality.json").loaded_data
+    data_solutions = Saves("data/statistics/solutions.json").loaded_data
 
     statistics = Statistics(data_time["time"],
                             data_counts["selected_politician"],
@@ -113,6 +120,9 @@ def get_statistics():
                             data_ethno["against_a_nationality"],
                             data_ethno["number_of_tolerant_decisions"],
                             data_ethno["number_of_racist_decisions"],
+                            data_solutions["counts"],
+                            data_solutions["spent_polh"],
+                            data_solutions["solutions"],
                             )
 
     return statistics
@@ -162,6 +172,13 @@ def set_statistics(statistics:Statistics):
         "against_a_nationality": statistics.against_a_nationality,
         "number_of_tolerant_decisions": statistics.number_of_tolerant_decisions,
         "number_of_racist_decisions": statistics.number_of_racist_decisions,
+    })
+
+    file = Saves("data/statistics/solutions.json")
+    file.save_file({
+        "counts": statistics.counts,
+        "spent_polh": statistics.spent_polh,
+        "solutions": statistics.solutions
     })
 
 def save(statistics:Statistics, game_state):
