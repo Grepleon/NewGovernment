@@ -6,6 +6,7 @@ from visual.components.base_object import BaseObject
 from visual.components.button import Button
 from hints.enters import space
 from politicians.politician import Politician
+from politicians.actions.carry_out_solution import carry_out_solutions
 
 class SolutionWindow(AdditionalWindow):
     hint:Hint|None = None
@@ -37,11 +38,18 @@ class SolutionWindow(AdditionalWindow):
         if self.last_button.on:
             if selected_politician.political_hour >= self.get_sum_polh():
                 selected_politician.political_hour -= self.get_sum_polh()
+                for component in self.components:
+                    if type(component) == Button and component != self.last_button:
+                        if component.on:
+                            self.carry_out(component.text)
 
             self.display.switch_window(self.display.main_window)
             self.display.destroy_window(self.name_window)
             return True
         return False
+
+    def carry_out(self, name):
+        carry_out_solutions(name, self.display, self.game_state, self.game_state.selected_politician)
 
     def process(self):
         if self.check_activity():
