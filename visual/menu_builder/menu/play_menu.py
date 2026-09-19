@@ -42,6 +42,9 @@ def add_big2(button:Button, game_state:game_states.GameState):
             )
         )
         create_add_win(game_state, button.text[2:], game_state.additional_windows[-1])
+    if button.text[2:] not in button.display.activity_windows or \
+            not button.display.activity_windows[button.text[2:]]:
+        button.on = False
 
 def del_big2(button:Button, game_state:game_states.GameState):
     del_big(button, game_state)

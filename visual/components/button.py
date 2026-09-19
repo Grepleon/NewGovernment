@@ -24,12 +24,15 @@ class Button(b_object.BaseObject):
         self.created_window = None
 
         self.game_state = game_state
+        self.info = {}
 
         self._create()
 
     def disable(self):
         self.on=False
 
+    def add_info(self, name, val):
+        self.info[name] = val
 
     def _create(self):
         self.display.create_rectangle(self.x1, self.y1, self.x2, self.y2,

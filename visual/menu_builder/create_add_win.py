@@ -6,6 +6,7 @@ from mainloop.windows.additional_windows import AdditionalWindow
 from saves import Saves
 from visual.components.button import Button
 from visual.components.hint import Hint
+from hints.enters import space
 
 def create_add_win(game_state:GameState, win_name:str, add_win:SolutionWindow):
     display = game_state.display
@@ -52,9 +53,7 @@ def create_add_win(game_state:GameState, win_name:str, add_win:SolutionWindow):
 
             y1 = out_y + index_y * (size_button_y + gap_y)
             y2 = y1 + size_button_y
-
-            add_win.components.append(
-                Button(
+            button = Button(
                     x1,
                     y1,
                     x2,
@@ -65,13 +64,18 @@ def create_add_win(game_state:GameState, win_name:str, add_win:SolutionWindow):
                     config.base_on_button_color,
                     config.base_on_bg_button_color,
 
-                    name_into_solution,
+                    space(name_into_solution, abs(x2 - x1) // 10, abs(x2 - x1) // 8),
 
                     display.add_id(),
                     display,
                     game_state,
                     into_solution[name_into_solution]["hint"]
-                )
+            )
+            button.add_info("polh", into_solution[name_into_solution]["cost"])
+            button.add_info("name", name_into_solution)
+
+            add_win.components.append(
+                button
             )
     add_win.components.append(
         Button(
@@ -91,6 +95,7 @@ def create_add_win(game_state:GameState, win_name:str, add_win:SolutionWindow):
                     display
         )
     )
+    add_win.last_button = add_win.components[-1]
     hint:Hint = Hint(
             5, 5,
 
