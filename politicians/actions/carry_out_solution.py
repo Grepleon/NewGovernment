@@ -1,11 +1,13 @@
 from politicians.actions.solutions import make_a_declaration
 from politicians.actions.solutions import to_deliver_a_speech
 from politicians.actions.solutions import provocative_statement
+from politicians.actions.solutions import conduct_a_major_interview
 
 dict_solutions = {
     "сделать заявление": make_a_declaration.carry_out,
     "выступить с речью": to_deliver_a_speech.carry_out,
     "провокационное заявление": provocative_statement.carry_out,
+    "провести большое интервью": conduct_a_major_interview.carry_out,
 }
 
 def carry_out_solutions(name_sol, display, game_states, politician):
