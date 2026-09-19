@@ -1,7 +1,7 @@
 from politicians.actions.solutions import make_a_declaration
 
 dict_solutions = {
-    "провести большое интервью": make_a_declaration.carry_out
+    "сделать заявление": make_a_declaration.carry_out
 }
 
 def carry_out_solutions(name_sol, display, game_states, politician):
