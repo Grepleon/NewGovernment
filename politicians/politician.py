@@ -165,9 +165,14 @@ class Politician:
             char.start()
         self.check_health()
 
+    def add_rep(self, count):
+        self.reputation += count
+        self.reputation = min(100, max(self.reputation, 0))
+
     def check_health(self):
         for char in self.characteristics:
             self.old_age += char.check_health()
+
 
     def check_clever(self):
         for char in self.characteristics:

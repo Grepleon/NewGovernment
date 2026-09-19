@@ -8,5 +8,6 @@ def replace_var(text:str, game_state:GameState):
             .replace("<REP>", its(game_state.selected_politician.reputation))
             .replace("<MONEY>", its(game_state.selected_politician.money))
             .replace("<POLH>", its(game_state.selected_politician.political_hour))
+            .replace("<CITY>", game_state.selected_politician.location)
             .replace("</", "<")
         )

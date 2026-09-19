@@ -31,6 +31,20 @@ class Popularity:
         self.poor -= int(count / 2) + count % 2
         self.check()
 
+    def add_poor(self, count):
+        self.poor += count
+        self.check()
+
+    def add_reach(self, count):
+        self.rich += count
+        self.check()
+
+    def add_all(self, count):
+        self.add_reach(count)
+        self.add_poor(count)
+        self.for_peoples(count)
+        self.check()
+
     def for_youth(self, count):
         self.youth += count
         self.elderly -= int(count / 2) + count % 2
@@ -46,9 +60,9 @@ class Popularity:
         self.check()
 
     def add_peoples(self, count):
-        self.youth += int(count / 3)
-        self.middle_aged += count - 2 * int(count / 3)
-        self.elderly += int(count / 3)
+        self.youth += count
+        self.middle_aged += count
+        self.elderly += count / 3
         self.check()
 
     def for_in_power(self, count):
