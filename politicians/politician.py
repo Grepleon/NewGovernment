@@ -191,8 +191,8 @@ class Politician:
     def get_populist_factors(self):
         populism_level = 1
         for char in self.characteristics:
-            populism_level += char.populism_level
-        return self.mind ** 0.5 * populism_level
+            populism_level *= char.populism_level
+        return (self.mind ** 0.5) * populism_level
 
     def find(self, val:str):
         if val.lower() in self.to_str().lower():

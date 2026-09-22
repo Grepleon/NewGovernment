@@ -3,6 +3,7 @@ import visual.menu_builder.menu.main_menu as main_menu
 import visual.menu_builder.menu.character_menu as character_menu
 import visual.menu_builder.menu.play_menu as play_menu
 from mainloop.game_states import GameState
+from politicians.actions.carry_out_solution import carry_out_solutions
 
 class AllMenu:
     def __init__(self, display, game_state):
@@ -47,6 +48,8 @@ class AllMenu:
                 self.manager_used = self.play_manager
                 self.game_state.statistics.add_selected_politician(self.game_state.selected_politician.name,
                                                                    self.game_state.selected_politician)
+                carry_out_solutions("провести большое интервью", self.display, self.game_state,
+                                    self.game_state.selected_politician)
 
         self.display.fast_left_button_pressed = False
         self.display.tact += 1

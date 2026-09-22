@@ -105,3 +105,4 @@ size_add_win_x = int(os.getenv("SIZEADDWINX"))
 size_add_win_y = int(os.getenv("SIZEADDWINY"))
 
 add_text_color = os.getenv("ADDTEXTCOLOR")
+max_pop_factor = int(os.getenv("MAXPOPFACTOR"))
