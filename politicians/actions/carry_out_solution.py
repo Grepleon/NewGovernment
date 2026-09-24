@@ -1,9 +1,6 @@
-from politicians.actions.solutions import make_a_declaration
-from politicians.actions.solutions import to_deliver_a_speech
-from politicians.actions.solutions import provocative_statement
-from politicians.actions.solutions import conduct_a_major_interview
-from politicians.actions.solutions import answer_off_the_cuff
-from politicians.actions.solutions import youth_event
+from politicians.actions.solutions.popularity_department import answer_off_the_cuff, to_deliver_a_speech, youth_event, \
+    make_a_declaration, nostalgia, conduct_a_major_interview, the_image_of_an_ordinary_person, provocative_statement
+from politicians.actions.solutions.
 
 dict_solutions = {
     "сделать заявление": make_a_declaration.carry_out,
@@ -12,6 +9,8 @@ dict_solutions = {
     "провести большое интервью": conduct_a_major_interview.carry_out,
     "ответить без подготовки": answer_off_the_cuff.carry_out,
     "молодежная акция": youth_event.carry_out,
+    "образ простого человека": the_image_of_an_ordinary_person.carry_out,
+    "ностальгия": nostalgia.carry_out,
 }
 
 def carry_out_solutions(name_sol, display, game_states, politician):
