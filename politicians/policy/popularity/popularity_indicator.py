@@ -87,6 +87,18 @@ class Popularity:
                 f"\n- рейтинг с элитами: {self.total()}%"
                 f"\nстатусы: {", ".join(self.get_str_status())}")
 
+    def to_str_without_statuses(self) -> str:
+        return (f"{self.get_avg_status()}:"
+                f"\n- молодежь: {self.youth}%"
+                f"\n- люди среднего возраста: {self.middle_aged}%"
+                f"\n- пожилые: {self.elderly}%"
+                f"\n- элиты: {self.in_power}%"
+                f"\n- бедные: {self.poor}%"
+                f"\n- богатые: {self.rich}%"
+                f"\n- суммарный рейтинг: {self.peoples_total()}%"
+                f"\n- рейтинг с элитами: {self.total()}%"
+                )
+
     def to_str2(self) -> str:
         return (
                     f"{self.get_avg_status()}:"
