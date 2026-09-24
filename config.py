@@ -95,6 +95,7 @@ size_info_texts = [int(coord) for coord in os.getenv("SIZEINFOTEXTS").split()]
 out_info_texts = [int(coord) for coord in os.getenv("OUTINFOTEXTS").split()]
 
 info_texts = os.getenv("INFOTEXTS").split(', ')
+info_hints = os.getenv("INFOHINTS").split(', ')
 quantity_info_texts = len(info_texts)
 
 solutions = os.getenv("SOLUTIONS").split(",")

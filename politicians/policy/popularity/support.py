@@ -70,6 +70,16 @@ class Support:
                 f"статусы: {", ".join(self.to_status())}"
                 )
 
+    def to_str_without_statuses(self):
+        return (f"{self.to_str_name()}:\n"
+                f"- медиа: {self.media}%\n"
+                f"- олигархи: {self.oligarchs}%\n"
+                f"- военные: {self.military}%\n"
+                f"- иностранцы: {self.foreign}%\n"
+                f"- религия: {self.religious}%\n"
+                f"- итоговая помощь: {self.total()}%"
+                )
+
     def to_str2(self):
         return (f"{self.to_str_name()}:\n"
                 f"- итоговая помощь: {self.total()}%"

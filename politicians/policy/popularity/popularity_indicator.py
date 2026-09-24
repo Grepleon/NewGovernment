@@ -14,12 +14,12 @@ class Popularity:
         return int((self.youth + self.middle_aged + self.elderly + self.poor + self.rich) / 5)
 
     def check(self):
-        self.youth = min(100, max(self.youth, 0))
-        self.middle_aged = min(100, max(self.middle_aged, 0))
-        self.elderly = min(100, max(self.elderly, 0))
-        self.in_power = min(100, max(self.in_power, 0))
-        self.poor = min(100, max(self.poor, 0))
-        self.rich = min(100, max(self.rich, 0))
+        self.youth = int(min(100, max(self.youth, 0)))
+        self.middle_aged = int(min(100, max(self.middle_aged, 0)))
+        self.elderly = int(min(100, max(self.elderly, 0)))
+        self.in_power = int(min(100, max(self.in_power, 0)))
+        self.poor = int(min(100, max(self.poor, 0)))
+        self.rich = int(min(100, max(self.rich, 0)))
 
     def for_poor(self, count):
         self.poor += count

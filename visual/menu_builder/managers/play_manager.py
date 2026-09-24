@@ -136,9 +136,14 @@ class PlayManager(base_manager.Manager):
 
         self.ethno_button_check()
 
-        for _text in self.info_texts:
+        for index, _text in enumerate(self.info_texts):
             _text:text.Text = _text
             _text.rewrite_text(replace_var(_text.name, self.game_state))
+            if _text.into_mouse:
+                self.hint.show()
+                self.hint.rewrite_text(replace_var(config.info_hints[index], self.game_state))
+                self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
+                self.hint.recolor(config.base_off_button_color, config.base_off_bg_button_color)
 
         self.add_win_check()
 

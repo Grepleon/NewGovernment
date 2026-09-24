@@ -34,7 +34,12 @@ class Text(b_object.BaseObject):
         self.display.recolor(self.color, self.object_id + self.pref_text)
 
     def mouse_into_object(self, mx, my):
-        self.into_mouse = self.x1 <= mx <= self.x2 and self.y1 <= my <= self.y2
+        x1 = min(self.x1, self.x2)
+        x2 = max(self.x1, self.x2)
+        y1 = min(self.y1, self.y2)
+        y2 = max(self.y1, self.y2)
+
+        self.into_mouse = x1 <= mx <= x2 and y1 <= my <= y2
         return self.into_mouse
 
     def delete(self):
