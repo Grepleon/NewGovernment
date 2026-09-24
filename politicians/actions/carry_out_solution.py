@@ -1,6 +1,6 @@
 from politicians.actions.solutions.popularity_department import answer_off_the_cuff, to_deliver_a_speech, youth_event, \
     make_a_declaration, nostalgia, conduct_a_major_interview, the_image_of_an_ordinary_person, provocative_statement
-from politicians.actions.solutions.
+from politicians.actions.solutions.reputation_department import reveal, stand_corrected
 
 dict_solutions = {
     "сделать заявление": make_a_declaration.carry_out,
@@ -11,6 +11,9 @@ dict_solutions = {
     "молодежная акция": youth_event.carry_out,
     "образ простого человека": the_image_of_an_ordinary_person.carry_out,
     "ностальгия": nostalgia.carry_out,
+    "раскрыть доходы": reveal.carry_out,
+    "раскрыть расходы": reveal.carry_out,
+    "признать ошибку": stand_corrected.carry_out,
 }
 
 def carry_out_solutions(name_sol, display, game_states, politician):
