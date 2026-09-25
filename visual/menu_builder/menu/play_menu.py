@@ -44,10 +44,11 @@ def add_big2(button:Button, game_state:game_states.GameState):
         create_add_win(game_state, button.text[2:], game_state.additional_windows[-1])
         button.display.info_windows[button.text[2:]] = True
     else:
-        if button.display.info_windows[button.text[2:]]:
-            button.display.activate_window(button.text[2:])
-            button.into_mouse = False
-            button.display.info_windows[button.text[2:]] = False
+        if button.text[2:] in button.display.info_windows:
+            if button.display.info_windows[button.text[2:]]:
+                button.display.activate_window(button.text[2:])
+                button.into_mouse = False
+                button.display.info_windows[button.text[2:]] = False
 
     if button.text[2:] not in button.display.activity_windows or \
             not button.display.activity_windows[button.text[2:]]:
