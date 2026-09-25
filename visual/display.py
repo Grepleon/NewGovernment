@@ -70,6 +70,8 @@ class Display:
 
         return id_tag
 
+
+
     def switch_window(self, name):
         self.canvas = self.canvases[name]
         self.selected_root = self.roots[name]

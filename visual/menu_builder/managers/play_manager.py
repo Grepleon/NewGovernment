@@ -42,7 +42,8 @@ class PlayManager(base_manager.Manager):
         for name_city in self.id_cities:
             city = self.id_cities[name_city]
 
-            if city.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
+            if self.display.is_window_active(self.display.main_window)\
+                and city.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 flag = True
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
                 self.hint.rewrite_text(
@@ -80,7 +81,7 @@ class PlayManager(base_manager.Manager):
 
     def check_map(self):
         for map_button in self.map_buttons:
-            if map_button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
+            if map_button.into_mouse:
                 if self.display.fast_left_button_pressed:
                     if (map_button.name not in self.game_state.nations or
                                 config.specific_ethnic_map == self.selected_map or
@@ -149,9 +150,10 @@ class PlayManager(base_manager.Manager):
 
     def check(self):
         for _button in self.buttons:
-            if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
-                if self.display.fast_left_button_pressed:
-                    _button.mouse_clicked_object()
+            if self.display.is_window_active(self.display.main_window):
+                if _button.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
+                    if self.display.fast_left_button_pressed:
+                        _button.mouse_clicked_object()
 
             _button.display_object()
 
