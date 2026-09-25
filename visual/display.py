@@ -69,6 +69,7 @@ class Display:
         self.canvases[id_tag] = canvas
         self.roots[id_tag] = root
         self.activity_windows[id_tag] = True
+        self.info_windows[id_tag] = None
         self.buttons_roots(root)
 
         return id_tag
@@ -115,6 +116,7 @@ class Display:
             if name in self.canvases: del self.canvases[name]
             if name in self.roots: del self.roots[name]
             if name in self.activity_windows: del self.activity_windows[name]
+            if name in self.info_windows: del self.info_windows[name]
 
     def right_on_press(self, event):
         if event.num == 3:
