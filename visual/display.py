@@ -21,6 +21,9 @@ class Display:
         self.activity_windows = {
             self.main_window: True
         }
+        self.info_windows = {
+            self.main_window: None
+        }
         self.id_windows = 0
         self.pref_window_tag = "Window:"
 
@@ -83,6 +86,23 @@ class Display:
             return (focused_widget is not None and
                     focused_widget.winfo_toplevel() == root)
         except TclError:
+            return False
+
+    def activate_window(self, window_tag: str) -> bool:
+        root = self.roots.get(window_tag)
+        if root is None:
+            return False
+
+        try:
+            if not root.winfo_exists():
+                return False
+
+            root.deiconify()
+            root.lift()
+            root.focus_force()
+            return True
+        except TclError:
+            # The window may be closed while it is being activated.
             return False
 
     def switch_window(self, name):
