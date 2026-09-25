@@ -41,7 +41,8 @@ def add_big2(button:Button, game_state:game_states.GameState):
                 button.display
             )
         )
-        create_add_win(game_state, button.text[2:], game_state.additional_windows[-1])
+        create_add_win(game_state, button.text[2:],
+                       game_state.additional_windows[-1])
         button.display.info_windows[button.text[2:]] = True
     else:
         if button.text[2:] in button.display.info_windows and button.display.info_windows[button.text[2:]]:
