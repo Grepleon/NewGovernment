@@ -70,7 +70,20 @@ class Display:
 
         return id_tag
 
+    def is_window_active(self, window_tag):
+        root = self.roots.get(window_tag)
+        if root is None:
+            return False
 
+        try:
+            if not root.winfo_exists():
+                return False
+
+            focused_widget = root.focus_displayof()
+            return (focused_widget is not None and
+                    focused_widget.winfo_toplevel() == root)
+        except TclError:
+            return False
 
     def switch_window(self, name):
         self.canvas = self.canvases[name]
