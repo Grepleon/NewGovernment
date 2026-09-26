@@ -43,7 +43,7 @@
         "Алдоанцкая область, Алдоанцк"
     ],
     "nationality": "алдоанец",
-    "location": "Техноградская область, Техноград",
+    "location": "Алдоанцкая область, Алдоанцк",
     "political_hour": 70,
     "reputation": 95,
     "ambitions": 97,
@@ -59,5 +59,8 @@
         "governor": false,
         "mayor": false,
         "deputy": false
+    },
+    "local_popularity": {
+        "Алдоанцкая область, Алдоанцк": 1.2
     }
 }

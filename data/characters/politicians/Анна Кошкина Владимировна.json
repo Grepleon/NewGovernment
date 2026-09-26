@@ -58,5 +58,8 @@
         "governor": false,
         "mayor": false,
         "deputy": false
+    },
+    "local_popularity": {
+        "Техноградская область, Техноград": 1.05
     }
 }
