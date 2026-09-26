@@ -1,11 +1,14 @@
 class Popularity:
-    def __init__(self, youth, middle_aged, elderly, in_power, poor, rich):
+    def __init__(self, youth, middle_aged, elderly, in_power, poor, rich, local_popularity=None):
         self.youth:int = youth
         self.middle_aged:int = middle_aged
         self.elderly:int = elderly
         self.in_power: int = in_power
         self.poor = poor
         self.rich = rich
+        self.local_popularity: dict[str:float] = local_popularity
+        if local_popularity is None:
+            self.local_popularity: dict[str:float] = {}
 
     def total(self):
         return int((self.youth + self.middle_aged + self.elderly + self.in_power + self.poor + self.rich) / 6)
