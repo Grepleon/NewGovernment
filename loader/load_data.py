@@ -143,9 +143,9 @@ def get_cities(_file:str, area:str) -> dict[str:bc.City]:
             PoliticalCompass(
                 data["popular_ideas"]["left-right"],
                 data["popular_ideas"]["freedom"]
-            )
+            ),
+            area.replace("/", "") + ", " + file.split(".")[0]
         )
-
 
     return cities
 
