@@ -10,6 +10,9 @@ class Popularity:
         if local_popularity is None:
             self.local_popularity: dict[str:float] = {}
 
+    def get_pop_city(self, name):
+        return self.local_popularity.get(name, 1)
+
     def total(self):
         return int((self.youth + self.middle_aged + self.elderly + self.in_power + self.poor + self.rich) / 6)
 
@@ -90,6 +93,19 @@ class Popularity:
                 f"\n- рейтинг с элитами: {self.total()}%"
                 f"\nстатусы: {", ".join(self.get_str_status())}")
 
+    def get_str_pop_city(self) -> str:
+        if len(self.local_popularity) == 0:
+            return "Локальные параметры отсутствуют"
+
+        returned_value = "Локальные параметры:"
+        for city in self.local_popularity:
+            local_pop = round((self.local_popularity[city] - 1) * 100, 1)
+            returned_value += "\n- " + city + ": "
+            if local_pop >= 0:
+                returned_value += "+"
+            returned_value += str(local_pop) + "%"
+        return returned_value
+
     def to_str_without_statuses(self) -> str:
         return (f"{self.get_avg_status()}:"
                 f"\n- молодежь: {self.youth}%"
@@ -100,6 +116,7 @@ class Popularity:
                 f"\n- богатые: {self.rich}%"
                 f"\n- суммарный рейтинг: {self.peoples_total()}%"
                 f"\n- рейтинг с элитами: {self.total()}%"
+                "\n\n" + self.get_str_pop_city()
                 )
 
     def to_str2(self) -> str:

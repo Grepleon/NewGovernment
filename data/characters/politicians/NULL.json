@@ -49,5 +49,8 @@
         "governor": false,
         "mayor": false,
         "deputy": false
+    },
+    "local_popularity": {
+
     }
 }
