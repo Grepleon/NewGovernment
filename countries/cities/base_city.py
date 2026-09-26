@@ -9,7 +9,7 @@ from politicians.politician import Politician
 
 class City:
     def __init__(self, name, mayor, location, infrastructure, peoples, budget, nations,
-                 products, geography, popular_ideas):
+                 products, geography, popular_ideas, full_name):
         self.name:str = name
         self.mayor:str = mayor
         self.location:loc.Location = location
@@ -20,6 +20,7 @@ class City:
         self.products = products
         self.geography:Geography = geography
         self.popular_ideas:PoliticalCompass = popular_ideas
+        self.full_name = full_name
 
     def to_str(self):
         return (f"Город {self.name}:"
@@ -41,6 +42,9 @@ class City:
         distance = ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
         fine_distance = distance ** 1.5
         return max(
-            politician.popularity.peoples_total() * politician.reputation ** 1.5 * (100 - fine_distance) / 100,
+            politician.popularity.peoples_total() *
+            politician.reputation ** 1.5
+            * (100 - fine_distance) / 100 *
+            politician.popularity.get_pop_city(self.full_name),
             0
         )
