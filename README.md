@@ -75,7 +75,7 @@
 - В ***[main](https://github.com/Grepleon/NewGovernment/blob/main/main.py)*** через ***[loader/load_data](https://github.com/Grepleon/NewGovernment/blob/main/loader/load_data.py)*** загружаются все нужные данные, хранящиеся в ***[data/](https://github.com/Grepleon/NewGovernment/tree/main/data)***
 - Далее в ***main*** создаются ***[GameStates](https://github.com/Grepleon/NewGovernment/blob/main/mainloop/game_states.py)***, ***[Statistics](https://github.com/Grepleon/NewGovernment/blob/main/statistics.py)***, ***[Display](https://github.com/Grepleon/NewGovernment/blob/main/visual/display.py)*** - необходимые классы для запуска
 - За тем в main создается ***[AllMenu](https://github.com/Grepleon/NewGovernment/blob/main/visual/menu_builder/all_menu.py)***
-- После этого в ***AllMenu*** создаются [***main_menu***, ***play_menu***, ***character_menu***](https://github.com/Grepleon/NewGovernment/tree/main/visual/menu_builder/menu). И для каждого меню соответствующий (manager)[https://github.com/Grepleon/NewGovernment/tree/main/visual/menu_builder/managers]
+- После этого в ***AllMenu*** создаются [***main_menu***, ***play_menu***, ***character_menu***](https://github.com/Grepleon/NewGovernment/tree/main/visual/menu_builder/menu). И для каждого меню соответствующий [manager](https://github.com/Grepleon/NewGovernment/tree/main/visual/menu_builder/managers)
 - Те в свою очередь заранее отрисовывают все необходимые элементы и скрывают их
 - Однако в начале остается нескрытым только ***main_menu***, а будет активным лишь ***manager*** (который отвечает за main_menu)
 - Нажав соответственную кнопку, игрок может переключиться на следующее меню - ***character_manager***
