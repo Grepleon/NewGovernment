@@ -4,9 +4,13 @@ from mainloop.game_states import GameState
 from hints.int_to_str import int_to_str as its
 import random
 from visual.tools.events.vote import voted
+from visual.tools.events.status import in_prison, death
 
 def passed0(null):
     pass
+
+def game_over(game_state, null=None):
+    game_state.game_off = True
 
 def passed(null, null2):
     pass
@@ -51,6 +55,31 @@ class CheckerEvents:
                     "Новый год"
                 )
                 self.game_event.show_buttons = 1
+
+            if in_prison(self.game_state):
+                self.game_event.show()
+                self.game_state.selected_politician.show_in_prison = False
+                self.game_event.rewrite(
+                    f"Вас посадили в тюрьму\nВ связи с этим вы больше не будете получать заработную плату",
+                    ["Жаль", "", "", "", ""],
+                ["Придется отсидеть срок", "", "", "", ""],
+                    [passed, passed, passed, passed, passed],
+                    "Тюрьма"
+                )
+                self.game_event.show_buttons = 1
+
+            if death(self.game_state):
+                self.game_event.show()
+                self.game_state.selected_politician.show_death = False
+                self.game_event.rewrite(
+                    f"К сожалению, вы погибли",
+                    ["Закончить игру", "", "", "", ""],
+                    ["Вы выйдите в главное меню", "", "", "", ""],
+                    [game_over, passed, passed, passed, passed],
+                    "Смерть"
+                )
+                self.game_event.show_buttons = 1
+
             for name_country in self.game_state.countries:
                 country = self.game_state.countries[name_country]
                 if country.next_vote == self.game_state.get_str_year():

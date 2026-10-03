@@ -55,6 +55,8 @@ class Politician:
         self.ambitions = ambitions
         self.participating:dict[str:bool] = participating
         self.blocked:dict[str:bool] = blocked
+        self.show_death:bool = True
+        self.show_in_prison:bool = True
 
     def to_briefly_str(self):
         return (f"{self.name}" + ("" if self.nickname is None else f" ({self.nickname})") +
