@@ -6,3 +6,6 @@ import random
 
 def death(self, game_state: GameState):
     return not game_state.selected_politician.alive
+
+def in_prison(self, game_state: GameState):
+    return not game_state.selected_politician.at_large
