@@ -1,0 +1,11 @@
+from visual.display import Display
+from visual.components.game_event import GameEvent
+from mainloop.game_states import GameState
+from hints.int_to_str import int_to_str as its
+import random
+
+def death(game_state: GameState):
+    return not game_state.selected_politician.alive and game_state.selected_politician.show_death
+
+def in_prison(game_state: GameState):
+    return not game_state.selected_politician.at_large and game_state.selected_politician.show_in_prison

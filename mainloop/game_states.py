@@ -25,6 +25,7 @@ class GameState:
         self.parties = parties
         self.display = display
         self.additional_windows:list[AdditionalWindow] = []
+        self.game_off = False
 
     def year_to_str(self):
         return format_datetime(self.time, "HH:00, d MMMM, y год", locale='ru')

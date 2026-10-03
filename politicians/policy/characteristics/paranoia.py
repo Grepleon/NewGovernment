@@ -22,7 +22,7 @@ class Paranoia(ch.Characteristic):
         return self.level >= 100
 
     def new_month(self):
-        self.level = min(self.level + 2, 100)
+        self.level = min(self.level + 5, 100)
 
     def tranquility(self, lvls):
         self.level = max(self.level - random.randint(3, 5) * lvls, 0)
