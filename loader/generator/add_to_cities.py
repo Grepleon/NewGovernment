@@ -27,7 +27,6 @@ def c_add_to_cities(_file:str, area:str, key, val) -> dict[str:bc.City]:
         data = saves.Saves(folder + get_country_json_file(file))
         data.loaded_data[key] = val
         #data.loaded_data["location"]["y"] += 50
-        del data.loaded_data["monthly_expenses"]
         data.save()
 
 
