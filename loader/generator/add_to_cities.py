@@ -170,17 +170,14 @@ def c_add_to_cities(_file:str, area:str, key, val) -> dict[str:bc.City]:
             "wood": {
                 "explored": {
                     "quantity": 50000,
-                    "quality": 0.9,
                 },
                 "extracted": {
                     "quantity": 10000,
-                    "quality": 0.9
                 }
             },
             "electricity": {
                 "extracted": {
                     "quantity": 2500,
-                    "quality": 0.9
                 }
             },
         }
