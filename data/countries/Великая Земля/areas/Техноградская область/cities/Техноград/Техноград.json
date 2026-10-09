@@ -21,11 +21,119 @@
         "height": 0,
         "forests": 0.1,
         "average_temperature": 5,
-        "purity": 0.85
+        "purity": 0.85,
+        "resources": {
+            "oil": {
+                "explored": {
+                    "quantity": 0,
+                    "quality": 0.85
+                },
+                "unexplored": {
+                    "quantity": 0,
+                    "quality": 0.85
+                },
+                "extracted": {
+                    "quantity": 1500,
+                    "quality": 0.9
+                }
+            },
+            "natural_gas": {
+                "explored": {
+                    "quantity": 0,
+                    "quality": 1
+                },
+                "unexplored": {
+                    "quantity": 0,
+                    "quality": 1
+                },
+                "extracted": {
+                    "quantity": 500,
+                    "quality": 1
+                }
+            },
+            "iron": {
+                "explored": {
+                    "quantity": 2000,
+                    "quality": 0.5,
+                    "open-pit_extraction": 0.95
+                },
+                "unexplored": {
+                    "quantity": 3000,
+                    "quality": 0.5,
+                    "open-pit_extraction": 0.95
+                },
+                "extracted": {
+                    "quantity": 500,
+                    "quality": 0.5
+                }
+            },
+            "non-ferrous_metals": {
+                "explored": {
+                    "quantity": 25,
+                    "quality": 0.1,
+                    "open-pit_extraction": 1
+                },
+                "unexplored": {
+                    "quantity": 25,
+                    "quality": 0.1,
+                    "open-pit_extraction": 1
+                },
+                "extracted": {
+                    "quantity": 100,
+                    "quality": 0.25
+                }
+            },
+            "uranium": {
+                "explored": {
+                    "quantity": 0,
+                    "quality": 0.5,
+                    "open-pit_extraction": 0.8
+                },
+                "unexplored": {
+                    "quantity": 0,
+                    "quality": 0.5,
+                    "open-pit_extraction": 0.8
+                },
+                "extracted": {
+                    "quantity": 700,
+                    "quality": 0.65
+                }
+            },
+            "gold": {
+                "explored": {
+                    "quantity": 500,
+                    "quality": 0.2,
+                    "open-pit_extraction": 0.8
+                },
+                "unexplored": {
+                    "quantity": 3000,
+                    "quality": 0.2,
+                    "open-pit_extraction": 0.8
+                },
+                "extracted": {
+                    "quantity": 200,
+                    "quality": 0.2
+                }
+            },
+            "wood": {
+                "explored": {
+                    "quantity": 500
+                },
+                "extracted": {
+                    "quantity": 1000
+                }
+            },
+            "electricity": {
+                "extracted": {
+                    "quantity": 25500
+                }
+            }
+        }
     },
     "popular_ideas": {
         "left-right": 9,
         "freedom": -6
     },
-    "autonomy": 25
+    "autonomy": 25,
+    "": ""
 }

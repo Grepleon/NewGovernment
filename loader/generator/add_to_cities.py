@@ -26,8 +26,161 @@ def c_add_to_cities(_file:str, area:str, key, val) -> dict[str:bc.City]:
     for file in files:
         data = saves.Saves(folder + get_country_json_file(file))
         data.loaded_data[key] = val
-        #data.loaded_data["location"]["y"] += 50
-        del data.loaded_data["monthly_expenses"]
+        data.loaded_data["geography"]["resources"] = {
+            "oil": {
+                "explored": {
+                    "quantity": 500,
+                    "quality": 0.85
+                },
+                "unexplored": {
+                    "quantity": 1200,
+                    "quality": 0.85
+                },
+                "extracted": {
+                    "quantity": 100,
+                    "quality": 0.85
+                }
+            },
+            "natural_gas": {
+                "explored": {
+                    "quantity": 3000,
+                    "quality": 1
+                },
+                "unexplored": {
+                    "quantity": 8000,
+                    "quality": 1
+                },
+                "extracted": {
+                    "quantity": 500,
+                    "quality": 1
+                }
+            },
+            "coal": {
+                "explored": {
+                    "quantity": 1000,
+                    "quality": 0.6,
+                    "open-pit_extraction": 0.5
+                },
+                "unexplored": {
+                    "quantity": 8500,
+                    "quality": 0.6,
+                    "open-pit_extraction": 0.5
+                },
+                "extracted": {
+                    "quantity": 4500,
+                    "quality": 1
+                }
+            },
+            "iron": {
+                "explored": {
+                    "quantity": 2000,
+                    "quality": 0.5,
+                    "open-pit_extraction": 0.95
+                },
+                "unexplored": {
+                    "quantity": 3000,
+                    "quality": 0.5,
+                    "open-pit_extraction": 0.95
+                },
+                "extracted": {
+                    "quantity": 250,
+                    "quality": 0.5
+                }
+            },
+            "non-ferrous_metals": {
+                "explored": {
+                    "quantity": 100,
+                    "quality": 0.25,
+                    "open-pit_extraction": 1
+                },
+                "unexplored": {
+                    "quantity": 250,
+                    "quality": 0.25,
+                    "open-pit_extraction": 1
+                },
+                "extracted": {
+                    "quantity": 10,
+                    "quality": 0.25
+                }
+            },
+            "rare_earths": {
+                "explored": {
+                    "quantity": 3500,
+                    "quality": 0.6,
+                    "open-pit_extraction": 1
+                },
+                "unexplored": {
+                    "quantity": 10000,
+                    "quality": 0.6,
+                    "open-pit_extraction": 1
+                },
+                "extracted": {
+                    "quantity": 500,
+                    "quality": 0.6
+                }
+            },
+            "uranium": {
+                "explored": {
+                    "quantity": 250,
+                    "quality": 0.5,
+                    "open-pit_extraction": 0.8
+                },
+                "unexplored": {
+                    "quantity": 250,
+                    "quality": 0.5,
+                    "open-pit_extraction": 0.8
+                },
+                "extracted": {
+                    "quantity": 10,
+                    "quality": 0.5
+                }
+            },
+            "gold": {
+                "explored": {
+                    "quantity": 500,
+                    "quality": 0.2,
+                    "open-pit_extraction": 0.95
+                },
+                "unexplored": {
+                    "quantity": 3000,
+                    "quality": 0.2,
+                    "open-pit_extraction": 0.95
+                },
+                "extracted": {
+                    "quantity": 10,
+                    "quality": 0.2
+                }
+            },
+            "gems": {
+                "explored": {
+                    "quantity": 125,
+                    "quality": 0.2,
+                    "open-pit_extraction": 0.95
+                },
+                "unexplored": {
+                    "quantity": 1200,
+                    "quality": 0.2,
+                    "open-pit_extraction": 0.95
+                },
+                "extracted": {
+                    "quantity": 20,
+                    "quality": 0.2
+                }
+            },
+            "wood": {
+                "explored": {
+                    "quantity": 50000,
+                },
+                "extracted": {
+                    "quantity": 10000,
+                }
+            },
+            "electricity": {
+                "extracted": {
+                    "quantity": 2500,
+                }
+            },
+        }
         data.save()
 
 

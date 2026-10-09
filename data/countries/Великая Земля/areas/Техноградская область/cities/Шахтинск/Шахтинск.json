@@ -20,11 +20,89 @@
         "height": 80,
         "forests": 0.1,
         "average_temperature": 2,
-        "purity": 0.85
+        "purity": 0.85,
+        "resources": {
+            "oil": {
+                "explored": {
+                    "quantity": 100,
+                    "quality": 0.85
+                },
+                "unexplored": {
+                    "quantity": 250,
+                    "quality": 0.85
+                },
+                "extracted": {
+                    "quantity": 25,
+                    "quality": 0.85
+                }
+            },
+            "iron": {
+                "explored": {
+                    "quantity": 4000,
+                    "quality": 0.83,
+                    "open-pit_extraction": 0.65
+                },
+                "unexplored": {
+                    "quantity": 6000,
+                    "quality": 0.83,
+                    "open-pit_extraction": 0.65
+                },
+                "extracted": {
+                    "quantity": 250,
+                    "quality": 0.5
+                }
+            },
+            "non-ferrous_metals": {
+                "explored": {
+                    "quantity": 100,
+                    "quality": 0.25,
+                    "open-pit_extraction": 1
+                },
+                "unexplored": {
+                    "quantity": 250,
+                    "quality": 0.25,
+                    "open-pit_extraction": 1
+                },
+                "extracted": {
+                    "quantity": 10,
+                    "quality": 0.25
+                }
+            },
+            "rare_earths": {
+                "explored": {
+                    "quantity": 1500,
+                    "quality": 0.6,
+                    "open-pit_extraction": 1
+                },
+                "unexplored": {
+                    "quantity": 2000,
+                    "quality": 0.6,
+                    "open-pit_extraction": 1
+                },
+                "extracted": {
+                    "quantity": 100,
+                    "quality": 0.6
+                }
+            },
+            "wood": {
+                "explored": {
+                    "quantity": 500
+                },
+                "extracted": {
+                    "quantity": 25
+                }
+            },
+            "electricity": {
+                "extracted": {
+                    "quantity": 12500
+                }
+            }
+        }
     },
     "popular_ideas": {
         "left-right": 6,
         "freedom": -6
     },
-    "autonomy": 25
+    "autonomy": 25,
+    "": ""
 }
