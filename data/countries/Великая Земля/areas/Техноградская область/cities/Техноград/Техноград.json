@@ -23,34 +23,6 @@
         "average_temperature": 5,
         "purity": 0.85,
         "resources": {
-            "oil": {
-                "explored": {
-                    "quantity": 0,
-                    "quality": 0.85
-                },
-                "unexplored": {
-                    "quantity": 0,
-                    "quality": 0.85
-                },
-                "extracted": {
-                    "quantity": 1500,
-                    "quality": 0.9
-                }
-            },
-            "natural_gas": {
-                "explored": {
-                    "quantity": 0,
-                    "quality": 1
-                },
-                "unexplored": {
-                    "quantity": 0,
-                    "quality": 1
-                },
-                "extracted": {
-                    "quantity": 500,
-                    "quality": 1
-                }
-            },
             "iron": {
                 "explored": {
                     "quantity": 2000,
@@ -125,7 +97,7 @@
             },
             "electricity": {
                 "extracted": {
-                    "quantity": 25500
+                    "quantity": 7500
                 }
             }
         }
