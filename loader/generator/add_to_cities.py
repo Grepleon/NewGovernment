@@ -119,7 +119,7 @@ def c_add_to_cities(_file:str, area:str, key, val) -> dict[str:bc.City]:
                     "quality": 0.6
                 }
             },
-            "uranium": {
+            "uranium.py": {
                 "explored": {
                     "quantity": 250,
                     "quality": 0.5,

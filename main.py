@@ -3,7 +3,7 @@ import politicians.politician as path_politician
 import mainloop.game_states as game_states
 import visual.display as path_display
 from loader.load_data import variable_characters, variables_nations
-from loader.load_data import variables_country, variable_parties
+from loader.load_data import variables_country, variable_parties, variables_resources
 import visual.menu_builder.all_menu as path_all_menu
 import statistics as st
 import datetime as dt

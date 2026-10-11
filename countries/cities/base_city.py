@@ -6,10 +6,11 @@ import politicians.nation.ethnic_group as eg
 from countries.cities.geography import Geography
 from politicians.policy.political_compass import PoliticalCompass
 from politicians.politician import Politician
+from gameloop.resources.base import Resources
 
 class City:
     def __init__(self, name, mayor, location, infrastructure, peoples, budget, nations,
-                 products, geography, popular_ideas, full_name):
+                 products, geography, popular_ideas, full_name, resources):
         self.name:str = name
         self.mayor:str = mayor
         self.location:loc.Location = location
@@ -21,6 +22,7 @@ class City:
         self.geography:Geography = geography
         self.popular_ideas:PoliticalCompass = popular_ideas
         self.full_name = full_name
+        self.resources:dict[str: Resources] = resources
 
     def to_str(self):
         return (f"Город {self.name}:"
@@ -32,6 +34,7 @@ class City:
                 f"\nПроизведено товаров и услуг: {its.int_to_str(self.products)}"
                 f"\nГеография: {self.geography.to_str()}"
                 f"\nПопулярные взгляды: {self.popular_ideas.to_str_name()}"
+                f"\nРесурсы:\n{"\n".join([self.resources[res].to_str() for res in self.resources])}"
                 )
 
     def vote(self, politician: Politician):

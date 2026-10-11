@@ -107,3 +107,15 @@ size_add_win_y = int(os.getenv("SIZEADDWINY"))
 
 add_text_color = os.getenv("ADDTEXTCOLOR")
 max_pop_factor = int(os.getenv("MAXPOPFACTOR"))
+
+oil = "oil"
+natural_gas = "natural_gas"
+coal = "coal"
+iron = "iron"
+non_ferrous_metals = "non-ferrous_metals"
+rare_earths = "rare_earths"
+uranium = "uranium"
+gold = "gold"
+gems = "gems"
+wood = "wood"
+electricity = "electricity"
