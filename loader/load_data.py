@@ -168,6 +168,10 @@ def get_res(data_res) -> dict[str:Resources]:
                 res["explored"]["quantity"],
                 res["extracted"]["quantity"],
             )
+        elif name == electricity:
+            val = types(
+                res["extracted"]["quantity"]
+            )
         data[name] = val
     return data
 

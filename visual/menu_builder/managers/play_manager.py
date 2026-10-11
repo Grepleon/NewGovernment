@@ -33,6 +33,7 @@ class PlayManager(base_manager.Manager):
         self.checker_events:CheckerEvents|None = None
         self.info_texts = None
         self.solution_buttons:list[Button] = []
+        self.res_additional_buttons_map:list[Button] = None
 
     def check_cities(self):
         flag = False
@@ -46,7 +47,7 @@ class PlayManager(base_manager.Manager):
                 and city.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 flag = True
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
-                if not self.display.right_button_pressed:
+                if not "r" in self.display.pressed_keys:
                     self.hint.rewrite_text(
                         city.country.name
                         + "\n" +
@@ -85,6 +86,8 @@ class PlayManager(base_manager.Manager):
             self.hint.display_object(7, 16)
 
     def check_map(self):
+        block_res = True
+
         for map_button in self.map_buttons:
             if map_button.into_mouse:
                 if self.display.fast_left_button_pressed:
@@ -93,6 +96,16 @@ class PlayManager(base_manager.Manager):
                                         self.selected_map in self.game_state.nations):
                         self.selected_map = map_button.name
                         upload_map(self.selected_map, self.display, self.game_state, self.id_cities)
+            if map_button.on:
+                if (config.main_resources_button in map_button.name or
+                    map_button.name in self.game_state.resources):
+                    block_res = False
+
+        for map_button in self.map_buttons:
+            if map_button.name in self.game_state.resources:
+                map_button.blocked = block_res
+                if not map_button.blocked:
+                    map_button.show()
 
         for map_button in self.map_buttons:
             if map_button.on and map_button.name != self.selected_map:

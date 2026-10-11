@@ -36,6 +36,11 @@ class City:
                 f"\nПопулярные взгляды: {self.popular_ideas.to_str_name()}"
                 )
 
+    def get_sum_res(self):
+        return sum([
+            self.resources[res].explored_quantity for res in self.resources
+        ])
+
     def get_res(self):
         return f"Ресурсы:\n{"\n".join([
             self.resources[res].to_str() for res in self.resources if

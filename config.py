@@ -119,3 +119,5 @@ gold = "gold"
 gems = "gems"
 wood = "wood"
 electricity = "electricity"
+
+main_resources_button = "Карта ресурсов"
