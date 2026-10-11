@@ -10,6 +10,6 @@ class Resources:
 
     def to_str(self) -> str:
         return (f"{self.name}:\n"
-                f"изучено: {self.explored_quantity} ед., {round(self.quality * 100, 1)}%"
-                f"\nимеется: {self.extracted} ед., {round(self.local_quality * 100, 1)}%"
+                f"- разработано: {self.explored_quantity} ед., {round(self.quality * 100, 1)}%"
+                f"\n- добыто: {self.extracted} ед., {round(self.local_quality * 100, 1)}%"
                 )

@@ -34,8 +34,10 @@ class City:
                 f"\nПроизведено товаров и услуг: {its.int_to_str(self.products)}"
                 f"\nГеография: {self.geography.to_str()}"
                 f"\nПопулярные взгляды: {self.popular_ideas.to_str_name()}"
-                f"\nРесурсы:\n{"\n".join([self.resources[res].to_str() for res in self.resources])}"
                 )
+
+    def get_res(self):
+        return f"\nРесурсы:\n{"\n".join([self.resources[res].to_str() for res in self.resources])}"
 
     def vote(self, politician: Politician):
         x1 = self.popular_ideas.left_right
