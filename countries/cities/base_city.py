@@ -37,7 +37,10 @@ class City:
                 )
 
     def get_res(self):
-        return f"\nРесурсы:\n{"\n".join([self.resources[res].to_str() for res in self.resources])}"
+        return f"Ресурсы:\n{"\n".join([
+            self.resources[res].to_str() for res in self.resources if
+            self.resources[res].explored_quantity != 0 or self.resources[res].extracted != 0
+        ])}"
 
     def vote(self, politician: Politician):
         x1 = self.popular_ideas.left_right

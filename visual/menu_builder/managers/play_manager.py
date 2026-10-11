@@ -46,15 +46,20 @@ class PlayManager(base_manager.Manager):
                 and city.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 flag = True
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
-                self.hint.rewrite_text(
-                    city.country.name
-                    + "\n" +
-                    city.area.to_str()
-                    + "\n" + "\n" +
-                    city.city.to_str()
-                    + "\n" + "\n" +
-                    inter_to_str(city.country, city.area, city.city, self.game_state.selected_politician)
-                )
+                if not self.display.right_button_pressed:
+                    self.hint.rewrite_text(
+                        city.country.name
+                        + "\n" +
+                        city.area.to_str()
+                        + "\n" + "\n" +
+                        city.city.to_str()
+                        + "\n" + "\n" +
+                        inter_to_str(city.country, city.area, city.city, self.game_state.selected_politician)
+                    )
+                else:
+                    self.hint.rewrite_text(
+                        city.city.get_res()
+                    )
                 self.hint.recolor(lite(city.area.color, 40), lite(city.area.color, -120))
                 area = city.area
                 object_city = city

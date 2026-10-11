@@ -153,6 +153,21 @@ def get_res(data_res) -> dict[str:Resources]:
                 res["extracted"]["quality"],
                 res["explored"]["open-pit_extraction"]
             )
+        elif name in [oil, natural_gas]:
+            if name not in res:
+                val = types(0, 0, 0, 0, 0)
+            val = types(
+                res["explored"]["quantity"],
+                res["unexplored"]["quantity"],
+                res["extracted"]["quantity"],
+                res["explored"]["quality"],
+                res["extracted"]["quality"],
+            )
+        elif name == wood:
+            val = types(
+                res["explored"]["quantity"],
+                res["extracted"]["quantity"],
+            )
         data[name] = val
     return data
 

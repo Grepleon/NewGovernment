@@ -123,7 +123,8 @@ class Display:
             self.right_button_pressed = True
 
     def right_on_release(self, event):
-        pass
+        if event.num == 3:
+            self.right_button_pressed = True
 
     def on_motion(self, event):
         self.mouse_x = event.x
