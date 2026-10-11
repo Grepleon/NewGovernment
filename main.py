@@ -24,7 +24,7 @@ politicians = create_politicians()
 all_countries, all_areas = variables_country()
 nations = variables_nations()
 parties = variable_parties()
-
+resources = variables_resources()
 display = path_display.Display(config.width, config.height)
 
 game_state = game_states.GameState(
@@ -41,7 +41,8 @@ game_state = game_states.GameState(
     nations,
     statistics,
     parties,
-    display
+    display,
+    resources
 )
 
 all_menu = path_all_menu.AllMenu(display, game_state)

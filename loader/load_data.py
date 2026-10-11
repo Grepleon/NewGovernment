@@ -82,6 +82,9 @@ def variable_characters() -> dict[str:pol.Politician]:
 def get_country_json_file(val:str):
     return val + '/' + val + '.json'
 
+def variables_resources() -> list[str]:
+    return saves.Saves("data/resources/base.py").loaded_data
+
 def variable_parties() -> dict[str:BaseParty]:
     parties:dict[str:BaseParty] = {}
     folder = r"data/characters/parties/"
