@@ -22,112 +22,36 @@
         "average_temperature": -3,
         "purity": 0.85,
         "resources": {
-            "oil": {
-                "explored": {
-                    "quantity": 500,
-                    "quality": 0.85
-                },
-                "unexplored": {
-                    "quantity": 1200,
-                    "quality": 0.85
-                },
-                "extracted": {
-                    "quantity": 100,
-                    "quality": 0.85
-                }
-            },
-            "natural_gas": {
-                "explored": {
-                    "quantity": 3000,
-                    "quality": 1
-                },
-                "unexplored": {
-                    "quantity": 8000,
-                    "quality": 1
-                },
-                "extracted": {
-                    "quantity": 500,
-                    "quality": 1
-                }
-            },
-            "coal": {
-                "explored": {
-                    "quantity": 1000,
-                    "quality": 0.6,
-                    "open-pit_extraction": 0.5
-                },
-                "unexplored": {
-                    "quantity": 8500,
-                    "quality": 0.6,
-                    "open-pit_extraction": 0.5
-                },
-                "extracted": {
-                    "quantity": 4500,
-                    "quality": 1
-                }
-            },
             "iron": {
                 "explored": {
-                    "quantity": 2000,
-                    "quality": 0.5,
-                    "open-pit_extraction": 0.95
+                    "quantity": 1000,
+                    "quality": 0.7,
+                    "open-pit_extraction": 1
                 },
                 "unexplored": {
-                    "quantity": 3000,
-                    "quality": 0.5,
-                    "open-pit_extraction": 0.95
+                    "quantity": 3500,
+                    "quality": 0.7,
+                    "open-pit_extraction": 1
                 },
                 "extracted": {
                     "quantity": 250,
-                    "quality": 0.5
+                    "quality": 0.7
                 }
             },
             "non-ferrous_metals": {
                 "explored": {
-                    "quantity": 100,
+                    "quantity": 0,
                     "quality": 0.25,
                     "open-pit_extraction": 1
                 },
                 "unexplored": {
-                    "quantity": 250,
+                    "quantity": 300,
                     "quality": 0.25,
                     "open-pit_extraction": 1
                 },
                 "extracted": {
                     "quantity": 10,
                     "quality": 0.25
-                }
-            },
-            "rare_earths": {
-                "explored": {
-                    "quantity": 3500,
-                    "quality": 0.6,
-                    "open-pit_extraction": 1
-                },
-                "unexplored": {
-                    "quantity": 10000,
-                    "quality": 0.6,
-                    "open-pit_extraction": 1
-                },
-                "extracted": {
-                    "quantity": 500,
-                    "quality": 0.6
-                }
-            },
-            "uranium": {
-                "explored": {
-                    "quantity": 250,
-                    "quality": 0.5,
-                    "open-pit_extraction": 0.8
-                },
-                "unexplored": {
-                    "quantity": 250,
-                    "quality": 0.5,
-                    "open-pit_extraction": 0.8
-                },
-                "extracted": {
-                    "quantity": 10,
-                    "quality": 0.5
                 }
             },
             "gold": {
@@ -148,18 +72,18 @@
             },
             "gems": {
                 "explored": {
-                    "quantity": 125,
-                    "quality": 0.2,
+                    "quantity": 550,
+                    "quality": 0.8,
                     "open-pit_extraction": 0.95
                 },
                 "unexplored": {
-                    "quantity": 1200,
-                    "quality": 0.2,
+                    "quantity": 3600,
+                    "quality": 0.8,
                     "open-pit_extraction": 0.95
                 },
                 "extracted": {
                     "quantity": 20,
-                    "quality": 0.2
+                    "quality": 0.8
                 }
             },
             "wood": {

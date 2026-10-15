@@ -24,6 +24,7 @@ class Button(b_object.BaseObject):
         self.created_window = None
 
         self.game_state = game_state
+        self.blocked = False
         self.info = {}
 
         self._create()
@@ -39,24 +40,29 @@ class Button(b_object.BaseObject):
                                       color=self.bg_color, outline=self.color, tag=self.object_id)
         self.display.create_text(self.x1 / 2 + self.x2 / 2, self.y1 / 2 + self.y2 / 2,
                                  self.text, self.color, tag=self.object_id + self.pref_text)
+        if self.blocked:
+            self.hide()
 
     def display_object(self):
-        if not self.on:
-            self.unfun(self, self.game_state)
-            if self.into_mouse:
-                self.display.recolor(self.color, self.object_id)
-                self.display.recolor(self.bg_color, self.object_id + self.pref_text)
+        if not self.blocked:
+            if not self.on:
+                self.unfun(self, self.game_state)
+                if self.into_mouse:
+                    self.display.recolor(self.color, self.object_id)
+                    self.display.recolor(self.bg_color, self.object_id + self.pref_text)
+                else:
+                    self.display.recolor(self.bg_color, self.object_id)
+                    self.display.recolor(self.color, self.object_id + self.pref_text)
             else:
-                self.display.recolor(self.bg_color, self.object_id)
-                self.display.recolor(self.color, self.object_id + self.pref_text)
+                self.fun(self, self.game_state)
+                if self.into_mouse:
+                    self.display.recolor(self.active_color, self.object_id)
+                    self.display.recolor(self.bg_active_color, self.object_id + self.pref_text)
+                else:
+                    self.display.recolor(self.bg_active_color, self.object_id)
+                    self.display.recolor(self.active_color, self.object_id + self.pref_text)
         else:
-            self.fun(self, self.game_state)
-            if self.into_mouse:
-                self.display.recolor(self.active_color, self.object_id)
-                self.display.recolor(self.bg_active_color, self.object_id + self.pref_text)
-            else:
-                self.display.recolor(self.bg_active_color, self.object_id)
-                self.display.recolor(self.active_color, self.object_id + self.pref_text)
+            self.hide()
 
 
 
@@ -70,7 +76,7 @@ class Button(b_object.BaseObject):
         y1 = min(self.y1, self.y2)
         y2 = max(self.y1, self.y2)
 
-        self.into_mouse = x1 <= mx <= x2 and y1 <= my <= y2
+        self.into_mouse = x1 <= mx <= x2 and y1 <= my <= y2 and not self.blocked
         return self.into_mouse
 
     def mouse_clicked_object(self):

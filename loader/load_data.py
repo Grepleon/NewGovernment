@@ -16,6 +16,20 @@ from politicians.nation.ethnic_group import EthnicGroup
 from countries.cities.geography import Geography
 from politicians.policy.political_compass import PoliticalCompass
 from party.base_party import BaseParty
+from gameloop.resources.base import Resources
+from gameloop.resources.oil import Oil
+from gameloop.resources.natural_gas import NaturalGas
+from gameloop.resources.coal import Coal
+from gameloop.resources.iron import Iron
+from gameloop.resources.non_ferrous_metals import NonFerrousMetals
+from gameloop.resources.rare_earths import RareEarths
+from gameloop.resources.uranium import Uranium
+from gameloop.resources.gold import Gold
+from gameloop.resources.gems import Gems
+from gameloop.resources.wood import Wood
+from gameloop.resources.electricity import Electricity
+from config import (oil, natural_gas, coal, iron, non_ferrous_metals,
+                    rare_earths, uranium, gold, gems, wood, electricity)
 
 characters = []
 
@@ -82,6 +96,9 @@ def variable_characters() -> dict[str:pol.Politician]:
 def get_country_json_file(val:str):
     return val + '/' + val + '.json'
 
+def variables_resources() -> list[str]:
+    return saves.Saves(r"data\resources\base.json").loaded_data
+
 def variable_parties() -> dict[str:BaseParty]:
     parties:dict[str:BaseParty] = {}
     folder = r"data/characters/parties/"
@@ -102,6 +119,61 @@ def variable_parties() -> dict[str:BaseParty]:
 
 
     return parties
+
+def get_type_res(name) -> type:
+    if name == gems: return Gems
+    if name == gold: return Gold
+    if name == uranium: return Uranium
+    if name == rare_earths: return RareEarths
+    if name == non_ferrous_metals: return NonFerrousMetals
+    if name == iron: return Iron
+    if name == oil: return Oil
+    if name == natural_gas: return NaturalGas
+    if name == wood: return Wood
+    if name == electricity: return Electricity
+    if name == coal: return Coal
+
+
+def get_res(data_res) -> dict[str:Resources]:
+    data = {}
+    print(data_res)
+    for name in data_res:
+        res = data_res[name]
+        print(data_res)
+        val = Resources(0, 0, 0, 0, 0)
+        types = get_type_res(name)
+        if name in [coal, gems, gold, uranium, rare_earths, non_ferrous_metals, iron]:
+            if name not in res:
+                val = types(0, 0, 0, 0, 0, 0)
+            val = types(
+                res["explored"]["quantity"],
+                res["unexplored"]["quantity"],
+                res["extracted"]["quantity"],
+                res["explored"]["quality"],
+                res["extracted"]["quality"],
+                res["explored"]["open-pit_extraction"]
+            )
+        elif name in [oil, natural_gas]:
+            if name not in res:
+                val = types(0, 0, 0, 0, 0)
+            val = types(
+                res["explored"]["quantity"],
+                res["unexplored"]["quantity"],
+                res["extracted"]["quantity"],
+                res["explored"]["quality"],
+                res["extracted"]["quality"],
+            )
+        elif name == wood:
+            val = types(
+                res["explored"]["quantity"],
+                res["extracted"]["quantity"],
+            )
+        elif name == electricity:
+            val = types(
+                res["extracted"]["quantity"]
+            )
+        data[name] = val
+    return data
 
 def get_cities(_file:str, area:str) -> dict[str:bc.City]:
     cities:dict[str:bc.City] = {}
@@ -144,7 +216,8 @@ def get_cities(_file:str, area:str) -> dict[str:bc.City]:
                 data["popular_ideas"]["left-right"],
                 data["popular_ideas"]["freedom"]
             ),
-            area.replace("/", "") + ", " + file.split(".")[0]
+            area.replace("/", "") + ", " + file.split(".")[0],
+            get_res(data["geography"]["resources"])
         )
 
     return cities

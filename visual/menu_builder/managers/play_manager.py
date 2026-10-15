@@ -33,6 +33,8 @@ class PlayManager(base_manager.Manager):
         self.checker_events:CheckerEvents|None = None
         self.info_texts = None
         self.solution_buttons:list[Button] = []
+        self.res_additional_buttons_map:list[Button] = None
+        self.block_res = True
 
     def check_cities(self):
         flag = False
@@ -46,15 +48,20 @@ class PlayManager(base_manager.Manager):
                 and city.mouse_into_object(self.display.mouse_x, self.display.mouse_y):
                 flag = True
                 self.hint.to_move(self.display.mouse_x, self.display.mouse_y)
-                self.hint.rewrite_text(
-                    city.country.name
-                    + "\n" +
-                    city.area.to_str()
-                    + "\n" + "\n" +
-                    city.city.to_str()
-                    + "\n" + "\n" +
-                    inter_to_str(city.country, city.area, city.city, self.game_state.selected_politician)
-                )
+                if not "r" in self.display.pressed_keys:
+                    self.hint.rewrite_text(
+                        city.country.name
+                        + "\n" +
+                        city.area.to_str()
+                        + "\n" + "\n" +
+                        city.city.to_str()
+                        + "\n" + "\n" +
+                        inter_to_str(city.country, city.area, city.city, self.game_state.selected_politician)
+                    )
+                else:
+                    self.hint.rewrite_text(
+                        city.city.get_res()
+                    )
                 self.hint.recolor(lite(city.area.color, 40), lite(city.area.color, -120))
                 area = city.area
                 object_city = city
@@ -92,6 +99,21 @@ class PlayManager(base_manager.Manager):
         for map_button in self.map_buttons:
             if map_button.on and map_button.name != self.selected_map:
                 map_button.on = False
+
+        for map_button in self.map_buttons:
+            if map_button.on:
+                if (config.main_resources_button in map_button.name or
+                        map_button.name in self.game_state.resources):
+                    self.block_res = False
+                else:
+                    self.block_res = True
+
+        for map_button in self.map_buttons:
+            if map_button.name in self.game_state.resources:
+                map_button.blocked = self.block_res
+                if not map_button.blocked:
+                    map_button.show()
+
 
     def ethno_button_check(self):
         if config.specific_ethnic_map == self.selected_map or self.selected_map in self.game_state.nations:

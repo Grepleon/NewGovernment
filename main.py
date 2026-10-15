@@ -3,7 +3,7 @@ import politicians.politician as path_politician
 import mainloop.game_states as game_states
 import visual.display as path_display
 from loader.load_data import variable_characters, variables_nations
-from loader.load_data import variables_country, variable_parties
+from loader.load_data import variables_country, variable_parties, variables_resources
 import visual.menu_builder.all_menu as path_all_menu
 import statistics as st
 import datetime as dt
@@ -24,7 +24,7 @@ politicians = create_politicians()
 all_countries, all_areas = variables_country()
 nations = variables_nations()
 parties = variable_parties()
-
+resources = variables_resources()
 display = path_display.Display(config.width, config.height)
 
 game_state = game_states.GameState(
@@ -41,7 +41,8 @@ game_state = game_states.GameState(
     nations,
     statistics,
     parties,
-    display
+    display,
+    resources
 )
 
 all_menu = path_all_menu.AllMenu(display, game_state)

@@ -147,6 +147,36 @@ def get_menu(display, game_state:game_states.GameState):
         additional_buttons_map[-1].fun = add_big
         additional_buttons_map[-1].unfun = del_big
 
+    res_additional_buttons_map = []
+
+    for index, res in enumerate(game_state.resources):
+        print(res)
+        res_additional_buttons_map.append(
+            Button(
+                config.coordinates_button_map[0] + config.distance_button_map[0] * index + config.size_button_map[0]
+                + config.distance_button_map_x,
+                config.coordinates_button_map[1] + config.distance_button_map[1] * index + config.size_button_map[1],
+                config.coordinates_button_map[0] + config.distance_button_map[0] * index
+                + config.distance_button_map_x,
+                config.coordinates_button_map[1] + config.distance_button_map[1] * index,
+                config.base_off_button_color,
+                config.base_off_bg_button_color,
+                config.base_on_button_color,
+                config.base_on_bg_button_color,
+                ">  " + res + " " * (22 - len(res)),
+                display.add_id(),
+                display,
+                game_state,
+                name=res
+            )
+        )
+
+        res_additional_buttons_map[-1].fun = add_big
+        res_additional_buttons_map[-1].unfun = del_big
+        res_additional_buttons_map[-1].blocked = True
+
+    buttons += res_additional_buttons_map
+    map_buttons += res_additional_buttons_map
     solution_buttons = []
 
     for index, solution in enumerate(config.solutions):
@@ -258,6 +288,7 @@ def get_menu(display, game_state:game_states.GameState):
     play_manager.checker_events = CheckerEvents(display, game_state, game_event)
     play_manager.info_texts = info_texts
     play_manager.solution_buttons = solution_buttons
+    play_manager.res_additional_buttons_map = res_additional_buttons_map
 
 
     return play_manager

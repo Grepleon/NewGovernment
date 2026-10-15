@@ -16,6 +16,8 @@ from visual.tools.maps.populist_map import upload_populist_map
 from visual.tools.maps.popularity_map import upload_popularity_map
 from visual.tools.maps.autonomy_map import upload_autonomy_map
 from visual.tools.maps.specific_ethnic_map import upload_ethnic_map as upload_specific_ethnic_map
+from visual.tools.maps.resources_map import upload_resources_map
+from visual.tools.maps.specific_resources_map import upload_specific_resources_map
 
 map_tools:dict = {
     "Областная карта": upload_regional_map,
@@ -29,11 +31,15 @@ map_tools:dict = {
     "Популистская карта": upload_populist_map,
     "Карта популярности": upload_popularity_map,
     "Карта автономности": upload_autonomy_map,
+    "Карта ресурсов": upload_resources_map
 }
 
 def upload_map(name_map, display:Display, game_state:GameState, area_cities):
     game_state.statistics.maps_choose[name_map] = game_state.statistics.maps_choose.get(name_map, 0) + 1
     if name_map in game_state.nations:
         upload_specific_ethnic_map(display, game_state, area_cities, name_map)
+        return
+    if name_map in game_state.resources:
+        upload_specific_resources_map(display, game_state, area_cities, name_map)
         return
     map_tools[name_map](display, game_state, area_cities)
